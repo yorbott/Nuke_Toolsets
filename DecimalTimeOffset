@@ -1,0 +1,67 @@
+Group {
+ inputs 0
+ name DecimalTimeOffset
+ tile_color 0xafa35dff
+ note_font Verdana
+ selected true
+ xpos 17665
+ ypos 14197
+ addUserKnob {20 User}
+ addUserKnob {41 decimal l "time offset (decimal)" T TimeBlur2.decimal}
+ addUserKnob {26 ""}
+ addUserKnob {26 credit l "" +STARTLINE T "Chris Fryer | 2020"}
+}
+ Input {
+  inputs 0
+  name img
+  xpos 378
+  ypos 183
+ }
+ Dot {
+  name Dot21
+  xpos 412
+  ypos 223
+ }
+set N131ddf40 [stack 0]
+ Dot {
+  name Dot1
+  xpos 312
+  ypos 223
+ }
+ Dot {
+  name Dot2
+  xpos 312
+  ypos 357
+ }
+push $N131ddf40
+ TimeBlur {
+  divisions 2
+  shutter {{decimal*2}}
+  shutteroffset start
+  shuttercustomoffset 0
+  name TimeBlur2
+  xpos 378
+  ypos 268
+  addUserKnob {20 User}
+  addUserKnob {7 decimal}
+ }
+ Multiply {
+  value 2
+  name Multiply3
+  xpos 378
+  ypos 294
+ }
+ Merge2 {
+  inputs 2
+  operation from
+  also_merge all
+  name Merge4
+  xpos 378
+  ypos 353
+ }
+ Output {
+  name Output1
+  xpos 378
+  ypos 453
+ }
+end_group
