@@ -1,0 +1,60 @@
+Tracker4 {
+ center {1024 778}
+ shutteroffset centred
+ name Tracker
+ tile_color 0xbcccdbff
+ label MissingCorner
+ selected true
+ xpos 17265
+ ypos 13947
+ addUserKnob {20 button +HIDDEN +INVISIBLE}
+ addUserKnob {22 createPPinUseCurrentFrameBaked -STARTLINE +INVISIBLE T "import aePowerPinFun\naePowerPinFun.createPPinUseReferenceFrameBaked()"}
+ addUserKnob {22 createPPinUseReferenceFrameBaked -STARTLINE +INVISIBLE T "import aePowerPinFun\naePowerPinFun.createPPinUseReferenceFrameBaked()"}
+ addUserKnob {20 findD}
+ addUserKnob {26 _2 l "" +STARTLINE T "<h2>Find position point D"}
+ addUserKnob {26 _3 l "" -STARTLINE T "<font size=\"1\"><i>twss"}
+ addUserKnob {26 _4 l "" +STARTLINE T "point <b>a</b> is always in between two known points (<b>b</b> & <b>c</b>)\n"}
+ addUserKnob {20 _6 l "" +STARTLINE n 1}
+ _6 0
+ addUserKnob {3 assigna l a t "select correct track number to get the corresponding data"}
+ assigna 1
+ addUserKnob {12 A l a +INVISIBLE}
+ A {{"tracks.\[value assigna].track_x"} {"tracks.\[value assigna].track_y"}}
+ addUserKnob {3 assignb l b t "select correct track number to get the corresponding data"}
+ assignb 2
+ addUserKnob {12 B l b +INVISIBLE}
+ B {{"tracks.\[value assignb].track_x"} {"tracks.\[value assignb].track_y"}}
+ addUserKnob {3 assignc l c t "select correct track number to get the corresponding data"}
+ assignc 3
+ addUserKnob {12 C l c +INVISIBLE}
+ C {{"tracks.\[value assignc].track_x"} {"tracks.\[value assignc].track_y"}}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {12 D l d t "This will be the 4th point calculated using three other trackers. To aply this on a 4th tracker simply click on the Animation menu button right beside the values --> Copy --> Copy Links\n\nAfter that right click on the 4th tracker \n--> Paste --> Paste Absolute. \n\nAnd thats all!\n\n\n\n\n"}
+ D {{(((A.x-BC.x)*-1)+BC.x)+offsetD.x} {(((A.y-BC.y)*-1)+BC.y)+offsetD.y}}
+ addUserKnob {26 ""}
+ addUserKnob {20 advanced n 1}
+ advanced 0
+ addUserKnob {12 BC l bc +INVISIBLE}
+ BC {{C.x+((B.x-C.x)/2)} {C.y+((B.y-C.y)/2)}}
+ addUserKnob {12 calctoAB l "calculate to a & b" +INVISIBLE}
+ calctoAB {{(A.x-B.x)*(1-(2*((A.x-B.x)<0)))} {(A.y-B.y)*(1-(2*((A.y-B.y)<0)))}}
+ addUserKnob {12 calctoAC l "calculate to a & c" +INVISIBLE}
+ calctoAC {{(A.x-C.x)*(1-(2*((A.x-C.x)<0)))} {(A.y-C.y)*(1-(2*((A.y-C.y)<0)))}}
+ addUserKnob {7 distantAB l "distant a & b" +INVISIBLE}
+ distantAB {{sqrt((calctoAB.x**2)+(calctoAB.y**2))}}
+ addUserKnob {7 distantAC l "distant a & c" +INVISIBLE}
+ distantAC {{sqrt((calctoAC.x**2)+(calctoAC.y**2))}}
+ addUserKnob {12 offsetD l offset}
+ addUserKnob {26 ""}
+ addUserKnob {3 refframe l "reference frame"}
+ refframe 989
+ addUserKnob {7 aspect l "aspect ratio" t "This is the current aspect ratio of the cornerpin on the timing of the reference frame. You can use this to prevent unwanted scalling of the insert plate.\n\n\n" R 0 2}
+ aspect {{(rint((distantAB(refframe)/distantAC(refframe))*100))/100}}
+ addUserKnob {26 ""}
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+ addUserKnob {26 _1 l "" +STARTLINE T "\n\n\n\n\n\n"}
+ addUserKnob {26 _7 l "" +STARTLINE T "<b>made by</b> Yorben otto - 2023"}
+ addUserKnob {20 button +HIDDEN +INVISIBLE}
+ addUserKnob {22 createPPinUseCurrentFrameBaked -STARTLINE T "import aePowerPinFun\naePowerPinFun.createPPinUseReferenceFrameBaked()"}
+ addUserKnob {22 createPPinUseReferenceFrameBaked -STARTLINE T "import aePowerPinFun\naePowerPinFun.createPPinUseReferenceFrameBaked()"}
+}
