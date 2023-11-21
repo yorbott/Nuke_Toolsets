@@ -1,0 +1,71 @@
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ knobChanged "try:\n    listenedKnobs = \['text', 'position', 'name']\n    node = nuke.thisNode()\n    name = node.knob('name').value()\n    text = node.knob('text').value()\n    position = node.knob('position').value()\n    position = \"<\" + position + \">\"\n    label = node.knob('label').value()\n    \n    if nuke.thisKnob().name() in listenedKnobs:\n        if text == \"\":\n            if node.knob('position').value() == \"left\":\n                node.knob('label').setValue()\n            else:\n                node.knob('label').setValue(position + name)\n        else:\n            if node.knob('position').value() == \"left\":\n                node.knob('label').setValue(text)\n            else:\n                node.knob('label').setValue(position + text)\n                \n    elif nuke.thisKnob().name() == 'font_size':\n        fontSize = node.knob('font_size').value()\n        node.knob('note_font_size').setValue(fontSize)\nexcept:\n    pass"
+ tile_color 0x232323ff
+ label "<Center><h1><b>bucketrender</b></h1>\nexperimental"
+ note_font_size 20
+ selected true
+ xpos 15892
+ ypos 11407
+ bdwidth 357
+ bdheight 375
+ addUserKnob {20 F_VFX l BackdropNode}
+ addUserKnob {43 text l Text}
+ text "<h1><b>bucketrender</b></h1>\nexperimental"
+ addUserKnob {7 font_size l "Font Size" R 10 100}
+ font_size 20
+ addUserKnob {4 position l "" -STARTLINE M {Left Center}}
+ position Center
+ addUserKnob {26 S01 l " " T " "}
+ addUserKnob {22 grow l " <img src=\"F_scalep.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef grow(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()-step)\n            n\['ypos'].setValue(n\['ypos'].getValue()-step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()+step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()+step*2)\n    except:\n        pass\ngrow(n,50)"}
+ addUserKnob {22 shrink l " <img src=\"F_scalem.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef shrink(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()+step)\n            n\['ypos'].setValue(n\['ypos'].getValue()+step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()-step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()-step*2)\n    except:\n        pass\nshrink(n,50)"}
+ addUserKnob {22 colorandom l " <img src=\"ColorBars.png\">" -STARTLINE T "import colorsys, random\nn=nuke.thisNode()\nR,G,B= colorsys.hsv_to_rgb(random.random(),.1+random.random()*.15,.15+random.random()*.15)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ) )"}
+ addUserKnob {22 darkgrey l "<font color=\"#232323\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.0, 0.14]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 lightgrey l "<font color=\"#383838\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.0, 0.22]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 red l "<font color=\"#8c3838\" size=6>■</font>" T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.6, 0.55]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n" +STARTLINE}
+ addUserKnob {22 orange l "<font color=\"#b28e59\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.1, 0.5, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 yellow l "<font color=\"#ccc766\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.16, 0.5, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 green l "<font color=\"#5d995b\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.33, 0.4, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 cyan l "<font color=\"#72998f\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.46, 0.25, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 blue l "<font color=\"#59687f\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.6, 0.3, 0.5]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 darkblue l "<font color=\"#63628c\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.67, 0.3, 0.55]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 magenta l "<font color=\"#927a99\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.8, 0.2, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 pink l "<font color=\"#997a89\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.92, 0.2, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {26 S02 l " " T " "}
+ addUserKnob {26 Ftools l "" +STARTLINE T "<font color=\"#1C1C1C\"> v1.2 - Franklin VFX - 2018"}
+}
+push $cut_paste_input
+NoOp {
+ name control
+ selected true
+ xpos 15929
+ ypos 11655
+ addUserKnob {20 User}
+ addUserKnob {26 _3 l "" +STARTLINE T <B>INPUT}
+ addUserKnob {15 bbox}
+ bbox {0 0 {width} {height}}
+ addUserKnob {26 ""}
+ addUserKnob {26 _4 l "" +STARTLINE T "   \n"}
+ addUserKnob {3 part l partitions}
+ part 47
+ addUserKnob {7 overscan R 0 100}
+ addUserKnob {3 sections}
+ sections {{(frame%part)}}
+ addUserKnob {3 _1 l "" -STARTLINE}
+ _1 {{floor(((frame/part)%part))}}
+ addUserKnob {26 _5 l "" +STARTLINE T "   \n"}
+ addUserKnob {26 ""}
+ addUserKnob {26 _2 l "" +STARTLINE T <b>OUTPUT}
+ addUserKnob {15 bbox_1}
+ bbox_1 {{(0+((width/part)*control.sections))-overscan} {(0+((height/part)*control._1))-overscan} {"( \n0+\n(\n(width/part)*(1+control.sections)))+overscan"} {(0+((height/part)*(1+control._1)))+overscan}}
+}
+Crop {
+ inputs 0
+ box {{parent.control.bbox_1.x} {parent.control.bbox_1.y} {parent.control.bbox_1.r} {parent.control.bbox_1.t}}
+ softness {{parent.control.overscan}}
+ name Crop2
+ selected true
+ xpos 16120
+ ypos 11660
+}
