@@ -1,0 +1,75 @@
+Group {
+ name Tracker2Camera
+ selected true
+ xpos 16994
+ ypos 13431
+ addUserKnob {20 User}
+ addUserKnob {41 position l Position T Control.position}
+ addUserKnob {41 center l Center T Control.center}
+ addUserKnob {41 rotation l Rotation T Control.rotation}
+ addUserKnob {41 scale l Scale T Control.scale}
+ addUserKnob {26 ""}
+ addUserKnob {41 nodal_offset l "Nodal offset" T Control.nodal_offset}
+ addUserKnob {41 nodal_comp l "Nodal compensation" T Control.nodal_comp}
+}
+ Input {
+  inputs 0
+  name Camera
+  xpos -892
+  ypos 152
+ }
+ Camera2 {
+  rot_order XYZ
+  rotate {{"-atan(vaperture * (Control.offset.y / Format.height) / ((focal/height)*width)) * (180 / pi) * (1+Control.nodal_comp.y)"} {"atan(haperture * (Control.offset.x / Format.width) / focal) * (180 / pi) * (1+Control.nodal_comp.x)"} {"-parent.Control.rotation * (1+Control.nodal_comp.z)"}}
+  pivot_translate {0 0 {parent.Control.nodal_offset}}
+  focal {{"parent.input0.focal * Control.scale"}}
+  haperture {{parent.input0.haperture}}
+  vaperture {{parent.input0.vaperture}}
+  near {{parent.input0.near}}
+  far {{parent.input0.far}}
+  win_translate {{parent.input0.win_translate.u} {parent.input0.win_translate.v}}
+  win_scale {{parent.input0.win_scale.u} {parent.input0.win_scale.v}}
+  winroll {{parent.input0.winroll}}
+  focal_point {{parent.input0.focal_point}}
+  fstop {{parent.input0.fstop}}
+  name CAM
+  xpos -882
+  ypos 328
+ }
+ Output {
+  name Output1
+  xpos -892
+  ypos 495
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote9
+  label "//X Rotation:\natan(vaperture * (Tracker1.translate.y / Tracker1.height) / focal) * (180 / pi)\n\n//Y Rotation:\n-atan(haperture * (Tracker1.translate.x / Tracker1.width) / focal) * (180 / pi)\n"
+  xpos -1311
+  ypos 321
+ }
+ Input {
+  inputs 0
+  name Format
+  xpos -757
+  ypos 248
+  number 1
+ }
+ NoOp {
+  inputs 0
+  name Control
+  xpos -742
+  ypos 343
+  addUserKnob {20 User}
+  addUserKnob {12 position l Position}
+  addUserKnob {12 center l Center}
+  addUserKnob {12 offset +INVISIBLE}
+  offset {{"position.x - center.x"} {"position.y - center.y"}}
+  addUserKnob {7 rotation l Rotation R -180 180}
+  addUserKnob {7 scale l Scale R 0 10}
+  scale 1
+  addUserKnob {26 ""}
+  addUserKnob {7 nodal_offset l "Nodal offset" R -1 1}
+  addUserKnob {13 nodal_comp l "Nodal compensation"}
+ }
+end_group
