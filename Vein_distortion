@@ -1,0 +1,561 @@
+BackdropNode {
+ inputs 0
+ name BackdropNode11
+ knobChanged "try:\n    listenedKnobs = \['text', 'position', 'name']\n    node = nuke.thisNode()\n    name = node.knob('name').value()\n    text = node.knob('text').value()\n    position = node.knob('position').value()\n    position = \"<\" + position + \">\"\n    label = node.knob('label').value()\n    \n    if nuke.thisKnob().name() in listenedKnobs:\n        if text == \"\":\n            if node.knob('position').value() == \"left\":\n                node.knob('label').setValue()\n            else:\n                node.knob('label').setValue(position + name)\n        else:\n            if node.knob('position').value() == \"left\":\n                node.knob('label').setValue(text)\n            else:\n                node.knob('label').setValue(position + text)\n                \n    elif nuke.thisKnob().name() == 'font_size':\n        fontSize = node.knob('font_size').value()\n        node.knob('note_font_size').setValue(fontSize)\nexcept:\n    pass"
+ tile_color 0x2b3629ff
+ label "<Left><center><b>VEIN DISTORTION"
+ note_font_size 50
+ selected true
+ xpos 16483
+ ypos 12760
+ bdwidth 1185
+ bdheight 1325
+ addUserKnob {20 F_VFX l BackdropNode}
+ addUserKnob {43 text l Text}
+ text "<center><b>VEIN DISTORTION"
+ addUserKnob {7 font_size l "Font Size" R 10 100}
+ font_size 50
+ addUserKnob {4 position l "" -STARTLINE M {Left Center}}
+ addUserKnob {26 S01 l " " T " "}
+ addUserKnob {22 grow l " <img src=\"F_scalep.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef grow(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()-step)\n            n\['ypos'].setValue(n\['ypos'].getValue()-step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()+step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()+step*2)\n    except:\n        pass\ngrow(n,50)"}
+ addUserKnob {22 shrink l " <img src=\"F_scalem.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef shrink(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()+step)\n            n\['ypos'].setValue(n\['ypos'].getValue()+step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()-step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()-step*2)\n    except:\n        pass\nshrink(n,50)"}
+ addUserKnob {22 colorandom l " <img src=\"ColorBars.png\">" -STARTLINE T "import colorsys, random\nn=nuke.thisNode()\nR,G,B= colorsys.hsv_to_rgb(random.random(),.1+random.random()*.15,.15+random.random()*.15)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ) )"}
+ addUserKnob {22 darkgrey l "<font color=\"#232323\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.0, 0.14]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 lightgrey l "<font color=\"#383838\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.0, 0.22]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 red l "<font color=\"#8c3838\" size=6>■</font>" T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.6, 0.55]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n" +STARTLINE}
+ addUserKnob {22 orange l "<font color=\"#b28e59\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.1, 0.5, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 yellow l "<font color=\"#ccc766\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.16, 0.5, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 green l "<font color=\"#5d995b\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.33, 0.4, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 cyan l "<font color=\"#72998f\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.46, 0.25, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 blue l "<font color=\"#59687f\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.6, 0.3, 0.5]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 darkblue l "<font color=\"#63628c\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.67, 0.3, 0.55]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 magenta l "<font color=\"#927a99\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.8, 0.2, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 pink l "<font color=\"#997a89\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.92, 0.2, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {26 S02 l " " T " "}
+ addUserKnob {26 Ftools l "" +STARTLINE T "<font color=\"#1C1C1C\"> v1.2 - Franklin VFX - 2018"}
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode23
+ knobChanged "try:\n    listenedKnobs = \['text', 'position', 'name']\n    node = nuke.thisNode()\n    name = node.knob('name').value()\n    text = node.knob('text').value()\n    position = node.knob('position').value()\n    position = \"<\" + position + \">\"\n    label = node.knob('label').value()\n    \n    if nuke.thisKnob().name() in listenedKnobs:\n        if text == \"\":\n            if node.knob('position').value() == \"left\":\n                node.knob('label').setValue()\n            else:\n                node.knob('label').setValue(position + name)\n        else:\n            if node.knob('position').value() == \"left\":\n                node.knob('label').setValue(text)\n            else:\n                node.knob('label').setValue(position + text)\n                \n    elif nuke.thisKnob().name() == 'font_size':\n        fontSize = node.knob('font_size').value()\n        node.knob('note_font_size').setValue(fontSize)\nexcept:\n    pass"
+ tile_color 0x997a89ff
+ label <Left>VEIN
+ note_font_size 50
+ selected true
+ xpos 16835
+ ypos 12988
+ bdwidth 140
+ bdheight 512
+ z_order 1
+ addUserKnob {20 F_VFX l BackdropNode}
+ addUserKnob {43 text l Text}
+ text VEIN
+ addUserKnob {7 font_size l "Font Size" R 10 100}
+ font_size 50
+ addUserKnob {4 position l "" -STARTLINE M {Left Center}}
+ addUserKnob {26 S01 l " " T " "}
+ addUserKnob {22 grow l " <img src=\"F_scalep.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef grow(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()-step)\n            n\['ypos'].setValue(n\['ypos'].getValue()-step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()+step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()+step*2)\n    except:\n        pass\ngrow(n,50)"}
+ addUserKnob {22 shrink l " <img src=\"F_scalem.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef shrink(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()+step)\n            n\['ypos'].setValue(n\['ypos'].getValue()+step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()-step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()-step*2)\n    except:\n        pass\nshrink(n,50)"}
+ addUserKnob {22 colorandom l " <img src=\"ColorBars.png\">" -STARTLINE T "import colorsys, random\nn=nuke.thisNode()\nR,G,B= colorsys.hsv_to_rgb(random.random(),.1+random.random()*.15,.15+random.random()*.15)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ) )"}
+ addUserKnob {22 darkgrey l "<font color=\"#232323\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.0, 0.14]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 lightgrey l "<font color=\"#383838\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.0, 0.22]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 red l "<font color=\"#8c3838\" size=6>■</font>" T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.6, 0.55]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n" +STARTLINE}
+ addUserKnob {22 orange l "<font color=\"#b28e59\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.1, 0.5, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 yellow l "<font color=\"#ccc766\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.16, 0.5, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 green l "<font color=\"#5d995b\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.33, 0.4, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 cyan l "<font color=\"#72998f\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.46, 0.25, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 blue l "<font color=\"#59687f\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.6, 0.3, 0.5]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 darkblue l "<font color=\"#63628c\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.67, 0.3, 0.55]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 magenta l "<font color=\"#927a99\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.8, 0.2, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {22 pink l "<font color=\"#997a89\" size=6>■</font>" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.92, 0.2, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nR,G,B=int(R*255),int(G*255),int(B*255)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R,G,B,255), 16 ))\n"}
+ addUserKnob {26 S02 l " " T " "}
+ addUserKnob {26 Ftools l "" +STARTLINE T "<font color=\"#1C1C1C\"> v1.2 - Franklin VFX - 2018"}
+}
+Dot {
+ inputs 0
+ name Dot46
+ label "<<PLUS extra veins"
+ note_font_size 21
+ selected true
+ xpos 16543
+ ypos 13566
+}
+Dot {
+ name Dot47
+ selected true
+ xpos 16543
+ ypos 13633
+}
+Crop {
+ inputs 0
+ box {0 0 {parent.format_sampler.width} {parent.format_sampler.height}}
+ intersect true
+ name Crop2
+ selected true
+ xpos 16865
+ ypos 13108
+ hide_input true
+}
+RotoPaint {
+ cliptype none
+ curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097664}
+    {t x44fc4000 x44886000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {cubiccurve Brush1 512 catmullrom
+     {cc
+      {f 2080}
+      {p
+       {x4348b8ea x446c7d6c 1}
+       {x43e27406 x445fa91a 1}
+       {x4425130e x4455615a 1}
+       {x44492d58 x44307370 1}
+       {x44677711 x443a0dba 1}
+       {x44834f8f x44476574 1}
+       {x449b457c x444cd582 1}
+       {x44bb8830 x444173d0 1}
+       {x44d443fe x44321772 1}
+       {x44fcf6f6 x444031f0 1}}}
+     {tx x44774000 x44d5baab x45315aab}
+     {a ro 0 go 0 bo 0 ao 0 bs x42f00000 h 0 bu 1 str 1 spx x44fc4000 spy x44886000 sb 1 ltn x4482e000 ltm x4482e000 ws
+   {=(clamp(((fanimation-(0.05)-(0.95*(frame>(fbegin+fdur))))),0,1000))
+    {{0 0}}}     tt x41880000 we
+   {=fanimation 0}}}}}}}
+ toolbox {selectAll {
+  { selectAll bm 6 src 1 str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush bs 527 str 1 ssx 1 ssy 1 sf 1 sb 1 ltn 989 ltm 989 tt 17 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 tt 21 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+ toolbar_autokey false
+ toolbar_label_points true
+ toolbar_blending_mode color-dodge
+ toolbar_show_paint_selection true
+ toolbar_brush_hardness 0.200000003
+ toolbar_lifetime_type single
+ toolbar_paint_source fg
+ toolbar_source_transform_scale {1 1}
+ toolbar_source_transform_center {2018 1091}
+ colorOverlay {0 0 0 0}
+ lifetime_type "all frames"
+ lifetime_start 1047
+ lifetime_end 1047
+ motionblur_on true
+ brush_size 120
+ brush_spacing 0.05000000075
+ brush_hardness 0
+ writeon_start {{(clamp(((fanimation-(0.05)-(0.95*(frame>(fbegin+fdur))))),0,1000)) 0}}
+ writeon_end {{fanimation 0}}
+ source_black_outside true
+ name RotoPaint2
+ selected true
+ xpos 16865
+ ypos 13327
+ addUserKnob {20 User}
+ addUserKnob {3 fbegin l begin}
+ fbegin {{first_frame-(floor(fdur*1.5))}}
+ addUserKnob {3 fdur l duration}
+ fdur {{parent.Pulsating_var1_Spline2.iteration}}
+ addUserKnob {7 fanimation l animation}
+ fanimation {{clamp(((frame-fbegin)/fdur),0,1)}}
+}
+Group {
+ name Pulsating_var1_Spline2
+ tile_color 0x872f91ff
+ selected true
+ xpos 16865
+ ypos 13381
+ addUserKnob {20 User}
+ addUserKnob {26 _3 l "" +STARTLINE T <B>ANIMATION:}
+ addUserKnob {7 anispeed l speed R -100 100}
+ anispeed 0.2
+ addUserKnob {7 offset l "timing offset" R -1000 1000}
+ offset 935
+ addUserKnob {7 fadeout l "fade out time" R 0 20}
+ fadeout 3
+ addUserKnob {26 ""}
+ addUserKnob {26 _4 l "" +STARTLINE T <B>SHAPE:}
+ addUserKnob {7 altitude R 0.1 100}
+ altitude 0.5
+ addUserKnob {7 size R 0.1 100}
+ size 3.5
+ addUserKnob {7 blur R 0 100}
+ blur 30
+ addUserKnob {7 contrast R 0.1 10}
+ contrast 0.2
+ addUserKnob {7 iteration R 1 200}
+ iteration 34
+ addUserKnob {6 preview +STARTLINE}
+ preview true
+ addUserKnob {26 _2 l "" +STARTLINE T "\n"}
+ addUserKnob {26 _1 l "" +STARTLINE +INVISIBLE T "<B>TIME ECHO CONTROLLER\n"}
+ addUserKnob {7 fanimation +INVISIBLE}
+ fanimation {{input.fanimation}}
+ addUserKnob {3 fbegin +INVISIBLE}
+ fbegin {{input.fbegin}}
+ addUserKnob {3 fdur l fduration +INVISIBLE}
+ fdur {{input.fdur}}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 493
+  ypos 396
+ }
+ Dot {
+  name Dot112
+  xpos 527
+  ypos 588
+ }
+set N19ab95c0 [stack 0]
+ Dot {
+  name Dot108
+  xpos 944
+  ypos 588
+ }
+ Unpremult {
+  name Unpremult5
+  xpos 910
+  ypos 642
+ }
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 black -1 -1 rgba.red 0 0 black -1 -1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 rgba.blue 0 2 rgba.alpha 0 3"
+  name Shuffle8
+  xpos 910
+  ypos 668
+ }
+ Multiply {
+  channels rgb
+  value {{parent.fanimation x900 0 x949 1}}
+  name Multiply5
+  xpos 910
+  ypos 758
+ }
+ TimeEcho {
+  framesbehind {{parent.fdur}}
+  name TimeEcho5
+  xpos 910
+  ypos 800
+ }
+ FrameHold {
+  firstFrame {{parent.fbegin+parent.fdur}}
+  name FrameHold2
+  xpos 910
+  ypos 833
+ }
+ Blur {
+  channels rgba
+  size 25
+  name Blur14
+  xpos 910
+  ypos 886
+ }
+ Unpremult {
+  name Unpremult6
+  xpos 910
+  ypos 930
+ }
+ Expression {
+  expr3 (random((b*scale)+offset))*(1-(b==0))
+  name Expression1
+  selected true
+  xpos 910
+  ypos 1311
+  addUserKnob {20 User}
+  addUserKnob {7 scale R 0 1000}
+  scale {{100/parent.size}}
+  addUserKnob {7 offset}
+  offset {{(frame*parent.anispeed)+parent.offset}}
+ }
+set N19ab7390 [stack 0]
+ Gamma {
+  channels alpha
+  value {{parent.contrast}}
+  name Gamma2
+  xpos 910
+  ypos 1462
+ }
+ Blur {
+  channels alpha
+  size {{parent.blur}}
+  name Blur1
+  xpos 910
+  ypos 1580
+ }
+ TimeEcho {
+  mode Plus
+  framesbehind {{parent.fadeout}}
+  frmaesfade {{parent.fadeout}}
+  name TimeEcho1
+  xpos 910
+  ypos 1645
+ }
+ Multiply {
+  channels alpha
+  value {{parent.altitude}}
+  name Multiply2
+  xpos 910
+  ypos 1693
+ }
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.alpha 0 3 rgba.red 0 0 rgba.alpha 0 3 rgba.green 0 1 rgba.alpha 0 3 rgba.blue 0 2 rgba.alpha 0 3 rgba.alpha 0 3"
+  name Shuffle1
+  xpos 910
+  ypos 1749
+ }
+set N19b429f0 [stack 0]
+ Dot {
+  name Dot1
+  xpos 944
+  ypos 1893
+ }
+push $N19ab7390
+push $N19ab95c0
+ ChannelMerge {
+  inputs 2
+  operation multiply
+  name ChannelMerge5
+  xpos 493
+  ypos 1299
+ }
+ Premult {
+  name Premult8
+  xpos 493
+  ypos 1395
+ }
+ Gamma {
+  value {{parent.contrast}}
+  name Gamma1
+  xpos 493
+  ypos 1465
+ }
+ Group {
+  name LumaCenter11
+  tile_color 0xcc804eff
+  xpos 493
+  ypos 1565
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos -501
+   ypos 503
+  }
+set N19ac0b10 [stack 0]
+  Dot {
+   name Dot1
+   xpos -590
+   ypos 881
+  }
+push $N19ac0b10
+  Matrix {
+   channels {rgba.red -rgba.green -rgba.blue none}
+   matrix {
+       {1 0 -1}
+       {2 0 -2}
+       {1 0 -1}
+     }
+   name Matrix4
+   label RED
+   xpos -501
+   ypos 620
+  }
+  Matrix {
+   channels {-rgba.red rgba.green -rgba.blue none}
+   matrix {
+       {-1 -2 -1}
+       {0 0 0}
+       {1 2 1}
+     }
+   name Matrix3
+   label GREEN
+   xpos -501
+   ypos 693
+  }
+  Expression {
+   temp_name3 Le
+   temp_expr3 "sqrt((Red*Red) + (Green*Green))+0.00000001"
+   expr0 Red/Le
+   expr1 Green/Le
+   expr2 0
+   expr3 Le
+   name NVO
+   xpos -501
+   ypos 764
+  }
+  Copy {
+   inputs 2
+   from0 rgba.alpha
+   to0 rgba.alpha
+   name Copy1
+   xpos -501
+   ypos 871
+  }
+  Output {
+   name Output1
+   xpos -501
+   ypos 955
+  }
+ end_group
+ Blur {
+  channels rgb
+  size {{parent.blur}}
+  name Blur22
+  xpos 493
+  ypos 1603
+ }
+ TimeEcho {
+  mode Plus
+  framesbehind {{parent.fadeout}}
+  frmaesfade {{parent.fadeout}}
+  name TimeEcho7
+  xpos 493
+  ypos 1653
+ }
+ Remove {
+  operation keep
+  channels {rgba.red rgba.green -rgba.blue none}
+  name Remove1
+  xpos 493
+  ypos 1685
+ }
+ Multiply {
+  value {{parent.altitude}}
+  name Multiply1
+  xpos 493
+  ypos 1745
+ }
+ Multiply {
+  channels {rgba.red rgba.green -rgba.blue none}
+  value 0.001
+  name normalized
+  xpos 493
+  ypos 1810
+ }
+ Switch {
+  inputs 2
+  which {{parent.preview}}
+  name Switch1
+  xpos 493
+  ypos 1889
+ }
+ Output {
+  name Output1
+  xpos 493
+  ypos 2089
+ }
+push $N19b429f0
+push 0
+ Viewer {
+  inputs 2
+  frame 1117
+  frame_range 977-1144
+  input_number 1
+  viewerProcess "sRGB (ACES)"
+  name Viewer1
+  xpos 845
+  ypos 1958
+ }
+end_group
+Merge2 {
+ inputs 2
+ operation plus
+ Achannels rgb
+ Bchannels rgb
+ output rgb
+ name Merge5
+ selected true
+ xpos 16865
+ ypos 13629
+}
+Dot {
+ name Dot48
+ selected true
+ xpos 16899
+ ypos 13806
+}
+Dot {
+ inputs 0
+ name Dot52
+ label INPUT
+ note_font_size 50
+ selected true
+ xpos 17592
+ ypos 12676
+}
+NoOp {
+ name format_sampler
+ selected true
+ xpos 17558
+ ypos 12810
+}
+Dot {
+ name Dot50
+ selected true
+ xpos 17592
+ ypos 12880
+}
+set N19be1020 [stack 0]
+Dot {
+ name Dot45
+ selected true
+ xpos 17255
+ ypos 12880
+}
+Remove {
+ name Remove1
+ selected true
+ xpos 17221
+ ypos 12940
+}
+Expression {
+ expr0 (x+0.5)/width
+ expr1 (y+0.5)/height
+ name Expression2
+ selected true
+ xpos 17221
+ ypos 13188
+}
+Merge2 {
+ inputs 2
+ operation from
+ name Merge4
+ selected true
+ xpos 17221
+ ypos 13802
+}
+Dot {
+ name Dot49
+ selected true
+ xpos 17255
+ ypos 14017
+}
+push $N19be1020
+STMap {
+ inputs 2
+ channels rgba
+ uv rgb
+ name STMap1
+ selected true
+ xpos 17558
+ ypos 14013
+}
