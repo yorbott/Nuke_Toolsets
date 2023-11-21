@@ -1,0 +1,72 @@
+Group {
+ name STMAP_to_tracker1
+ selected true
+ xpos 17361
+ ypos 14067
+ addUserKnob {20 User}
+ addUserKnob {18 sample t "select stmap color"}
+ sample {0.5 0.5 0}
+ addUserKnob {6 sample_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 blur t "blur the sample pixel"}
+ blur 3
+ addUserKnob {7 size t "range of the sampled values"}
+ size 0.001
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 232
+  ypos -306
+ }
+set N180f9d30 [stack 0]
+ Expression {
+  expr0 "r >= (sample.r-size)  && r <= (sample.r+size) ? 1 : 0"
+  expr1 "g >= (sample.g-size)  && g <= (sample.g+size) ? 1 : 0"
+  name Expression4
+  xpos 232
+  ypos -237
+  addUserKnob {20 User}
+  addUserKnob {7 size}
+  size {{parent.size}}
+  addUserKnob {18 sample}
+  sample {{parent.sample.r} {parent.sample.g} {parent.sample.b}}
+  addUserKnob {6 sample_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ }
+set N178e7a60 [stack 0]
+ Expression {
+  expr0 "r == 1 && g ==1 ? 1:0"
+  name Expression5
+  xpos 232
+  ypos -202
+ }
+ Blur {
+  channels rgb
+  size {{parent.blur}}
+  name Blur2
+  xpos 232
+  ypos -168
+ }
+ Shuffle {
+  green red
+  blue red
+  alpha red
+  name Shuffle2
+  xpos 232
+  ypos -132
+ }
+ Output {
+  name Output1
+  xpos 232
+  ypos -33
+ }
+push $N178e7a60
+push $N180f9d30
+ Viewer {
+  inputs 2
+  frame_range 225-275
+  input_number 1
+  name Viewer1
+  xpos 400
+  ypos -9
+ }
+end_group
