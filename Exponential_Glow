@@ -1,6 +1,3 @@
-set cut_paste_input [stack 0]
-version 14.0 v5
-push $cut_paste_input
 Group {
  name Exponential_Glow
  help "This gizmo is a port of Stuart Lashley's popular Exponential Glow macro from Shake. Will glow the highs on the input and create a nice falloff. Main dependency with Viewer has been removed so should be ok in stereo/mono views."
