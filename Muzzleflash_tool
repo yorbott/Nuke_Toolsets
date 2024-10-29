@@ -6,8 +6,8 @@ BackdropNode {
  label "<Left>Muzzleflash "
  note_font_size 50
  selected true
- xpos 1273
- ypos -2211
+ xpos 346
+ ypos -2912
  bdwidth 1320
  bdheight 2039
  z_order -1
@@ -43,8 +43,8 @@ BackdropNode {
  label <Center>Card3D
  note_font_size 50
  selected true
- xpos 1457
- ypos -2074
+ xpos 530
+ ypos -2775
  bdwidth 255
  bdheight 271
  addUserKnob {20 F_VFX l BackdropNode}
@@ -80,8 +80,8 @@ BackdropNode {
  label "<Left>color & effects"
  note_font_size 50
  selected true
- xpos 1397
- ypos -1562
+ xpos 470
+ ypos -2263
  bdwidth 915
  bdheight 1275
  addUserKnob {20 F_VFX l BackdropNode}
@@ -116,8 +116,8 @@ BackdropNode {
  label <Center>ENV
  note_font_size 50
  selected true
- xpos 2004
- ypos -2072
+ xpos 1077
+ ypos -2773
  bdwidth 255
  bdheight 271
  addUserKnob {20 F_VFX l BackdropNode}
@@ -153,8 +153,8 @@ BackdropNode {
  label <Center>GUN
  note_font_size 50
  selected true
- xpos 1732
- ypos -2072
+ xpos 805
+ ypos -2773
  bdwidth 255
  bdheight 271
  addUserKnob {20 F_VFX l BackdropNode}
@@ -190,8 +190,8 @@ BackdropNode {
  label <Center>FLASH
  note_font_size 50
  selected true
- xpos 1434
- ypos -1449
+ xpos 507
+ ypos -2150
  bdwidth 280
  bdheight 774
  z_order 1
@@ -228,8 +228,8 @@ BackdropNode {
  label <Center>SMOKE
  note_font_size 50
  selected true
- xpos 1991
- ypos -1435
+ xpos 1064
+ ypos -2136
  bdwidth 280
  bdheight 774
  z_order 1
@@ -262,32 +262,32 @@ Card3D {
  inputs 0
  name Card3D1
  selected true
- xpos 1532
- ypos -1891
+ xpos 605
+ ypos -2592
 }
 Group {
  name muzzleflash1
  tile_color 0x3f3f3fff
  note_font_color 0xff7e21ff
  selected true
- xpos 1532
- ypos -1717
+ xpos 605
+ ypos -2418
  addUserKnob {20 settings}
  addUserKnob {26 _43 l "" +STARTLINE T "<h1>MUZZLE "}
  addUserKnob {26 _44 l "" -STARTLINE T "<h1><p style=\"color: Orange\">FX"}
  addUserKnob {26 show_mode l "" +STARTLINE T "&nbsp;&nbsp;&nbsp;&nbsp;<b>mode:</b> align <font color=\"green\"> (fast) </font>"}
- addUserKnob {22 py_01 l align +INVISIBLE T "node = nuke.thisNode()\n\n#knobs that are in this mode\nmode_align_list = \['line_01', 'EnableRefGuns', 'ShowRefGuns', 'ShowRefMuzzleFlash', '_9', '_40', 'line_02', '_32','group', '_34', 'line_05'] \nmode_muzzle_list = \['line_01', 'line_02', '_9', '_40', '_6', '_31', 'line_03', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\nmode_smoke_list = \['line_01', 'line_03', '_9', '_40', '_5', '_22', 'line_04', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\n\n\n\n\nvisible_list = mode_align_list\ndisable_list = \[]\ninvisible_list = mode_muzzle_list + mode_smoke_list\n\n\nfor knob in node.knobs():\n\n\tfor invisible in invisible_list:\n\t\tif invisible == knob:\n\t\t\tnode\[knob].setVisible(False)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor visible in visible_list:\n\t\tif visible == knob:\n\t\t\tnode\[knob].setVisible(True)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor disable in disable_list:\n\t\tif disable == knob:\n\t\t\tnode\[knob].setEnabled(False)\n\nnode.knob('show_mode').setValue('&nbsp;&nbsp;&nbsp;&nbsp;<b>mode:</b> align <font color=\"green\"> (fast) </font>')\nnode.knob('mode').setValue(1)" +STARTLINE}
- addUserKnob {22 py_02 l muzzle -STARTLINE +INVISIBLE T "node = nuke.thisNode()\n\n#knobs that are in this mode\nmode_align_list = \['line_01', 'EnableRefGuns', 'ShowRefGuns', 'ShowRefMuzzleFlash', '_9', '_40', 'line_02', '_32','group', '_34', 'line_05'] \nmode_muzzle_list = \['line_01', 'line_02', '_9', '_40', '_6', '_31', 'line_03', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\nmode_smoke_list = \['line_01', 'line_03', '_9', '_40', '_5', '_22', 'line_04', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\n\n\n\n\nvisible_list = mode_muzzle_list\ndisable_list = \[]\ninvisible_list = mode_align_list + mode_smoke_list\n\n\nfor knob in node.knobs():\n\n\tfor invisible in invisible_list:\n\t\tif invisible == knob:\n\t\t\tnode\[knob].setVisible(False)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor visible in visible_list:\n\t\tif visible == knob:\n\t\t\tnode\[knob].setVisible(True)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor disable in disable_list:\n\t\tif disable == knob:\n\t\t\tnode\[knob].setEnabled(False)\n\nnode.knob('show_mode').setValue('&nbsp;&nbsp;&nbsp;&nbsp;<b>mode:</b> muzzle only <font color=\"green\"> (fast) </font>')\nnode.knob('mode').setValue(2)"}
- addUserKnob {22 py_03 l smoke -STARTLINE +INVISIBLE T "node = nuke.thisNode()\n\n#knobs that are in this mode\nmode_align_list = \['line_01', 'EnableRefGuns', 'ShowRefGuns', 'ShowRefMuzzleFlash', '_9', '_40', 'line_02', '_32','group', '_34', 'line_05'] \nmode_muzzle_list = \['line_01', 'line_02', '_9', '_40', '_6', '_31', 'line_03', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\nmode_smoke_list = \['line_01', 'line_03', '_9', '_40', '_5', '_22', 'line_04', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\n\n\n\n\nvisible_list = mode_smoke_list\ndisable_list = \[]\ninvisible_list = mode_align_list + mode_muzzle_list\n\n\nfor knob in node.knobs():\n\n\tfor invisible in invisible_list:\n\t\tif invisible == knob:\n\t\t\tnode\[knob].setVisible(False)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor visible in visible_list:\n\t\tif visible == knob:\n\t\t\tnode\[knob].setVisible(True)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor disable in disable_list:\n\t\tif disable == knob:\n\t\t\tnode\[knob].setEnabled(False)\n\nnode.knob('show_mode').setValue('&nbsp;&nbsp;&nbsp;&nbsp;<b>mode:</b> smoke only <font color=\"yellow\"> (slow) </font>')\nnode.knob('mode').setValue(3)"}
- addUserKnob {22 py_04 l combined -STARTLINE +INVISIBLE T "node = nuke.thisNode()\n\n#knobs that are in this mode\nmode_align_list = \['line_01', 'EnableRefGuns', 'ShowRefGuns', 'ShowRefMuzzleFlash', '_9', '_40', 'line_02', '_32','group', '_34', 'line_05'] \nmode_muzzle_list = \['line_01', 'line_02', '_9', '_40', '_6', '_31', 'line_03', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\nmode_smoke_list = \['line_01', 'line_03', '_9', '_40', '_5', '_22', 'line_04', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\n\n\n\n\nvisible_list = mode_muzzle_list + mode_smoke_list\ndisable_list = \[]\ninvisible_list = mode_align_list\n\n\nfor knob in node.knobs():\n\n\tfor invisible in invisible_list:\n\t\tif invisible == knob:\n\t\t\tnode\[knob].setVisible(False)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor visible in visible_list:\n\t\tif visible == knob:\n\t\t\tnode\[knob].setVisible(True)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor disable in disable_list:\n\t\tif disable == knob:\n\t\t\tnode\[knob].setEnabled(False)\n\n\nnode.knob('show_mode').setValue('&nbsp;&nbsp;&nbsp;&nbsp;<b>mode:</b> combinet <font color=\"red\"> (slowest) </font>')\nnode.knob('mode').setValue(4)"}
- addUserKnob {35 menu l "" +STARTLINE M {change/align "python nuke.thisNode().knob('py_01').execute()" "change/muzzle only" "python nuke.thisNode().knob('py_02').execute()" "change/smoke only" "python nuke.thisNode().knob('py_03').execute()" change/combined "python nuke.thisNode().knob('py_04').execute()"}}
+ addUserKnob {22 py_01 l align +INVISIBLE T "node = nuke.thisNode()\n\n#knobs that are in this mode\nmode_align_list = \['line_01', 'EnableRefGuns', 'ShowRefGuns', 'ShowRefMuzzleFlash', 'SelectRefGun', '_9', '_40', 'line_02', '_32','group', '_34', 'line_05'] \nmode_muzzle_list = \['line_01', 'line_02', '_9', '_40', '_6', '_31', 'line_03', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\nmode_smoke_list = \['line_01', 'line_03', '_9', '_40', '_5', '_22', 'line_04', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\n\n\n\n\nvisible_list = mode_align_list\ndisable_list = \[]\ninvisible_list = mode_muzzle_list + mode_smoke_list\n\n\nfor knob in node.knobs():\n\n\tfor invisible in invisible_list:\n\t\tif invisible == knob:\n\t\t\tnode\[knob].setVisible(False)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor visible in visible_list:\n\t\tif visible == knob:\n\t\t\tnode\[knob].setVisible(True)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor disable in disable_list:\n\t\tif disable == knob:\n\t\t\tnode\[knob].setEnabled(False)\n\nnode.knob('show_mode').setValue('&nbsp;&nbsp;&nbsp;&nbsp;<b>mode:</b> align <font color=\"green\"> (fast) </font>')\nnode.knob('mode').setValue(1)" +STARTLINE}
+ addUserKnob {22 py_02 l muzzle -STARTLINE +INVISIBLE T "node = nuke.thisNode()\n\n#knobs that are in this mode\nmode_align_list = \['line_01', 'EnableRefGuns', 'ShowRefGuns', 'ShowRefMuzzleFlash', 'SelectRefGun', '_9', '_40', 'line_02', '_32','group', '_34', 'line_05'] \nmode_muzzle_list = \['line_01', 'line_02', '_9', '_40', '_6', '_31', 'line_03', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\nmode_smoke_list = \['line_01', 'line_03', '_9', '_40', '_5', '_22', 'line_04', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\n\n\n\n\nvisible_list = mode_muzzle_list\ndisable_list = \[]\ninvisible_list = mode_align_list + mode_smoke_list\n\n\nfor knob in node.knobs():\n\n\tfor invisible in invisible_list:\n\t\tif invisible == knob:\n\t\t\tnode\[knob].setVisible(False)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor visible in visible_list:\n\t\tif visible == knob:\n\t\t\tnode\[knob].setVisible(True)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor disable in disable_list:\n\t\tif disable == knob:\n\t\t\tnode\[knob].setEnabled(False)\n\nnode.knob('show_mode').setValue('&nbsp;&nbsp;&nbsp;&nbsp;<b>mode:</b> muzzle only <font color=\"green\"> (fast) </font>')\nnode.knob('mode').setValue(2)"}
+ addUserKnob {22 py_03 l smoke -STARTLINE +INVISIBLE T "node = nuke.thisNode()\n\n#knobs that are in this mode\nmode_align_list = \['line_01', 'EnableRefGuns', 'ShowRefGuns', 'ShowRefMuzzleFlash', 'SelectRefGun', '_9', '_40', 'line_02', '_32','group', '_34', 'line_05'] \nmode_muzzle_list = \['line_01', 'line_02', '_9', '_40', '_6', '_31', 'line_03', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\nmode_smoke_list = \['line_01', 'line_03', '_9', '_40', '_5', '_22', 'line_04', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\n\n\n\n\nvisible_list = mode_smoke_list\ndisable_list = \[]\ninvisible_list = mode_align_list + mode_muzzle_list\n\n\nfor knob in node.knobs():\n\n\tfor invisible in invisible_list:\n\t\tif invisible == knob:\n\t\t\tnode\[knob].setVisible(False)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor visible in visible_list:\n\t\tif visible == knob:\n\t\t\tnode\[knob].setVisible(True)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor disable in disable_list:\n\t\tif disable == knob:\n\t\t\tnode\[knob].setEnabled(False)\n\nnode.knob('show_mode').setValue('&nbsp;&nbsp;&nbsp;&nbsp;<b>mode:</b> smoke only <font color=\"yellow\"> (slow) </font>')\nnode.knob('mode').setValue(3)"}
+ addUserKnob {22 py_04 l combined -STARTLINE +INVISIBLE T "node = nuke.thisNode()\n\n#knobs that are in this mode\nmode_align_list = \['line_01', 'EnableRefGuns', 'ShowRefGuns', 'ShowRefMuzzleFlash', 'SelectRefGun', '_9', '_40', 'line_02', '_32','group', '_34', 'line_05'] \nmode_muzzle_list = \['line_01', 'line_02', '_9', '_40', '_6', '_31', 'line_03', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\nmode_smoke_list = \['line_01', 'line_03', '_9', '_40', '_5', '_22', 'line_04', '_34', 'size_bbox', 'seed', 'randomize', '_47', '_48', 'group_manual_seed', 'python_button_8']\n\n\n\n\nvisible_list = mode_muzzle_list + mode_smoke_list\ndisable_list = \[]\ninvisible_list = mode_align_list\n\n\nfor knob in node.knobs():\n\n\tfor invisible in invisible_list:\n\t\tif invisible == knob:\n\t\t\tnode\[knob].setVisible(False)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor visible in visible_list:\n\t\tif visible == knob:\n\t\t\tnode\[knob].setVisible(True)\n\t\t\tnode\[knob].setEnabled(True)\n\n\tfor disable in disable_list:\n\t\tif disable == knob:\n\t\t\tnode\[knob].setEnabled(False)\n\n\nnode.knob('show_mode').setValue('&nbsp;&nbsp;&nbsp;&nbsp;<b>mode:</b> combined <font color=\"red\"> (slowest) </font>')\nnode.knob('mode').setValue(4)"}
+ addUserKnob {35 menu l "" t "change mode of node.\n<b>align =</b> \nhere you add the tracking data, and match the perspective of the weapon by animating/adjusting the Card3D.\n<b>muzzle only =</b>\ngenerates a muzzelflash on specified frames. you can change the look of the flash here.\n<b>smoke only =</b>\ngenerates a smoke puff on specified frames. you can change the look of the smoke puff here.\n<b>combined =</b>\ngenerates a muzzleflash and smoke on specified frames." +STARTLINE M {change/align "python nuke.thisNode().knob('py_01').execute()" "change/muzzle only" "python nuke.thisNode().knob('py_02').execute()" "change/smoke only" "python nuke.thisNode().knob('py_03').execute()" change/combined "python nuke.thisNode().knob('py_04').execute()" ""}}
  addUserKnob {26 _45 l "" +STARTLINE T "\n"}
  addUserKnob {6 count l "" +STARTLINE +STARTLINE}
  count {{curve}}
- addUserKnob {22 python_button_6 l "single fire!" -STARTLINE T "node = nuke.thisNode()\n\n\nif not node\['count'].isKey(nuke.frame()):\n\tnode\['count'].setAnimated(0)\n\tnode\['count'].setValue(0)\n\n\n\nnode.knob('auto_load').execute()"}
- addUserKnob {22 python_button_7 l reset -STARTLINE T "node = nuke.thisNode()\n\nfor curve in node\['count'].animations():\n    curve.clear()\n\nnode.knob('auto_load').execute()\nnode.knob('auto_load').execute()\n"}
+ addUserKnob {22 single_fire_button l "single fire!" t "creates one keyframe that generates a muzzleflash." -STARTLINE T "node = nuke.thisNode()\n\n\nif not node\['count'].isKey(nuke.frame()):\n\tnode\['count'].setAnimated(0)\n\tnode\['count'].setValue(0)\n\n\n\nnode.knob('auto_load').execute()"}
+ addUserKnob {22 reset_button l reset t "deletes all keyframes." -STARTLINE T "node = nuke.thisNode()\n\nfor curve in node\['count'].animations():\n    curve.clear()\n\nnode.knob('auto_load').execute()\nnode.knob('auto_load').execute()\n"}
  addUserKnob {26 _46 l "" +STARTLINE T "\n\n"}
- addUserKnob {22 python_button l "automatic fire!" T "node = nuke.thisNode()\nnumber = int(node\['count'].getValue())\namount = int(node\['amount_of_shots'].getValue())\nf = int(nuke.frame())\nhz = int(node\['hz'].getValue())\nnode\['count'].setAnimated(0)\n\nfor shot in range(amount):\n  #number = number + 1\n  node\['count'].setValueAt(0, f)\n  f = f + hz\n\n\nnode.knob('auto_load').execute()" +STARTLINE}
+ addUserKnob {22 automatic_fire_button l "automatic fire!" t "creates multiple keyframes based on the amount of shots, and the frequency. specified here below." T "node = nuke.thisNode()\nnumber = int(node\['count'].getValue())\namount = int(node\['amount_of_shots'].getValue())\nf = int(nuke.frame())\nhz = int(node\['hz'].getValue())\nnode\['count'].setAnimated(0)\n\nfor shot in range(amount):\n  #number = number + 1\n  node\['count'].setValueAt(0, f)\n  f = f + hz\n\n\nnode.knob('auto_load').execute()" +STARTLINE}
  addUserKnob {3 amount_of_shots l shoots}
  amount_of_shots 5
  addUserKnob {26 _30 l "" -STARTLINE T shots}
@@ -304,24 +304,23 @@ Group {
  addUserKnob {26 _49 l "" +STARTLINE T "\n"}
  addUserKnob {6 ShowRefGuns l "show reference gun options" +STARTLINE}
  addUserKnob {6 ShowRefMuzzleFlash l "show muzzleflash" +STARTLINE}
- ShowRefMuzzleFlash true
  addUserKnob {6 EnableRefGuns l "reference gun" t "you can dissable the checkerboard from the \"align\" mode; for a better visibility of your own drawn shapes from the \"align\" input of this node." +STARTLINE}
  EnableRefGuns true
  addUserKnob {3 SelectRefGun l "" -STARTLINE}
- SelectRefGun 1
+ SelectRefGun 2
  addUserKnob {14 size_bbox l overscan +HIDDEN R 0 100}
  addUserKnob {3 seed t "this will change the seed of the random picked muzzleflash & smoke assets." +HIDDEN}
- seed 5128
+ seed 1
  addUserKnob {22 randomize -STARTLINE +HIDDEN T "import random\nnode = nuke.thisNode()\n\nrandomnmbr = random.randint(0,10000)\n\nnode\['seed'].setValue(randomnmbr)"}
  addUserKnob {26 _47 l "" +STARTLINE +HIDDEN T "\n"}
  addUserKnob {26 _48 l "" +STARTLINE +HIDDEN T "manual seed tweak"}
  addUserKnob {20 group_manual_seed l "" +STARTLINE +HIDDEN n 1}
  group_manual_seed 0
- addUserKnob {4 mseed l choose +DISABLED M {0}}
+ addUserKnob {4 mseed l choose t "select the timing of the flash you want to change. dont forget to press \"reload\" when selecting a new muzzleflash!\n\ncurrently wont work on the smoke" +DISABLED M {0}}
  addUserKnob {22 python_button_11 l load -STARTLINE +INVISIBLE T "#pulldown menu will adjust to amount of shots\nnode = nuke.thisNode()\n\nnmbr = int(node\['mseed'].getValue()) + 1\nkeep_knob = \"seed_offset_\"+str(nmbr)\n\namount_of_shots = \[]\nuser_knobs = False\nshots = False\nnull_shots = ('0',)\n\n#check the shot values\nfor knob in node.knobs():\n\n    #checks how many shots are not on frame 0, and based its counting on that\n    if \"shot_\" in knob:\n        shot_timing = int(node.knob(knob).getValue())\n\n        if shot_timing > 0:\n            shot_nmbr = knob.replace('shot_', '')\n            amount_of_shots.append(shot_nmbr)\n            shots = True\n\n\n#set the offset knobs based on the shot values.\nfor knob in node.knobs():\n\n    if \"seed_offset_\" in knob:\n        if knob != keep_knob:\n            node\[knob].setVisible(False)\n            node\[knob].setEnabled(True)\n\n        elif knob == keep_knob:\n            node\[knob].setVisible(True)\n            node\[knob].setEnabled(True)\n\n            if shots == False:\n                node\[knob].setEnabled(False)\n\n\n\nfor knob in node.knobs():\n    if \"auto_load\" in knob:\n        node.knob(knob).execute()"}
  addUserKnob {22 auto_load l reload -STARTLINE T "#pulldown menu will adjust to amount of shots\nnode = nuke.thisNode()\n\nnmbr = int(node\['mseed'].getValue()) + 1\nkeep_knob = \"seed_offset_\"+str(nmbr)\n\nlist_of_shots = \[]\nuser_knobs = False\nshots = False\nnull_shots = ('0',)\n\n#check the shot values\nfor knob in node.knobs():\n\n    #make sure only the user knobs are fedged\n    #if knob == \"User\":\n    #    user_knobs = True\n    #if user_knobs == True:\n\n    #checks how many shots are not on frame 0, and based its counting on that\n    if \"shot_\" in knob:\n        shot_timing = int(node.knob(knob).getValue())\n\n        if shot_timing > 0:\n            shot_nmbr = int(node\[knob].getValue())\n            list_of_shots.append(shot_nmbr)\n            shots = True\n\n\n#set the offset knobs based on the shot values.\nfor knob in node.knobs():\n\n    #make sure only the user knobs are fedged\n    #if knob == \"User\":\n    #    user_knobs = True\n    #if user_knobs == True:\n\n    if \"seed_offset_\" in knob:\n        if knob != keep_knob:\n            node\[knob].setVisible(False)\n            node\[knob].setEnabled(True)\n            node\['mseed'].setEnabled(True)\n\n        elif knob == keep_knob:\n            node\[knob].setVisible(True)\n            node\[knob].setEnabled(True)\n            node\['mseed'].setEnabled(True)\n            if shots == False:\n                node\[knob].setEnabled(False)\n\n\nif shots == False:\n    node.knob('mseed').setValues(null_shots)\n    #check the shot values\n    for knob in node.knobs():\n        if \"seed_offset_\" in knob:\n            node\[knob].setValue(0)\n    node\['mseed'].setEnabled(False)\n\nelse:\n    t = tuple(list_of_shots)\n    node.knob('mseed').setValues(t)"}
  addUserKnob {3 seed_offset_0 l offset +HIDDEN}
- addUserKnob {3 seed_offset_1 l offset +DISABLED}
+ addUserKnob {3 seed_offset_1 l offset t "manually change the seed of 1 perticular muzzleflash. " +DISABLED}
  addUserKnob {3 seed_offset_2 l offset +HIDDEN}
  addUserKnob {3 seed_offset_3 l offset +HIDDEN}
  addUserKnob {3 seed_offset_4 l offset +HIDDEN}
@@ -353,10 +352,10 @@ Group {
  addUserKnob {26 _6 l "" +STARTLINE +HIDDEN T <b><h2>Flash}
  addUserKnob {20 _31 l "" +STARTLINE +HIDDEN n 1}
  _31 0
- addUserKnob {68 SelectAssetFlash l assets M {default pistol/Colt45 rifle/AK rifle/AR-15 rifle/G2 rifle/M16 rifle/M249 smg/mp5 shotgun/M870 rifle/M4 "" "" "" "" "" "" ""}}
- addUserKnob {7 brighness_flare l brighness}
+ addUserKnob {68 SelectAssetFlash l assets t "select the asset you want to use" M {default pistol/Colt45 rifle/AK rifle/AR-15 rifle/G2 rifle/M16 rifle/M249 smg/mp5 shotgun/M870 rifle/M4 "" "" "" "" "" "" "" ""}}
+ addUserKnob {7 brighness_flare l brighness t "some assets have really bright/large and really dim/small muzzleflashes. you can adjust the balance of this variation here.\n<i>0 is dim and 1 is bright.</i>"}
  brighness_flare 0.5
- addUserKnob {7 ScaleVariationFlash l "scale variation"}
+ addUserKnob {7 ScaleVariationFlash l "scale variation" t "you can control the scale variation here. \n<i>0 is uniformly scaled and 1 is random scaling</i>"}
  ScaleVariationFlash 0.2
  addUserKnob {7 FlashMB l motionblur t "amount of motion blur. 1 is default and 0 is nothing. you can increase behond 1 to exaggerate the motion blur" R 0 2}
  FlashMB 1
@@ -386,8 +385,8 @@ Group {
  _22 0
  addUserKnob {4 StartOfSmoke l "smoke starting" M {"at flash" "after flash" ""}}
  addUserKnob {7 SmokeLightDirection l "light direction" R -1 1}
- addUserKnob {7 FadeSpeedSmoke l "fade out speed"}
- addUserKnob {7 ScaleVariationSmoke l "scale variation"}
+ addUserKnob {7 FadeSpeedSmoke l "fade out speed" t "change speed in which the smoke will disintegrate."}
+ addUserKnob {7 ScaleVariationSmoke l "scale variation" t "you can control the scale variation here. \n<i>0 is uniformly scaled and 1 is random scaling</i>"}
  ScaleVariationSmoke 0.1
  addUserKnob {7 SmokeMB l motionblur t "amount of motion blur. 1 is default and 0 is nothing. you can increase behond 1 to exaggerate the motion blur" R 0 2}
  SmokeMB 1
@@ -448,7 +447,7 @@ Group {
  addUserKnob {26 warning_parenting_gun l "" t "you can find this in the \"align\" mode, under the name \"Parent linking\"" +STARTLINE T "<p style=\"color:rgba(255, 255, 0, 0.75);\"> \n<b><span>&#9888;</span>warning:</b> <i>this node still needs a gun parent</i>\n</p>"}
  addUserKnob {26 warning_parenting_env l "" t "you can find this in the \"align\" mode, under the name \"Parent linking\"." +STARTLINE T "<p style=\"color:rgba(255, 255, 0, 0.75);\"> \n<b><span>&#9888;</span>warning:</b> <i> this node still needs a env parent</i>\n</p>"}
  addUserKnob {26 _34 l "" +STARTLINE T "\n\n\n"}
- addUserKnob {26 _33 l "" +STARTLINE T "\n\n\n<i>made by Yorben - v2.2 (BETA)"}
+ addUserKnob {26 _33 l "" +STARTLINE T "\n\n\n<i>made by Yorben - v2.4 (BETA)"}
  addUserKnob {20 expression}
  addUserKnob {26 _10 l "" +STARTLINE T <b>Firing}
  addUserKnob {6 firing l "" t "you can use this to link to the \"dissable knob\" of nodes you want to <b>dissable</b> when there is a muzzleflash." +STARTLINE +STARTLINE}
@@ -726,6 +725,7 @@ Group {
   file "\[value filepath]/align/align_shapes_####.exr"
   format "3840 2160 0 0 3840 2160 1 UHD_4K"
   last 15
+  after black
   origlast 15
   origset true
   version 1
@@ -742,7 +742,7 @@ Group {
   xpos 470
   ypos -1344
  }
-set N200cd5e0 [stack 0]
+set N3e642850 [stack 0]
  Dot {
   name Dot8
   xpos -101
@@ -762,9 +762,9 @@ set N200cd5e0 [stack 0]
   font_width_toolbar 100
   font_height_toolbar 100
   message "\[frame]"
-  old_message {{49 54}
+  old_message {{48}
     }
-  old_expression_markers {{0 1}
+  old_expression_markers {{0 0}
     }
   box {0 0 2160 3840}
   yjustify bottom
@@ -786,16 +786,17 @@ set N200cd5e0 [stack 0]
   center true
   splitinputs true
   startframe 1
-  endframe 16
+  endframe {{input.last_frame}}
   name ContactSheet2
   xpos -135
   ypos -657
  }
  Reformat {
+  resize height
   pbb true
   name Reformat2
   xpos -135
-  ypos -600
+  ypos -601
  }
 add_layer {smoke smoke.red smoke.green smoke.blue smoke.alpha}
  Shuffle2 {
@@ -1702,7 +1703,7 @@ add_layer {smoke smoke.red smoke.green smoke.blue smoke.alpha}
    xpos 10791
    ypos -2756
   }
-set N1f39f5e0 [stack 0]
+set N5e3fb010 [stack 0]
   Dot {
    name Dot49
    xpos 10948
@@ -1725,7 +1726,7 @@ set N1f39f5e0 [stack 0]
    xpos 10948
    ypos -2599
   }
-push $N1f39f5e0
+push $N5e3fb010
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold19
@@ -1806,7 +1807,7 @@ push $N1f39f5e0
    xpos 10061
    ypos -2766
   }
-set N204a1280 [stack 0]
+set N575faa00 [stack 0]
   Dot {
    name Dot52
    xpos 10218
@@ -1829,7 +1830,7 @@ set N204a1280 [stack 0]
    xpos 10218
    ypos -2609
   }
-push $N204a1280
+push $N575faa00
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold21
@@ -1877,7 +1878,7 @@ push $N204a1280
    xpos 9674
    ypos -2786
   }
-set N20790c20 [stack 0]
+set N4c9fa620 [stack 0]
   Dot {
    name Dot43
    xpos 9831
@@ -1900,7 +1901,7 @@ set N20790c20 [stack 0]
    xpos 9831
    ypos -2629
   }
-push $N20790c20
+push $N4c9fa620
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold12
@@ -1981,7 +1982,7 @@ push $N20790c20
    xpos 8957
    ypos -2787
   }
-set N2059e280 [stack 0]
+set N507f2a10 [stack 0]
   Dot {
    name Dot37
    xpos 9114
@@ -2004,7 +2005,7 @@ set N2059e280 [stack 0]
    xpos 9114
    ypos -2630
   }
-push $N2059e280
+push $N507f2a10
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold8
@@ -2052,7 +2053,7 @@ push $N2059e280
    xpos 8551
    ypos -2769
   }
-set N2005feb0 [stack 0]
+set N531fe580 [stack 0]
   Dot {
    name Dot61
    xpos 8708
@@ -2075,7 +2076,7 @@ set N2005feb0 [stack 0]
    xpos 8708
    ypos -2612
   }
-push $N2005feb0
+push $N531fe580
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold31
@@ -2155,7 +2156,7 @@ push $N2005feb0
    xpos 7845
    ypos -2769
   }
-set N21b9b930 [stack 0]
+set N4b6f8990 [stack 0]
   Dot {
    name Dot32
    xpos 8002
@@ -2178,7 +2179,7 @@ set N21b9b930 [stack 0]
    xpos 8002
    ypos -2611
   }
-push $N21b9b930
+push $N4b6f8990
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold6
@@ -3675,139 +3676,139 @@ push 0
    xpos 7927
    ypos -1077
   }
-set N20471950 [stack 0]
+set N5c3fbf20 [stack 0]
   Dot {
    name Dot2
    xpos 8121
    ypos -1077
   }
-set N204769f0 [stack 0]
+set N562fd1c0 [stack 0]
   Dot {
    name Dot7
    xpos 8315
    ypos -1077
   }
-set N2045b070 [stack 0]
+set N557fc1b0 [stack 0]
   Dot {
    name Dot9
    xpos 8509
    ypos -1077
   }
-set N20460130 [stack 0]
+set N53ff1170 [stack 0]
   Dot {
    name Dot11
    xpos 8703
    ypos -1077
   }
-set Ndd693a0 [stack 0]
+set N534fa5d0 [stack 0]
   Dot {
    name Dot13
    xpos 8897
    ypos -1077
   }
-set N2056c260 [stack 0]
+set N4c4f1c50 [stack 0]
   Dot {
    name Dot15
    xpos 9091
    ypos -1077
   }
-set N20570f50 [stack 0]
+set N307f6f20 [stack 0]
   Dot {
    name Dot17
    xpos 9285
    ypos -1077
   }
-set N1f30fb00 [stack 0]
+set N4b6f4980 [stack 0]
   Dot {
    name Dot19
    xpos 9522
    ypos -1077
   }
-set N1f314bc0 [stack 0]
+set N570f6080 [stack 0]
   Dot {
    name Dot21
    xpos 9716
    ypos -1077
   }
-set N204f22d0 [stack 0]
+set N4ccfe7a0 [stack 0]
   Dot {
    name Dot23
    xpos 9910
    ypos -1077
   }
-set N204f7320 [stack 0]
+set N562f74e0 [stack 0]
   Dot {
    name Dot25
    xpos 10104
    ypos -1077
   }
-set N204403a0 [stack 0]
+set N56cfb0e0 [stack 0]
   Dot {
    name Dot63
    xpos 10335
    ypos -1077
   }
-set N20445460 [stack 0]
+set N32775e40 [stack 0]
   Dot {
    name Dot65
    xpos 10529
    ypos -1077
   }
-set N20593110 [stack 0]
+set N544f3820 [stack 0]
   Dot {
    name Dot67
    xpos 10723
    ypos -1077
   }
-set N205981d0 [stack 0]
+set N5b4f3f40 [stack 0]
   Dot {
    name Dot69
    xpos 10917
    ypos -1077
   }
-set N2063a000 [stack 0]
+set N55bf1e10 [stack 0]
   Dot {
    name Dot71
    xpos 11111
    ypos -1077
   }
-set N2063f0c0 [stack 0]
+set N52df2b50 [stack 0]
   Dot {
    name Dot73
    xpos 11305
    ypos -1077
   }
-set N20553630 [stack 0]
+set Nca0614e0 [stack 0]
   Dot {
    name Dot75
    xpos 11499
    ypos -1077
   }
-set N216428f0 [stack 0]
+set N4b6f5100 [stack 0]
   Dot {
    name Dot77
    xpos 11693
    ypos -1077
   }
-set N21647640 [stack 0]
+set N57df6650 [stack 0]
   Dot {
    name Dot79
    xpos 11930
    ypos -1077
   }
-set N205befc0 [stack 0]
+set N57efb700 [stack 0]
   Dot {
    name Dot81
    xpos 12124
    ypos -1077
   }
-set N205c3fb0 [stack 0]
+set N4b5f9cf0 [stack 0]
   Dot {
    name Dot101
    xpos 12318
    ypos -1077
   }
-set N205af750 [stack 0]
+set N5d0feb20 [stack 0]
   Dot {
    name Dot103
    xpos 12512
@@ -3838,7 +3839,7 @@ set N205af750 [stack 0]
    xpos 3396
    ypos -2806
   }
-set N205df2d0 [stack 0]
+set N336bff70 [stack 0]
   Dot {
    name Dot46
    xpos 3553
@@ -3861,7 +3862,7 @@ set N205df2d0 [stack 0]
    xpos 3553
    ypos -2649
   }
-push $N205df2d0
+push $N336bff70
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold14
@@ -3942,7 +3943,7 @@ push $N205df2d0
    xpos 4123
    ypos -2797
   }
-set N204e8da0 [stack 0]
+set N4cdfd870 [stack 0]
   Dot {
    name Dot55
    xpos 4280
@@ -3965,7 +3966,7 @@ set N204e8da0 [stack 0]
    xpos 4280
    ypos -2640
   }
-push $N204e8da0
+push $N4cdfd870
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold28
@@ -4013,7 +4014,7 @@ push $N204e8da0
    xpos 4467
    ypos -2783
   }
-set N20524f80 [stack 0]
+set N5b0feb20 [stack 0]
   Dot {
    name Dot40
    xpos 4624
@@ -4036,7 +4037,7 @@ set N20524f80 [stack 0]
    xpos 4624
    ypos -2626
   }
-push $N20524f80
+push $N5b0feb20
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold10
@@ -4114,7 +4115,7 @@ push $N20524f80
    xpos 5152
    ypos -2780
   }
-set N21c67dc0 [stack 0]
+set N5adfd5a0 [stack 0]
   Dot {
    name Dot34
    xpos 5309
@@ -4137,7 +4138,7 @@ set N21c67dc0 [stack 0]
    xpos 5309
    ypos -2623
   }
-push $N21c67dc0
+push $N5adfd5a0
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold2
@@ -4185,7 +4186,7 @@ push $N21c67dc0
    xpos 5511
    ypos -2783
   }
-set N21fd3e80 [stack 0]
+set N3e076420 [stack 0]
   Dot {
    name Dot58
    xpos 5668
@@ -4208,7 +4209,7 @@ set N21fd3e80 [stack 0]
    xpos 5668
    ypos -2626
   }
-push $N21fd3e80
+push $N3e076420
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold26
@@ -4285,7 +4286,7 @@ push $N21fd3e80
    xpos 6245
    ypos -2772
   }
-set N21ce35c0 [stack 0]
+set N49ffa210 [stack 0]
   Dot {
    name Dot29
    xpos 6402
@@ -4308,7 +4309,7 @@ set N21ce35c0 [stack 0]
    xpos 6402
    ypos -2614
   }
-push $N21ce35c0
+push $N49ffa210
   FrameHold {
    firstFrame {{"\[if \{\[expression sort]==0\} \{return \[expression ((frame%1)<=0.50)*(1+(((frame)%1)*count))]\} \{return \[expression (((frame%1)>0.50)*(100+(((((frame+0.5)%1))*2))*count))]\}]"}}
    name FrameHold4
@@ -5240,139 +5241,139 @@ push 0
    xpos 7829
    ypos -871
   }
-set N21ebe5f0 [stack 0]
+set N4d8fe120 [stack 0]
   Dot {
    name Dot4
    xpos 8023
    ypos -871
   }
-set N21e3aa80 [stack 0]
+set N5d6f6560 [stack 0]
   Dot {
    name Dot8
    xpos 8217
    ypos -871
   }
-set N21e3fb40 [stack 0]
+set N573f42b0 [stack 0]
   Dot {
    name Dot10
    xpos 8411
    ypos -871
   }
-set N21e44c10 [stack 0]
+set N56ffc6e0 [stack 0]
   Dot {
    name Dot12
    xpos 8605
    ypos -871
   }
-set N21e49ce0 [stack 0]
+set N326500b0 [stack 0]
   Dot {
    name Dot14
    xpos 8799
    ypos -871
   }
-set N21fe96c0 [stack 0]
+set N4e7fc4d0 [stack 0]
   Dot {
    name Dot16
    xpos 8993
    ypos -871
   }
-set N21fee780 [stack 0]
+set N5d0f2ef0 [stack 0]
   Dot {
    name Dot18
    xpos 9187
    ypos -871
   }
-set N21ff3850 [stack 0]
+set N5edeff50 [stack 0]
   Dot {
    name Dot20
    xpos 9424
    ypos -871
   }
-set N21bb65d0 [stack 0]
+set N4ddf0630 [stack 0]
   Dot {
    name Dot22
    xpos 9618
    ypos -871
   }
-set N21f541a0 [stack 0]
+set N339bee70 [stack 0]
   Dot {
    name Dot24
    xpos 9812
    ypos -871
   }
-set N21bc1a00 [stack 0]
+set N201a7d90 [stack 0]
   Dot {
    name Dot26
    xpos 10006
    ypos -871
   }
-set N21e80320 [stack 0]
+set N4fbf2670 [stack 0]
   Dot {
    name Dot64
    xpos 10237
    ypos -871
   }
-set N21e85330 [stack 0]
+set N5b4f34b0 [stack 0]
   Dot {
    name Dot66
    xpos 10431
    ypos -871
   }
-set N21e8a3d0 [stack 0]
+set N50efe110 [stack 0]
   Dot {
    name Dot68
    xpos 10625
    ypos -871
   }
-set N21e8f4a0 [stack 0]
+set N5d1f1a00 [stack 0]
   Dot {
    name Dot70
    xpos 10819
    ypos -871
   }
-set N21fb79b0 [stack 0]
+set N4daf73d0 [stack 0]
   Dot {
    name Dot72
    xpos 11013
    ypos -871
   }
-set N21fbca80 [stack 0]
+set N5d0f1910 [stack 0]
   Dot {
    name Dot74
    xpos 11207
    ypos -871
   }
-set N21fc1b50 [stack 0]
+set N563f3640 [stack 0]
   Dot {
    name Dot76
    xpos 11401
    ypos -871
   }
-set N21fc6c20 [stack 0]
+set N4d0f0b40 [stack 0]
   Dot {
    name Dot78
    xpos 11595
    ypos -871
   }
-set N21f728f0 [stack 0]
+set N7c3e70c0 [stack 0]
   Dot {
    name Dot80
    xpos 11832
    ypos -871
   }
-set N21f77990 [stack 0]
+set N7c3ec0c0 [stack 0]
   Dot {
    name Dot82
    xpos 12026
    ypos -871
   }
-set N21f7ca60 [stack 0]
+set N206270d0 [stack 0]
   Dot {
    name Dot102
    xpos 12220
    ypos -871
   }
-set N21f57f20 [stack 0]
+set N2062c1a0 [stack 0]
   Dot {
    name Dot104
    xpos 12414
@@ -5490,7 +5491,7 @@ set N21f57f20 [stack 0]
     xpos -207
     ypos 48
    }
-set N21d147f0 [stack 0]
+set N9807b420 [stack 0]
 push 0
    Input {
     inputs 0
@@ -5542,7 +5543,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N21b639c0 [stack 0]
+set N5e00dc50 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -5553,7 +5554,7 @@ set N21b639c0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N21b639c0
+push $N5e00dc50
     Dot {
      name Dot1
      xpos 572
@@ -5573,7 +5574,7 @@ push $N21b639c0
      xpos 572
      ypos -490
     }
-push $N21b639c0
+push $N5e00dc50
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -5603,14 +5604,14 @@ push $N21b639c0
      xpos 426
      ypos -369
     }
-set N21cf9a80 [stack 0]
+set Nca0857d0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N21cf9a80
-push $N21cf9a80
+push $Nca0857d0
+push $Nca0857d0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -5630,7 +5631,7 @@ push $N21cf9a80
     xpos -101
     ypos -449
    }
-set N208c43c0 [stack 0]
+set Nca063020 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -5741,7 +5742,7 @@ push 0
     ypos 717
    }
 push 0
-push $N21d147f0
+push $N9807b420
 push 0
    Input {
     inputs 0
@@ -5791,7 +5792,7 @@ push 0
      xpos 460
      ypos -635
     }
-set Nd6e8370 [stack 0]
+set N3389f790 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -5802,7 +5803,7 @@ set Nd6e8370 [stack 0]
      xpos 350
      ypos -365
     }
-push $Nd6e8370
+push $N3389f790
     Dot {
      name Dot1
      xpos 572
@@ -5822,7 +5823,7 @@ push $Nd6e8370
      xpos 572
      ypos -490
     }
-push $Nd6e8370
+push $N3389f790
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -5852,14 +5853,14 @@ push $Nd6e8370
      xpos 426
      ypos -369
     }
-set N2094d9a0 [stack 0]
+set N3fa55470 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2094d9a0
-push $N2094d9a0
+push $N3fa55470
+push $N3fa55470
     Viewer {
      inputs 2
      frame_range 1-100
@@ -5978,7 +5979,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N208c43c0
+push $Nca063020
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -6114,8 +6115,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N20593110
-push $N21e8a3d0
+push $N544f3820
+push $N50efe110
   Group {
    inputs 2
    name gunshot14
@@ -6228,7 +6229,7 @@ push $N21e8a3d0
     xpos -207
     ypos 48
    }
-set N1fd04f90 [stack 0]
+set N3263cf60 [stack 0]
 push 0
    Input {
     inputs 0
@@ -6280,7 +6281,7 @@ push 0
      xpos 460
      ypos -635
     }
-set Ndd97e20 [stack 0]
+set N3fad0170 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -6291,7 +6292,7 @@ set Ndd97e20 [stack 0]
      xpos 350
      ypos -365
     }
-push $Ndd97e20
+push $N3fad0170
     Dot {
      name Dot1
      xpos 572
@@ -6311,7 +6312,7 @@ push $Ndd97e20
      xpos 572
      ypos -490
     }
-push $Ndd97e20
+push $N3fad0170
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -6341,14 +6342,14 @@ push $Ndd97e20
      xpos 426
      ypos -369
     }
-set Nddd9d00 [stack 0]
+set N3fb120b0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $Nddd9d00
-push $Nddd9d00
+push $N3fb120b0
+push $N3fb120b0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -6368,7 +6369,7 @@ push $Nddd9d00
     xpos -101
     ypos -449
    }
-set Nde785c0 [stack 0]
+set N3ed95440 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -6479,7 +6480,7 @@ push 0
     ypos 717
    }
 push 0
-push $N1fd04f90
+push $N3263cf60
 push 0
    Input {
     inputs 0
@@ -6529,7 +6530,7 @@ push 0
      xpos 460
      ypos -635
     }
-set Ndf28240 [stack 0]
+set Nd9f5c00 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -6540,7 +6541,7 @@ set Ndf28240 [stack 0]
      xpos 350
      ypos -365
     }
-push $Ndf28240
+push $Nd9f5c00
     Dot {
      name Dot1
      xpos 572
@@ -6560,7 +6561,7 @@ push $Ndf28240
      xpos 572
      ypos -490
     }
-push $Ndf28240
+push $Nd9f5c00
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -6590,14 +6591,14 @@ push $Ndf28240
      xpos 426
      ypos -369
     }
-set Ndf6a120 [stack 0]
+set Nda37b40 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $Ndf6a120
-push $Ndf6a120
+push $Nda37b40
+push $Nda37b40
     Viewer {
      inputs 2
      frame_range 1-100
@@ -6716,7 +6717,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $Nde785c0
+push $N3ed95440
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -6852,8 +6853,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N205981d0
-push $N21e8f4a0
+push $N5b4f3f40
+push $N5d1f1a00
   Group {
    inputs 2
    name gunshot15
@@ -6966,7 +6967,7 @@ push $N21e8f4a0
     xpos -207
     ypos 48
    }
-set N214542b0 [stack 0]
+set N52fa8fe0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -7018,7 +7019,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N21493e00 [stack 0]
+set Nca0c77e0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -7029,7 +7030,7 @@ set N21493e00 [stack 0]
      xpos 350
      ypos -365
     }
-push $N21493e00
+push $Nca0c77e0
     Dot {
      name Dot1
      xpos 572
@@ -7049,7 +7050,7 @@ push $N21493e00
      xpos 572
      ypos -490
     }
-push $N21493e00
+push $Nca0c77e0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -7079,14 +7080,14 @@ push $N21493e00
      xpos 426
      ypos -369
     }
-set N214d5ce0 [stack 0]
+set Nca109720 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N214d5ce0
-push $N214d5ce0
+push $Nca109720
+push $Nca109720
     Viewer {
      inputs 2
      frame_range 1-100
@@ -7106,7 +7107,7 @@ push $N214d5ce0
     xpos -101
     ypos -449
    }
-set N215745a0 [stack 0]
+set N338f7000 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -7217,7 +7218,7 @@ push 0
     ypos 717
    }
 push 0
-push $N214542b0
+push $N52fa8fe0
 push 0
    Input {
     inputs 0
@@ -7267,7 +7268,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N21732090 [stack 0]
+set N388a9930 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -7278,7 +7279,7 @@ set N21732090 [stack 0]
      xpos 350
      ypos -365
     }
-push $N21732090
+push $N388a9930
     Dot {
      name Dot1
      xpos 572
@@ -7298,7 +7299,7 @@ push $N21732090
      xpos 572
      ypos -490
     }
-push $N21732090
+push $N388a9930
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -7328,14 +7329,14 @@ push $N21732090
      xpos 426
      ypos -369
     }
-set N21773f70 [stack 0]
+set N388eb870 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N21773f70
-push $N21773f70
+push $N388eb870
+push $N388eb870
     Viewer {
      inputs 2
      frame_range 1-100
@@ -7454,7 +7455,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N215745a0
+push $N338f7000
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -7590,8 +7591,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N205befc0
-push $N21f77990
+push $N57efb700
+push $N7c3ec0c0
   Group {
    inputs 2
    name gunshot21
@@ -7704,7 +7705,7 @@ push $N21f77990
     xpos -207
     ypos 48
    }
-set N21970f90 [stack 0]
+set N38c08820 [stack 0]
 push 0
    Input {
     inputs 0
@@ -7756,7 +7757,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N219b0ae0 [stack 0]
+set N38c481f0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -7767,7 +7768,7 @@ set N219b0ae0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N219b0ae0
+push $N38c481f0
     Dot {
      name Dot1
      xpos 572
@@ -7787,7 +7788,7 @@ push $N219b0ae0
      xpos 572
      ypos -490
     }
-push $N219b0ae0
+push $N38c481f0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -7817,14 +7818,14 @@ push $N219b0ae0
      xpos 426
      ypos -369
     }
-set N219f29c0 [stack 0]
+set N38c8a130 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N219f29c0
-push $N219f29c0
+push $N38c8a130
+push $N38c8a130
     Viewer {
      inputs 2
      frame_range 1-100
@@ -7844,7 +7845,7 @@ push $N219f29c0
     xpos -101
     ypos -449
    }
-set N21a91280 [stack 0]
+set N38d389b0 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -7955,7 +7956,7 @@ push 0
     ypos 717
    }
 push 0
-push $N21970f90
+push $N38c08820
 push 0
    Input {
     inputs 0
@@ -8005,7 +8006,7 @@ push 0
      xpos 460
      ypos -635
     }
-set Ne48b950 [stack 0]
+set N326cf480 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -8016,7 +8017,7 @@ set Ne48b950 [stack 0]
      xpos 350
      ypos -365
     }
-push $Ne48b950
+push $N326cf480
     Dot {
      name Dot1
      xpos 572
@@ -8036,7 +8037,7 @@ push $Ne48b950
      xpos 572
      ypos -490
     }
-push $Ne48b950
+push $N326cf480
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -8066,14 +8067,14 @@ push $Ne48b950
      xpos 426
      ypos -369
     }
-set Ne4cd830 [stack 0]
+set N327113c0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $Ne4cd830
-push $Ne4cd830
+push $N327113c0
+push $N327113c0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -8192,7 +8193,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N21a91280
+push $N38d389b0
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -8328,8 +8329,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N205af750
-push $N21f57f20
+push $N5d0feb20
+push $N2062c1a0
   Group {
    inputs 2
    name gunshot23
@@ -8442,7 +8443,7 @@ push $N21f57f20
     xpos -207
     ypos 48
    }
-set Ne6ca850 [stack 0]
+set N3292e370 [stack 0]
 push 0
    Input {
     inputs 0
@@ -8494,7 +8495,7 @@ push 0
      xpos 460
      ypos -635
     }
-set Ne70a3a0 [stack 0]
+set N32b7dc60 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -8505,7 +8506,7 @@ set Ne70a3a0 [stack 0]
      xpos 350
      ypos -365
     }
-push $Ne70a3a0
+push $N32b7dc60
     Dot {
      name Dot1
      xpos 572
@@ -8525,7 +8526,7 @@ push $Ne70a3a0
      xpos 572
      ypos -490
     }
-push $Ne70a3a0
+push $N32b7dc60
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -8555,14 +8556,14 @@ push $Ne70a3a0
      xpos 426
      ypos -369
     }
-set Ne74c280 [stack 0]
+set N32bbfba0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $Ne74c280
-push $Ne74c280
+push $N32bbfba0
+push $N32bbfba0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -8582,7 +8583,7 @@ push $Ne74c280
     xpos -101
     ypos -449
    }
-set Ne7eab40 [stack 0]
+set N32c5e510 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -8693,7 +8694,7 @@ push 0
     ypos 717
    }
 push 0
-push $Ne6ca850
+push $N3292e370
 push 0
    Input {
     inputs 0
@@ -8743,7 +8744,7 @@ push 0
      xpos 460
      ypos -635
     }
-set Ne89a7c0 [stack 0]
+set N32f1df80 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -8754,7 +8755,7 @@ set Ne89a7c0 [stack 0]
      xpos 350
      ypos -365
     }
-push $Ne89a7c0
+push $N32f1df80
     Dot {
      name Dot1
      xpos 572
@@ -8774,7 +8775,7 @@ push $Ne89a7c0
      xpos 572
      ypos -490
     }
-push $Ne89a7c0
+push $N32f1df80
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -8804,14 +8805,14 @@ push $Ne89a7c0
      xpos 426
      ypos -369
     }
-set Ne8dc6a0 [stack 0]
+set N32f5fec0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $Ne8dc6a0
-push $Ne8dc6a0
+push $N32f5fec0
+push $N32f5fec0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -8930,7 +8931,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $Ne7eab40
+push $N32c5e510
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -9066,8 +9067,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N20471950
-push $N21ebe5f0
+push $N5c3fbf20
+push $N4d8fe120
   Group {
    inputs 2
    name gunshot2
@@ -9180,7 +9181,7 @@ push $N21ebe5f0
     xpos -207
     ypos 48
    }
-set Nead96c0 [stack 0]
+set N31110d80 [stack 0]
 push 0
    Input {
     inputs 0
@@ -9232,7 +9233,7 @@ push 0
      xpos 460
      ypos -635
     }
-set Neb19210 [stack 0]
+set N31150750 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -9243,7 +9244,7 @@ set Neb19210 [stack 0]
      xpos 350
      ypos -365
     }
-push $Neb19210
+push $N31150750
     Dot {
      name Dot1
      xpos 572
@@ -9263,7 +9264,7 @@ push $Neb19210
      xpos 572
      ypos -490
     }
-push $Neb19210
+push $N31150750
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -9293,14 +9294,14 @@ push $Neb19210
      xpos 426
      ypos -369
     }
-set Neb5b0f0 [stack 0]
+set N31192690 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $Neb5b0f0
-push $Neb5b0f0
+push $N31192690
+push $N31192690
     Viewer {
      inputs 2
      frame_range 1-100
@@ -9320,7 +9321,7 @@ push $Neb5b0f0
     xpos -101
     ypos -449
    }
-set Nebf99b0 [stack 0]
+set N31240f10 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -9431,7 +9432,7 @@ push 0
     ypos 717
    }
 push 0
-push $Nead96c0
+push $N31110d80
 push 0
    Input {
     inputs 0
@@ -9481,7 +9482,7 @@ push 0
      xpos 460
      ypos -635
     }
-set Neca9630 [stack 0]
+set N31300990 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -9492,7 +9493,7 @@ set Neca9630 [stack 0]
      xpos 350
      ypos -365
     }
-push $Neca9630
+push $N31300990
     Dot {
      name Dot1
      xpos 572
@@ -9512,7 +9513,7 @@ push $Neca9630
      xpos 572
      ypos -490
     }
-push $Neca9630
+push $N31300990
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -9542,14 +9543,14 @@ push $Neca9630
      xpos 426
      ypos -369
     }
-set Neceb510 [stack 0]
+set N313428d0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $Neceb510
-push $Neceb510
+push $N313428d0
+push $N313428d0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -9668,7 +9669,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $Nebf99b0
+push $N31240f10
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -9804,8 +9805,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N204769f0
-push $N21e3aa80
+push $N562fd1c0
+push $N5d6f6560
   Group {
    inputs 2
    name gunshot1
@@ -9918,7 +9919,7 @@ push $N21e3aa80
     xpos -207
     ypos 48
    }
-set Neee8530 [stack 0]
+set N3165f880 [stack 0]
 push 0
    Input {
     inputs 0
@@ -9970,7 +9971,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N22128eb0 [stack 0]
+set N3169f250 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -9981,7 +9982,7 @@ set N22128eb0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N22128eb0
+push $N3169f250
     Dot {
      name Dot1
      xpos 572
@@ -10001,7 +10002,7 @@ push $N22128eb0
      xpos 572
      ypos -490
     }
-push $N22128eb0
+push $N3169f250
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -10031,14 +10032,14 @@ push $N22128eb0
      xpos 426
      ypos -369
     }
-set N2216ae90 [stack 0]
+set N316e1190 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2216ae90
-push $N2216ae90
+push $N316e1190
+push $N316e1190
     Viewer {
      inputs 2
      frame_range 1-100
@@ -10058,7 +10059,7 @@ push $N2216ae90
     xpos -101
     ypos -449
    }
-set N22209890 [stack 0]
+set N3210ba10 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -10169,7 +10170,7 @@ push 0
     ypos 717
    }
 push 0
-push $Neee8530
+push $N3165f880
 push 0
    Input {
     inputs 0
@@ -10219,7 +10220,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N222b9590 [stack 0]
+set N321cb490 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -10230,7 +10231,7 @@ set N222b9590 [stack 0]
      xpos 350
      ypos -365
     }
-push $N222b9590
+push $N321cb490
     Dot {
      name Dot1
      xpos 572
@@ -10250,7 +10251,7 @@ push $N222b9590
      xpos 572
      ypos -490
     }
-push $N222b9590
+push $N321cb490
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -10280,14 +10281,14 @@ push $N222b9590
      xpos 426
      ypos -369
     }
-set N222fb580 [stack 0]
+set N3220d3d0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N222fb580
-push $N222fb580
+push $N3220d3d0
+push $N3220d3d0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -10406,7 +10407,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N22209890
+push $N3210ba10
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -10542,8 +10543,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N2045b070
-push $N21e3fb40
+push $N557fc1b0
+push $N573f42b0
   Group {
    inputs 2
    name gunshot3
@@ -10656,7 +10657,7 @@ push $N21e3fb40
     xpos -207
     ypos 48
    }
-set N224f89e0 [stack 0]
+set Nca699340 [stack 0]
 push 0
    Input {
     inputs 0
@@ -10708,7 +10709,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N22538480 [stack 0]
+set Nca6e8c40 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -10719,7 +10720,7 @@ set N22538480 [stack 0]
      xpos 350
      ypos -365
     }
-push $N22538480
+push $Nca6e8c40
     Dot {
      name Dot1
      xpos 572
@@ -10739,7 +10740,7 @@ push $N22538480
      xpos 572
      ypos -490
     }
-push $N22538480
+push $Nca6e8c40
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -10769,14 +10770,14 @@ push $N22538480
      xpos 426
      ypos -369
     }
-set N2257a460 [stack 0]
+set Nca72ab80 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2257a460
-push $N2257a460
+push $Nca72ab80
+push $Nca72ab80
     Viewer {
      inputs 2
      frame_range 1-100
@@ -10796,7 +10797,7 @@ push $N2257a460
     xpos -101
     ypos -449
    }
-set N22618e60 [stack 0]
+set Nca7c94f0 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -10907,7 +10908,7 @@ push 0
     ypos 717
    }
 push 0
-push $N224f89e0
+push $Nca699340
 push 0
    Input {
     inputs 0
@@ -10957,7 +10958,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N226c8b30 [stack 0]
+set Nca888f60 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -10968,7 +10969,7 @@ set N226c8b30 [stack 0]
      xpos 350
      ypos -365
     }
-push $N226c8b30
+push $Nca888f60
     Dot {
      name Dot1
      xpos 572
@@ -10988,7 +10989,7 @@ push $N226c8b30
      xpos 572
      ypos -490
     }
-push $N226c8b30
+push $Nca888f60
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -11018,14 +11019,14 @@ push $N226c8b30
      xpos 426
      ypos -369
     }
-set N2270ab10 [stack 0]
+set Nca8caea0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2270ab10
-push $N2270ab10
+push $Nca8caea0
+push $Nca8caea0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -11144,7 +11145,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N22618e60
+push $Nca7c94f0
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -11280,8 +11281,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N20460130
-push $N21e44c10
+push $N53ff1170
+push $N56ffc6e0
   Group {
    inputs 2
    name gunshot4
@@ -11394,7 +11395,7 @@ push $N21e44c10
     xpos -207
     ypos 48
    }
-set N22907f50 [stack 0]
+set N140fbc50 [stack 0]
 push 0
    Input {
     inputs 0
@@ -11446,7 +11447,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N22947a20 [stack 0]
+set N1413b6e0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -11457,7 +11458,7 @@ set N22947a20 [stack 0]
      xpos 350
      ypos -365
     }
-push $N22947a20
+push $N1413b6e0
     Dot {
      name Dot1
      xpos 572
@@ -11477,7 +11478,7 @@ push $N22947a20
      xpos 572
      ypos -490
     }
-push $N22947a20
+push $N1413b6e0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -11507,14 +11508,14 @@ push $N22947a20
      xpos 426
      ypos -369
     }
-set N22989a40 [stack 0]
+set N1417d620 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N22989a40
-push $N22989a40
+push $N1417d620
+push $N1417d620
     Viewer {
      inputs 2
      frame_range 1-100
@@ -11534,7 +11535,7 @@ push $N22989a40
     xpos -101
     ypos -449
    }
-set N22a28450 [stack 0]
+set N1c23aeb0 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -11645,7 +11646,7 @@ push 0
     ypos 717
    }
 push 0
-push $N22907f50
+push $N140fbc50
 push 0
    Input {
     inputs 0
@@ -11695,7 +11696,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N22ad8130 [stack 0]
+set N1c2fa930 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -11706,7 +11707,7 @@ set N22ad8130 [stack 0]
      xpos 350
      ypos -365
     }
-push $N22ad8130
+push $N1c2fa930
     Dot {
      name Dot1
      xpos 572
@@ -11726,7 +11727,7 @@ push $N22ad8130
      xpos 572
      ypos -490
     }
-push $N22ad8130
+push $N1c2fa930
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -11756,14 +11757,14 @@ push $N22ad8130
      xpos 426
      ypos -369
     }
-set N22b1a120 [stack 0]
+set N1c33c870 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N22b1a120
-push $N22b1a120
+push $N1c33c870
+push $N1c33c870
     Viewer {
      inputs 2
      frame_range 1-100
@@ -11882,7 +11883,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N22a28450
+push $N1c23aeb0
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -12018,8 +12019,8 @@ push 0
     ypos 1861
    }
   end_group
-push $Ndd693a0
-push $N21e49ce0
+push $N534fa5d0
+push $N326500b0
   Group {
    inputs 2
    name gunshot5
@@ -12132,7 +12133,7 @@ push $N21e49ce0
     xpos -207
     ypos 48
    }
-set N22d17590 [stack 0]
+set N1c559830 [stack 0]
 push 0
    Input {
     inputs 0
@@ -12184,7 +12185,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N22d57020 [stack 0]
+set N1c599200 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -12195,7 +12196,7 @@ set N22d57020 [stack 0]
      xpos 350
      ypos -365
     }
-push $N22d57020
+push $N1c599200
     Dot {
      name Dot1
      xpos 572
@@ -12215,7 +12216,7 @@ push $N22d57020
      xpos 572
      ypos -490
     }
-push $N22d57020
+push $N1c599200
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -12245,14 +12246,14 @@ push $N22d57020
      xpos 426
      ypos -369
     }
-set N22d99000 [stack 0]
+set N1c5db140 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N22d99000
-push $N22d99000
+push $N1c5db140
+push $N1c5db140
     Viewer {
      inputs 2
      frame_range 1-100
@@ -12272,7 +12273,7 @@ push $N22d99000
     xpos -101
     ypos -449
    }
-set N22e37a20 [stack 0]
+set N301899c0 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -12383,7 +12384,7 @@ push 0
     ypos 717
    }
 push 0
-push $N22d17590
+push $N1c559830
 push 0
    Input {
     inputs 0
@@ -12433,7 +12434,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N22ee7710 [stack 0]
+set Nbc98e440 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -12444,7 +12445,7 @@ set N22ee7710 [stack 0]
      xpos 350
      ypos -365
     }
-push $N22ee7710
+push $Nbc98e440
     Dot {
      name Dot1
      xpos 572
@@ -12464,7 +12465,7 @@ push $N22ee7710
      xpos 572
      ypos -490
     }
-push $N22ee7710
+push $Nbc98e440
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -12494,14 +12495,14 @@ push $N22ee7710
      xpos 426
      ypos -369
     }
-set N22f296e0 [stack 0]
+set Nbc9d0380 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N22f296e0
-push $N22f296e0
+push $Nbc9d0380
+push $Nbc9d0380
     Viewer {
      inputs 2
      frame_range 1-100
@@ -12620,7 +12621,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N22e37a20
+push $N301899c0
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -12756,8 +12757,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N2056c260
-push $N21fe96c0
+push $N4c4f1c50
+push $N4e7fc4d0
   Group {
    inputs 2
    name gunshot6
@@ -12870,7 +12871,7 @@ push $N21fe96c0
     xpos -207
     ypos 48
    }
-set N23126ac0 [stack 0]
+set Nc8c6b320 [stack 0]
 push 0
    Input {
     inputs 0
@@ -12922,7 +12923,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N231665a0 [stack 0]
+set Nc8caacf0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -12933,7 +12934,7 @@ set N231665a0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N231665a0
+push $Nc8caacf0
     Dot {
      name Dot1
      xpos 572
@@ -12953,7 +12954,7 @@ push $N231665a0
      xpos 572
      ypos -490
     }
-push $N231665a0
+push $Nc8caacf0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -12983,14 +12984,14 @@ push $N231665a0
      xpos 426
      ypos -369
     }
-set N231a85a0 [stack 0]
+set N981aeb40 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N231a85a0
-push $N231a85a0
+push $N981aeb40
+push $N981aeb40
     Viewer {
      inputs 2
      frame_range 1-100
@@ -13010,7 +13011,7 @@ push $N231a85a0
     xpos -101
     ypos -449
    }
-set N23246f90 [stack 0]
+set N9824d4a0 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -13121,7 +13122,7 @@ push 0
     ypos 717
    }
 push 0
-push $N23126ac0
+push $Nc8c6b320
 push 0
    Input {
     inputs 0
@@ -13171,7 +13172,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N232f6ca0 [stack 0]
+set N9830cf20 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -13182,7 +13183,7 @@ set N232f6ca0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N232f6ca0
+push $N9830cf20
     Dot {
      name Dot1
      xpos 572
@@ -13202,7 +13203,7 @@ push $N232f6ca0
      xpos 572
      ypos -490
     }
-push $N232f6ca0
+push $N9830cf20
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -13232,14 +13233,14 @@ push $N232f6ca0
      xpos 426
      ypos -369
     }
-set N23338c90 [stack 0]
+set N9834ee60 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N23338c90
-push $N23338c90
+push $N9834ee60
+push $N9834ee60
     Viewer {
      inputs 2
      frame_range 1-100
@@ -13358,7 +13359,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N23246f90
+push $N9824d4a0
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -13494,8 +13495,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N20570f50
-push $N21fee780
+push $N307f6f20
+push $N5d0f2ef0
   Group {
    inputs 2
    name gunshot7
@@ -13608,7 +13609,7 @@ push $N21fee780
     xpos -207
     ypos 48
    }
-set N235360d0 [stack 0]
+set N9857bd30 [stack 0]
 push 0
    Input {
     inputs 0
@@ -13660,7 +13661,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N23577b90 [stack 0]
+set N985bb700 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -13671,7 +13672,7 @@ set N23577b90 [stack 0]
      xpos 350
      ypos -365
     }
-push $N23577b90
+push $N985bb700
     Dot {
      name Dot1
      xpos 572
@@ -13691,7 +13692,7 @@ push $N23577b90
      xpos 572
      ypos -490
     }
-push $N23577b90
+push $N985bb700
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -13721,14 +13722,14 @@ push $N23577b90
      xpos 426
      ypos -369
     }
-set N235b9b60 [stack 0]
+set N985fd640 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N235b9b60
-push $N235b9b60
+push $N985fd640
+push $N985fd640
     Viewer {
      inputs 2
      frame_range 1-100
@@ -13748,7 +13749,7 @@ push $N235b9b60
     xpos -101
     ypos -449
    }
-set N23658590 [stack 0]
+set Nb4e3aeb0 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -13859,7 +13860,7 @@ push 0
     ypos 717
    }
 push 0
-push $N235360d0
+push $N9857bd30
 push 0
    Input {
     inputs 0
@@ -13909,7 +13910,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N23707e30 [stack 0]
+set Nb4eeaa10 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -13920,7 +13921,7 @@ set N23707e30 [stack 0]
      xpos 350
      ypos -365
     }
-push $N23707e30
+push $Nb4eeaa10
     Dot {
      name Dot1
      xpos 572
@@ -13940,7 +13941,7 @@ push $N23707e30
      xpos 572
      ypos -490
     }
-push $N23707e30
+push $Nb4eeaa10
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -13970,14 +13971,14 @@ push $N23707e30
      xpos 426
      ypos -369
     }
-set N23749e30 [stack 0]
+set Nbc77d860 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N23749e30
-push $N23749e30
+push $Nbc77d860
+push $Nbc77d860
     Viewer {
      inputs 2
      frame_range 1-100
@@ -14096,7 +14097,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N23658590
+push $Nb4e3aeb0
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -14232,8 +14233,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N1f30fb00
-push $N21ff3850
+push $N4b6f4980
+push $N5edeff50
   Group {
    inputs 2
    name gunshot8
@@ -14346,7 +14347,7 @@ push $N21ff3850
     xpos -207
     ypos 48
    }
-set N23947680 [stack 0]
+set Nbc59a830 [stack 0]
 push 0
    Input {
     inputs 0
@@ -14398,7 +14399,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N23987160 [stack 0]
+set Nbc5da200 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -14409,7 +14410,7 @@ set N23987160 [stack 0]
      xpos 350
      ypos -365
     }
-push $N23987160
+push $Nbc5da200
     Dot {
      name Dot1
      xpos 572
@@ -14429,7 +14430,7 @@ push $N23987160
      xpos 572
      ypos -490
     }
-push $N23987160
+push $Nbc5da200
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -14459,14 +14460,14 @@ push $N23987160
      xpos 426
      ypos -369
     }
-set N239c9140 [stack 0]
+set Nbc61c140 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N239c9140
-push $N239c9140
+push $Nbc61c140
+push $Nbc61c140
     Viewer {
      inputs 2
      frame_range 1-100
@@ -14486,7 +14487,7 @@ push $N239c9140
     xpos -101
     ypos -449
    }
-set N23a67b70 [stack 0]
+set Nbc4ca9c0 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -14597,7 +14598,7 @@ push 0
     ypos 717
    }
 push 0
-push $N23947680
+push $Nbc59a830
 push 0
    Input {
     inputs 0
@@ -14647,7 +14648,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N23b17860 [stack 0]
+set Nbc38a440 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -14658,7 +14659,7 @@ set N23b17860 [stack 0]
      xpos 350
      ypos -365
     }
-push $N23b17860
+push $Nbc38a440
     Dot {
      name Dot1
      xpos 572
@@ -14678,7 +14679,7 @@ push $N23b17860
      xpos 572
      ypos -490
     }
-push $N23b17860
+push $Nbc38a440
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -14708,14 +14709,14 @@ push $N23b17860
      xpos 426
      ypos -369
     }
-set N23b59850 [stack 0]
+set Nbc3cc380 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N23b59850
-push $N23b59850
+push $Nbc3cc380
+push $Nbc3cc380
     Viewer {
      inputs 2
      frame_range 1-100
@@ -14834,7 +14835,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N23a67b70
+push $Nbc4ca9c0
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -14970,8 +14971,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N1f314bc0
-push $N21bb65d0
+push $N570f6080
+push $N4ddf0630
   Group {
    inputs 2
    name gunshot9
@@ -15084,7 +15085,7 @@ push $N21bb65d0
     xpos -207
     ypos 48
    }
-set N23d56ca0 [stack 0]
+set Nbc1e9300 [stack 0]
 push 0
    Input {
     inputs 0
@@ -15136,7 +15137,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N23d96740 [stack 0]
+set Nbc228cd0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -15147,7 +15148,7 @@ set N23d96740 [stack 0]
      xpos 350
      ypos -365
     }
-push $N23d96740
+push $Nbc228cd0
     Dot {
      name Dot1
      xpos 572
@@ -15167,7 +15168,7 @@ push $N23d96740
      xpos 572
      ypos -490
     }
-push $N23d96740
+push $Nbc228cd0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -15197,14 +15198,14 @@ push $N23d96740
      xpos 426
      ypos -369
     }
-set N23dd8730 [stack 0]
+set Nbc07ab30 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N23dd8730
-push $N23dd8730
+push $Nbc07ab30
+push $Nbc07ab30
     Viewer {
      inputs 2
      frame_range 1-100
@@ -15224,7 +15225,7 @@ push $N23dd8730
     xpos -101
     ypos -449
    }
-set N23e77140 [stack 0]
+set Nbc1194c0 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -15335,7 +15336,7 @@ push 0
     ypos 717
    }
 push 0
-push $N23d56ca0
+push $Nbc1e9300
 push 0
    Input {
     inputs 0
@@ -15385,7 +15386,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N23f26e10 [stack 0]
+set Nb4f97f40 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -15396,7 +15397,7 @@ set N23f26e10 [stack 0]
      xpos 350
      ypos -365
     }
-push $N23f26e10
+push $Nb4f97f40
     Dot {
      name Dot1
      xpos 572
@@ -15416,7 +15417,7 @@ push $N23f26e10
      xpos 572
      ypos -490
     }
-push $N23f26e10
+push $Nb4f97f40
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -15446,14 +15447,14 @@ push $N23f26e10
      xpos 426
      ypos -369
     }
-set N23f68de0 [stack 0]
+set Nb4fd9e80 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N23f68de0
-push $N23f68de0
+push $Nb4fd9e80
+push $Nb4fd9e80
     Viewer {
      inputs 2
      frame_range 1-100
@@ -15572,7 +15573,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N23e77140
+push $Nbc1194c0
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -15708,8 +15709,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N204f22d0
-push $N21f541a0
+push $N4ccfe7a0
+push $N339bee70
   Group {
    inputs 2
    name gunshot10
@@ -15822,7 +15823,7 @@ push $N21f541a0
     xpos -207
     ypos 48
    }
-set N24166200 [stack 0]
+set Nb4106c20 [stack 0]
 push 0
    Input {
     inputs 0
@@ -15874,7 +15875,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N241a5cc0 [stack 0]
+set Nb41466b0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -15885,7 +15886,7 @@ set N241a5cc0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N241a5cc0
+push $Nb41466b0
     Dot {
      name Dot1
      xpos 572
@@ -15905,7 +15906,7 @@ push $N241a5cc0
      xpos 572
      ypos -490
     }
-push $N241a5cc0
+push $Nb41466b0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -15935,14 +15936,14 @@ push $N241a5cc0
      xpos 426
      ypos -369
     }
-set N241e7cb0 [stack 0]
+set Nb41885f0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N241e7cb0
-push $N241e7cb0
+push $Nb41885f0
+push $Nb41885f0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -15962,7 +15963,7 @@ push $N241e7cb0
     xpos -101
     ypos -449
    }
-set N242866c0 [stack 0]
+set Nb4236e60 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -16073,7 +16074,7 @@ push 0
     ypos 717
    }
 push 0
-push $N24166200
+push $Nb4106c20
 push 0
    Input {
     inputs 0
@@ -16123,7 +16124,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N24336400 [stack 0]
+set Nb42e69c0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -16134,7 +16135,7 @@ set N24336400 [stack 0]
      xpos 350
      ypos -365
     }
-push $N24336400
+push $Nb42e69c0
     Dot {
      name Dot1
      xpos 572
@@ -16154,7 +16155,7 @@ push $N24336400
      xpos 572
      ypos -490
     }
-push $N24336400
+push $Nb42e69c0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -16184,14 +16185,14 @@ push $N24336400
      xpos 426
      ypos -369
     }
-set N24378400 [stack 0]
+set Nb4338810 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N24378400
-push $N24378400
+push $Nb4338810
+push $Nb4338810
     Viewer {
      inputs 2
      frame_range 1-100
@@ -16310,7 +16311,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N242866c0
+push $Nb4236e60
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -16446,8 +16447,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N204f7320
-push $N21bc1a00
+push $N562f74e0
+push $N201a7d90
   Group {
    inputs 2
    name gunshot11
@@ -16560,7 +16561,7 @@ push $N21bc1a00
     xpos -207
     ypos 48
    }
-set N2457d800 [stack 0]
+set Nb45557e0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -16612,7 +16613,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N245bd300 [stack 0]
+set Nb45951b0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -16623,7 +16624,7 @@ set N245bd300 [stack 0]
      xpos 350
      ypos -365
     }
-push $N245bd300
+push $Nb45951b0
     Dot {
      name Dot1
      xpos 572
@@ -16643,7 +16644,7 @@ push $N245bd300
      xpos 572
      ypos -490
     }
-push $N245bd300
+push $Nb45951b0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -16673,14 +16674,14 @@ push $N245bd300
      xpos 426
      ypos -369
     }
-set N245ff2e0 [stack 0]
+set Nb45d70f0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N245ff2e0
-push $N245ff2e0
+push $Nb45d70f0
+push $Nb45d70f0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -16700,7 +16701,7 @@ push $N245ff2e0
     xpos -101
     ypos -449
    }
-set N2469dce0 [stack 0]
+set Nb4685990 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -16811,7 +16812,7 @@ push 0
     ypos 717
    }
 push 0
-push $N2457d800
+push $Nb45557e0
 push 0
    Input {
     inputs 0
@@ -16861,7 +16862,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2474d9e0 [stack 0]
+set Nb4745430 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -16872,7 +16873,7 @@ set N2474d9e0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2474d9e0
+push $Nb4745430
     Dot {
      name Dot1
      xpos 572
@@ -16892,7 +16893,7 @@ push $N2474d9e0
      xpos 572
      ypos -490
     }
-push $N2474d9e0
+push $Nb4745430
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -16922,14 +16923,14 @@ push $N2474d9e0
      xpos 426
      ypos -369
     }
-set N2478f9c0 [stack 0]
+set Nb4787370 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2478f9c0
-push $N2478f9c0
+push $Nb4787370
+push $Nb4787370
     Viewer {
      inputs 2
      frame_range 1-100
@@ -17048,7 +17049,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N2469dce0
+push $Nb4685990
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -17184,8 +17185,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N204403a0
-push $N21e80320
+push $N56cfb0e0
+push $N4fbf2670
   Group {
    inputs 2
    name gunshot12
@@ -17298,7 +17299,7 @@ push $N21e80320
     xpos -207
     ypos 48
    }
-set N2498ce30 [stack 0]
+set N5e3a6300 [stack 0]
 push 0
    Input {
     inputs 0
@@ -17350,7 +17351,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N249cc8e0 [stack 0]
+set N5e3e5cd0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -17361,7 +17362,7 @@ set N249cc8e0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N249cc8e0
+push $N5e3e5cd0
     Dot {
      name Dot1
      xpos 572
@@ -17381,7 +17382,7 @@ push $N249cc8e0
      xpos 572
      ypos -490
     }
-push $N249cc8e0
+push $N5e3e5cd0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -17411,14 +17412,14 @@ push $N249cc8e0
      xpos 426
      ypos -369
     }
-set N24a0e8d0 [stack 0]
+set N5e437b30 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N24a0e8d0
-push $N24a0e8d0
+push $N5e437b30
+push $N5e437b30
     Viewer {
      inputs 2
      frame_range 1-100
@@ -17438,7 +17439,7 @@ push $N24a0e8d0
     xpos -101
     ypos -449
    }
-set N24aad2d0 [stack 0]
+set N5e4d64a0 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -17549,7 +17550,7 @@ push 0
     ypos 717
    }
 push 0
-push $N2498ce30
+push $N5e3a6300
 push 0
    Input {
     inputs 0
@@ -17599,7 +17600,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N24b5cfd0 [stack 0]
+set N5e595f10 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -17610,7 +17611,7 @@ set N24b5cfd0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N24b5cfd0
+push $N5e595f10
     Dot {
      name Dot1
      xpos 572
@@ -17630,7 +17631,7 @@ push $N24b5cfd0
      xpos 572
      ypos -490
     }
-push $N24b5cfd0
+push $N5e595f10
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -17660,14 +17661,14 @@ push $N24b5cfd0
      xpos 426
      ypos -369
     }
-set N24b9efb0 [stack 0]
+set N5e5d7e50 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N24b9efb0
-push $N24b9efb0
+push $N5e5d7e50
+push $N5e5d7e50
     Viewer {
      inputs 2
      frame_range 1-100
@@ -17786,7 +17787,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N24aad2d0
+push $N5e4d64a0
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -17922,8 +17923,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N20445460
-push $N21e85330
+push $N32775e40
+push $N5b4f34b0
   Group {
    inputs 2
    name gunshot13
@@ -18036,7 +18037,7 @@ push $N21e85330
     xpos -207
     ypos 48
    }
-set N24d9c3b0 [stack 0]
+set N5ea04cd0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -18088,7 +18089,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N24ddbeb0 [stack 0]
+set N5ea446a0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -18099,7 +18100,7 @@ set N24ddbeb0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N24ddbeb0
+push $N5ea446a0
     Dot {
      name Dot1
      xpos 572
@@ -18119,7 +18120,7 @@ push $N24ddbeb0
      xpos 572
      ypos -490
     }
-push $N24ddbeb0
+push $N5ea446a0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -18149,14 +18150,14 @@ push $N24ddbeb0
      xpos 426
      ypos -369
     }
-set N24e1dea0 [stack 0]
+set N5ea865e0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N24e1dea0
-push $N24e1dea0
+push $N5ea865e0
+push $N5ea865e0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -18176,7 +18177,7 @@ push $N24e1dea0
     xpos -101
     ypos -449
    }
-set N24ebc8a0 [stack 0]
+set N5eb34e60 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -18287,7 +18288,7 @@ push 0
     ypos 717
    }
 push 0
-push $N24d9c3b0
+push $N5ea04cd0
 push 0
    Input {
     inputs 0
@@ -18337,7 +18338,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N24f6c5b0 [stack 0]
+set N5ebe49c0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -18348,7 +18349,7 @@ set N24f6c5b0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N24f6c5b0
+push $N5ebe49c0
     Dot {
      name Dot1
      xpos 572
@@ -18368,7 +18369,7 @@ push $N24f6c5b0
      xpos 572
      ypos -490
     }
-push $N24f6c5b0
+push $N5ebe49c0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -18398,14 +18399,14 @@ push $N24f6c5b0
      xpos 426
      ypos -369
     }
-set N24fae590 [stack 0]
+set N5ee36820 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N24fae590
-push $N24fae590
+push $N5ee36820
+push $N5ee36820
     Viewer {
      inputs 2
      frame_range 1-100
@@ -18524,7 +18525,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N24ebc8a0
+push $N5eb34e60
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -18660,8 +18661,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N2063a000
-push $N21fb79b0
+push $N55bf1e10
+push $N4daf73d0
   Group {
    inputs 2
    name gunshot16
@@ -18774,7 +18775,7 @@ push $N21fb79b0
     xpos -207
     ypos 48
    }
-set N251ab9f0 [stack 0]
+set N7c1517e0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -18826,7 +18827,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N251eb4b0 [stack 0]
+set N7c1911b0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -18837,7 +18838,7 @@ set N251eb4b0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N251eb4b0
+push $N7c1911b0
     Dot {
      name Dot1
      xpos 572
@@ -18857,7 +18858,7 @@ push $N251eb4b0
      xpos 572
      ypos -490
     }
-push $N251eb4b0
+push $N7c1911b0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -18887,14 +18888,14 @@ push $N251eb4b0
      xpos 426
      ypos -369
     }
-set N2522d490 [stack 0]
+set N7c1d30f0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2522d490
-push $N2522d490
+push $N7c1d30f0
+push $N7c1d30f0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -18914,7 +18915,7 @@ push $N2522d490
     xpos -101
     ypos -449
    }
-set N252cbe90 [stack 0]
+set N7c281980 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -19025,7 +19026,7 @@ push 0
     ypos 717
    }
 push 0
-push $N251ab9f0
+push $N7c1517e0
 push 0
    Input {
     inputs 0
@@ -19075,7 +19076,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2537bba0 [stack 0]
+set N5bf43400 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -19086,7 +19087,7 @@ set N2537bba0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2537bba0
+push $N5bf43400
     Dot {
      name Dot1
      xpos 572
@@ -19106,7 +19107,7 @@ push $N2537bba0
      xpos 572
      ypos -490
     }
-push $N2537bba0
+push $N5bf43400
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -19136,14 +19137,14 @@ push $N2537bba0
      xpos 426
      ypos -369
     }
-set N253bdb90 [stack 0]
+set N5bf85340 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N253bdb90
-push $N253bdb90
+push $N5bf85340
+push $N5bf85340
     Viewer {
      inputs 2
      frame_range 1-100
@@ -19262,7 +19263,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N252cbe90
+push $N7c281980
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -19398,8 +19399,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N2063f0c0
-push $N21fbca80
+push $N52df2b50
+push $N5d0f1910
   Group {
    inputs 2
    name gunshot17
@@ -19512,7 +19513,7 @@ push $N21fbca80
     xpos -207
     ypos 48
    }
-set N255baf90 [stack 0]
+set N5c7a2300 [stack 0]
 push 0
    Input {
     inputs 0
@@ -19564,7 +19565,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N255faaa0 [stack 0]
+set N5c7e1cd0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -19575,7 +19576,7 @@ set N255faaa0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N255faaa0
+push $N5c7e1cd0
     Dot {
      name Dot1
      xpos 572
@@ -19595,7 +19596,7 @@ push $N255faaa0
      xpos 572
      ypos -490
     }
-push $N255faaa0
+push $N5c7e1cd0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -19625,14 +19626,14 @@ push $N255faaa0
      xpos 426
      ypos -369
     }
-set N2563ca80 [stack 0]
+set N5ca33b10 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2563ca80
-push $N2563ca80
+push $N5ca33b10
+push $N5ca33b10
     Viewer {
      inputs 2
      frame_range 1-100
@@ -19652,7 +19653,7 @@ push $N2563ca80
     xpos -101
     ypos -449
    }
-set N256db480 [stack 0]
+set N5cad2480 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -19763,7 +19764,7 @@ push 0
     ypos 717
    }
 push 0
-push $N255baf90
+push $N5c7a2300
 push 0
    Input {
     inputs 0
@@ -19813,7 +19814,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2578b160 [stack 0]
+set N5cb91f00 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -19824,7 +19825,7 @@ set N2578b160 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2578b160
+push $N5cb91f00
     Dot {
      name Dot1
      xpos 572
@@ -19844,7 +19845,7 @@ push $N2578b160
      xpos 572
      ypos -490
     }
-push $N2578b160
+push $N5cb91f00
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -19874,14 +19875,14 @@ push $N2578b160
      xpos 426
      ypos -369
     }
-set N257cd140 [stack 0]
+set N5cbd3e40 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N257cd140
-push $N257cd140
+push $N5cbd3e40
+push $N5cbd3e40
     Viewer {
      inputs 2
      frame_range 1-100
@@ -20000,7 +20001,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N256db480
+push $N5cad2480
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -20136,8 +20137,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N20553630
-push $N21fc1b50
+push $Nca0614e0
+push $N563f3640
   Group {
    inputs 2
    name gunshot18
@@ -20250,7 +20251,7 @@ push $N21fc1b50
     xpos -207
     ypos 48
    }
-set N259ca570 [stack 0]
+set N5d206c20 [stack 0]
 push 0
    Input {
     inputs 0
@@ -20302,7 +20303,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N25a0a020 [stack 0]
+set N5d2466b0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -20313,7 +20314,7 @@ set N25a0a020 [stack 0]
      xpos 350
      ypos -365
     }
-push $N25a0a020
+push $N5d2466b0
     Dot {
      name Dot1
      xpos 572
@@ -20333,7 +20334,7 @@ push $N25a0a020
      xpos 572
      ypos -490
     }
-push $N25a0a020
+push $N5d2466b0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -20363,14 +20364,14 @@ push $N25a0a020
      xpos 426
      ypos -369
     }
-set N25a4c020 [stack 0]
+set N5d2885f0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N25a4c020
-push $N25a4c020
+push $N5d2885f0
+push $N5d2885f0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -20390,7 +20391,7 @@ push $N25a4c020
     xpos -101
     ypos -449
    }
-set N25aeaa20 [stack 0]
+set N5d436e60 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -20501,7 +20502,7 @@ push 0
     ypos 717
    }
 push 0
-push $N259ca570
+push $N5d206c20
 push 0
    Input {
     inputs 0
@@ -20551,7 +20552,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N25b9a730 [stack 0]
+set N5d4e69c0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -20562,7 +20563,7 @@ set N25b9a730 [stack 0]
      xpos 350
      ypos -365
     }
-push $N25b9a730
+push $N5d4e69c0
     Dot {
      name Dot1
      xpos 572
@@ -20582,7 +20583,7 @@ push $N25b9a730
      xpos 572
      ypos -490
     }
-push $N25b9a730
+push $N5d4e69c0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -20612,14 +20613,14 @@ push $N25b9a730
      xpos 426
      ypos -369
     }
-set N25bdc710 [stack 0]
+set N5d638810 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N25bdc710
-push $N25bdc710
+push $N5d638810
+push $N5d638810
     Viewer {
      inputs 2
      frame_range 1-100
@@ -20738,7 +20739,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N25aeaa20
+push $N5d436e60
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -20874,8 +20875,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N216428f0
-push $N21fc6c20
+push $N4b6f5100
+push $N4d0f0b40
   Group {
    inputs 2
    name gunshot19
@@ -20988,7 +20989,7 @@ push $N21fc6c20
     xpos -207
     ypos 48
    }
-set N25dd9b10 [stack 0]
+set N5da557c0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -21040,7 +21041,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N25e19620 [stack 0]
+set N5da95190 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -21051,7 +21052,7 @@ set N25e19620 [stack 0]
      xpos 350
      ypos -365
     }
-push $N25e19620
+push $N5da95190
     Dot {
      name Dot1
      xpos 572
@@ -21071,7 +21072,7 @@ push $N25e19620
      xpos 572
      ypos -490
     }
-push $N25e19620
+push $N5da95190
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -21101,14 +21102,14 @@ push $N25e19620
      xpos 426
      ypos -369
     }
-set N25e5b650 [stack 0]
+set N5dad70d0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N25e5b650
-push $N25e5b650
+push $N5dad70d0
+push $N5dad70d0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -21128,7 +21129,7 @@ push $N25e5b650
     xpos -101
     ypos -449
    }
-set N25efa000 [stack 0]
+set N5db85960 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -21239,7 +21240,7 @@ push 0
     ypos 717
    }
 push 0
-push $N25dd9b10
+push $N5da557c0
 push 0
    Input {
     inputs 0
@@ -21289,7 +21290,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N25fa9cc0 [stack 0]
+set N5a1453f0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -21300,7 +21301,7 @@ set N25fa9cc0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N25fa9cc0
+push $N5a1453f0
     Dot {
      name Dot1
      xpos 572
@@ -21320,7 +21321,7 @@ push $N25fa9cc0
      xpos 572
      ypos -490
     }
-push $N25fa9cc0
+push $N5a1453f0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -21350,14 +21351,14 @@ push $N25fa9cc0
      xpos 426
      ypos -369
     }
-set N25febca0 [stack 0]
+set N5a187330 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N25febca0
-push $N25febca0
+push $N5a187330
+push $N5a187330
     Viewer {
      inputs 2
      frame_range 1-100
@@ -21476,7 +21477,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N25efa000
+push $N5db85960
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -21613,8 +21614,8 @@ push 0
    }
   end_group
 push 0
-push $N21647640
-push $N21f728f0
+push $N57df6650
+push $N7c3e70c0
   Group {
    inputs 2
    name gunshot20
@@ -21727,7 +21728,7 @@ push $N21f728f0
     xpos -207
     ypos 48
    }
-set N261f90a0 [stack 0]
+set N5a5a42e0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -21779,7 +21780,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N26238b50 [stack 0]
+set N5a5e3cb0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -21790,7 +21791,7 @@ set N26238b50 [stack 0]
      xpos 350
      ypos -365
     }
-push $N26238b50
+push $N5a5e3cb0
     Dot {
      name Dot1
      xpos 572
@@ -21810,7 +21811,7 @@ push $N26238b50
      xpos 572
      ypos -490
     }
-push $N26238b50
+push $N5a5e3cb0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -21840,14 +21841,14 @@ push $N26238b50
      xpos 426
      ypos -369
     }
-set N2627ab30 [stack 0]
+set N5a635b00 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2627ab30
-push $N2627ab30
+push $N5a635b00
+push $N5a635b00
     Viewer {
      inputs 2
      frame_range 1-100
@@ -21867,7 +21868,7 @@ push $N2627ab30
     xpos -101
     ypos -449
    }
-set N26319550 [stack 0]
+set N5a6d4470 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -21978,7 +21979,7 @@ push 0
     ypos 717
    }
 push 0
-push $N261f90a0
+push $N5a5a42e0
 push 0
    Input {
     inputs 0
@@ -22028,7 +22029,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N263c9250 [stack 0]
+set N5a793ed0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -22039,7 +22040,7 @@ set N263c9250 [stack 0]
      xpos 350
      ypos -365
     }
-push $N263c9250
+push $N5a793ed0
     Dot {
      name Dot1
      xpos 572
@@ -22059,7 +22060,7 @@ push $N263c9250
      xpos 572
      ypos -490
     }
-push $N263c9250
+push $N5a793ed0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -22089,14 +22090,14 @@ push $N263c9250
      xpos 426
      ypos -369
     }
-set N2640b230 [stack 0]
+set N5a7d5e10 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2640b230
-push $N2640b230
+push $N5a7d5e10
+push $N5a7d5e10
     Viewer {
      inputs 2
      frame_range 1-100
@@ -22215,7 +22216,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N26319550
+push $N5a6d4470
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -22351,8 +22352,8 @@ push 0
     ypos 1861
    }
   end_group
-push $N205c3fb0
-push $N21f7ca60
+push $N4b5f9cf0
+push $N206270d0
   Group {
    inputs 2
    name gunshot22
@@ -22465,7 +22466,7 @@ push $N21f7ca60
     xpos -207
     ypos 48
    }
-set N26608640 [stack 0]
+set N5aa02bd0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -22517,7 +22518,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N26648100 [stack 0]
+set N5aa44670 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -22528,7 +22529,7 @@ set N26648100 [stack 0]
      xpos 350
      ypos -365
     }
-push $N26648100
+push $N5aa44670
     Dot {
      name Dot1
      xpos 572
@@ -22548,7 +22549,7 @@ push $N26648100
      xpos 572
      ypos -490
     }
-push $N26648100
+push $N5aa44670
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -22578,14 +22579,14 @@ push $N26648100
      xpos 426
      ypos -369
     }
-set N2668a0f0 [stack 0]
+set N5aa865b0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2668a0f0
-push $N2668a0f0
+push $N5aa865b0
+push $N5aa865b0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -22605,7 +22606,7 @@ push $N2668a0f0
     xpos -101
     ypos -449
    }
-set N26728b20 [stack 0]
+set N5ab34e30 [stack 0]
    Dot {
     name Dot22
     xpos -245
@@ -22716,7 +22717,7 @@ push 0
     ypos 717
    }
 push 0
-push $N26608640
+push $N5aa02bd0
 push 0
    Input {
     inputs 0
@@ -22766,7 +22767,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N267d87f0 [stack 0]
+set N5abe4990 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -22777,7 +22778,7 @@ set N267d87f0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N267d87f0
+push $N5abe4990
     Dot {
      name Dot1
      xpos 572
@@ -22797,7 +22798,7 @@ push $N267d87f0
      xpos 572
      ypos -490
     }
-push $N267d87f0
+push $N5abe4990
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -22827,14 +22828,14 @@ push $N267d87f0
      xpos 426
      ypos -369
     }
-set N2681a7d0 [stack 0]
+set N5ac367e0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2681a7d0
-push $N2681a7d0
+push $N5ac367e0
+push $N5ac367e0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -22953,7 +22954,7 @@ push 0
     xpos -396
     ypos 749
    }
-push $N26728b20
+push $N5ab34e30
    Multiply {
     value {{math_matrix.result_z_flash(parent.CTimeOffset7.ref)}}
     name Angle_reveal_side
@@ -23120,13 +23121,13 @@ add_layer {muzzleflash muzzleflash.red muzzleflash.green muzzleflash.blue}
   xpos 1274
   ypos 493
  }
-set N26a00e40 [stack 0]
+set N5963c9c0 [stack 0]
  Dot {
   name Dot9
   xpos 1274
   ypos 657
  }
-push $N200cd5e0
+push $N3e642850
  Transform {
   scale {-1 1}
   center {1920 1080}
@@ -23149,7 +23150,7 @@ push $N200cd5e0
   pbb true
   name Reformat1
   xpos 470
-  ypos -605
+  ypos -606
  }
  FrameHold {
   firstFrame {{SelectRefGun}}
@@ -23205,7 +23206,7 @@ push $N200cd5e0
   addUserKnob {3 ref l "ref frame"}
   ref {{parent.CTimeOffset7.time_offset}}
  }
-set N26a6b5c0 [stack 0]
+set N596a6f80 [stack 0]
  Input {
   inputs 0
   name Card3D
@@ -23223,7 +23224,7 @@ set N26a6b5c0 [stack 0]
   xpos 857
   ypos -137
  }
-set N26a8d490 [stack 0]
+set N596c8e90 [stack 0]
  Dot {
   name Dot5
   xpos 693
@@ -23234,7 +23235,7 @@ set N26a8d490 [stack 0]
   xpos 659
   ypos 81
  }
-push $N26a6b5c0
+push $N596a6f80
  Merge2 {
   inputs 2
   operation plus
@@ -23294,8 +23295,8 @@ push $N26a6b5c0
   xpos 504
   ypos 783
  }
-push $N26a00e40
-push $N26a8d490
+push $N5963c9c0
+push $N596c8e90
  Transform {
   translate {{"\[if \{\[value parent_gun]==\"null\"\} \{return 0\} \{return \[value parent_gun].translate.x\}]"} {"\[if \{\[value parent_gun]==\"null\"\} \{return 0\} \{return \[value parent_gun].translate.y\}]"}}
   rotate {{"\[if \{\[value parent_gun]==\"null\"\} \{return 0\} \{return \[value parent_gun].rotate\}]"}}
@@ -24243,7 +24244,7 @@ push 0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-set N26f0c760 [stack 0]
+set N586971d0 [stack 0]
   PostageStamp {
    name Stamp4
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -24882,7 +24883,7 @@ push 0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-set N272a6cd0 [stack 0]
+set N58d70c10 [stack 0]
   PostageStamp {
    name Stamp5
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -25010,6 +25011,8 @@ set N272a6cd0 [stack 0]
    origset true
    version 46
    colorspace scene_linear
+   in_colorspace scene_linear
+   out_colorspace scene_linear
    name Read50
    xpos 2390
    ypos -3470
@@ -25041,8 +25044,6 @@ set N272a6cd0 [stack 0]
    origset true
    version 48
    colorspace scene_linear
-   in_colorspace scene_linear
-   out_colorspace scene_linear
    name Read48
    xpos 2280
    ypos -3470
@@ -25167,8 +25168,6 @@ set N272a6cd0 [stack 0]
    origset true
    version 44
    colorspace scene_linear
-   in_colorspace scene_linear
-   out_colorspace scene_linear
    name Read40
    xpos 1840
    ypos -3470
@@ -25231,8 +25230,6 @@ set N272a6cd0 [stack 0]
    origset true
    version 56
    colorspace scene_linear
-   in_colorspace scene_linear
-   out_colorspace scene_linear
    name Read36
    xpos 1620
    ypos -3470
@@ -25429,7 +25426,7 @@ set N272a6cd0 [stack 0]
    xpos 1845
    ypos -2639
   }
-set N275eb910 [stack 0]
+set N560e4d50 [stack 0]
   Transform {
    scale {{ScaleSideSmoke.w} {ScaleSideSmoke.h}}
    center {960 540}
@@ -25498,7 +25495,7 @@ push 0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-set N2763b520 [stack 0]
+set N56244930 [stack 0]
   PostageStamp {
    name Stamp6
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -25667,7 +25664,7 @@ set N2763b520 [stack 0]
     xpos -203
     ypos -90
    }
-set N2768c8f0 [stack 0]
+set N56295d30 [stack 0]
 push 0
    Input {
     inputs 0
@@ -25720,7 +25717,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N276cc250 [stack 0]
+set N562d5590 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -25731,7 +25728,7 @@ set N276cc250 [stack 0]
      xpos 350
      ypos -365
     }
-push $N276cc250
+push $N562d5590
     Dot {
      name Dot1
      xpos 572
@@ -25751,7 +25748,7 @@ push $N276cc250
      xpos 572
      ypos -490
     }
-push $N276cc250
+push $N562d5590
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -25781,14 +25778,14 @@ push $N276cc250
      xpos 426
      ypos -369
     }
-set N2770e240 [stack 0]
+set N566273e0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2770e240
-push $N2770e240
+push $N566273e0
+push $N566273e0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -25896,7 +25893,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2768c8f0
+push $N56295d30
 push 0
    Input {
     inputs 0
@@ -25949,7 +25946,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2784a420 [stack 0]
+set N56b73320 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -25960,7 +25957,7 @@ set N2784a420 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2784a420
+push $N56b73320
     Dot {
      name Dot1
      xpos 572
@@ -25980,7 +25977,7 @@ push $N2784a420
      xpos 572
      ypos -490
     }
-push $N2784a420
+push $N56b73320
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -26010,14 +26007,14 @@ push $N2784a420
      xpos 426
      ypos -369
     }
-set N2788c400 [stack 0]
+set N56bb5260 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2788c400
-push $N2788c400
+push $N56bb5260
+push $N56bb5260
     Viewer {
      inputs 2
      frame_range 1-100
@@ -26174,7 +26171,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N279c8670 [stack 0]
+set N56e110e0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -26185,7 +26182,7 @@ set N279c8670 [stack 0]
      xpos 350
      ypos -365
     }
-push $N279c8670
+push $N56e110e0
     Dot {
      name Dot1
      xpos 572
@@ -26205,7 +26202,7 @@ push $N279c8670
      xpos 572
      ypos -490
     }
-push $N279c8670
+push $N56e110e0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -26235,14 +26232,14 @@ push $N279c8670
      xpos 426
      ypos -369
     }
-set N27a0a650 [stack 0]
+set N56e53020 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N27a0a650
-push $N27a0a650
+push $N56e53020
+push $N56e53020
     Viewer {
      inputs 2
      frame_range 1-100
@@ -26400,7 +26397,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp1
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -26457,7 +26454,7 @@ push $N26f0c760
    xpos -359
    ypos -601
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp3
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -26509,7 +26506,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp2
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -26678,7 +26675,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N27bc51a0 [stack 0]
+set N5752d760 [stack 0]
 push 0
    Input {
     inputs 0
@@ -26731,7 +26728,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N27c04af0 [stack 0]
+set N5756cfc0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -26742,7 +26739,7 @@ set N27c04af0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N27c04af0
+push $N5756cfc0
     Dot {
      name Dot1
      xpos 572
@@ -26762,7 +26759,7 @@ push $N27c04af0
      xpos 572
      ypos -490
     }
-push $N27c04af0
+push $N5756cfc0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -26792,14 +26789,14 @@ push $N27c04af0
      xpos 426
      ypos -369
     }
-set N27c46ad0 [stack 0]
+set N575aef00 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N27c46ad0
-push $N27c46ad0
+push $N575aef00
+push $N575aef00
     Viewer {
      inputs 2
      frame_range 1-100
@@ -26907,7 +26904,7 @@ push 0
     ypos 705
    }
 push 0
-push $N27bc51a0
+push $N5752d760
 push 0
    Input {
     inputs 0
@@ -26960,7 +26957,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N27d82cc0 [stack 0]
+set N5780ad00 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -26971,7 +26968,7 @@ set N27d82cc0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N27d82cc0
+push $N5780ad00
     Dot {
      name Dot1
      xpos 572
@@ -26991,7 +26988,7 @@ push $N27d82cc0
      xpos 572
      ypos -490
     }
-push $N27d82cc0
+push $N5780ad00
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -27021,14 +27018,14 @@ push $N27d82cc0
      xpos 426
      ypos -369
     }
-set N27dc4ca0 [stack 0]
+set N5784cc40 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N27dc4ca0
-push $N27dc4ca0
+push $N5784cc40
+push $N5784cc40
     Viewer {
      inputs 2
      frame_range 1-100
@@ -27186,7 +27183,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N27f00f00 [stack 0]
+set N52698bb0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -27197,7 +27194,7 @@ set N27f00f00 [stack 0]
      xpos 350
      ypos -365
     }
-push $N27f00f00
+push $N52698bb0
     Dot {
      name Dot1
      xpos 572
@@ -27217,7 +27214,7 @@ push $N27f00f00
      xpos 572
      ypos -490
     }
-push $N27f00f00
+push $N52698bb0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -27247,14 +27244,14 @@ push $N27f00f00
      xpos 426
      ypos -369
     }
-set N27f42ef0 [stack 0]
+set N526daaf0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N27f42ef0
-push $N27f42ef0
+push $N526daaf0
+push $N526daaf0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -27412,7 +27409,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp7
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -27469,7 +27466,7 @@ push $N26f0c760
    xpos 410
    ypos -608
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp8
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -27521,7 +27518,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp9
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -27690,7 +27687,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N280fda50 [stack 0]
+set N53fb5220 [stack 0]
 push 0
    Input {
     inputs 0
@@ -27743,7 +27740,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2813d3b0 [stack 0]
+set N54204990 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -27754,7 +27751,7 @@ set N2813d3b0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2813d3b0
+push $N54204990
     Dot {
      name Dot1
      xpos 572
@@ -27774,7 +27771,7 @@ push $N2813d3b0
      xpos 572
      ypos -490
     }
-push $N2813d3b0
+push $N54204990
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -27804,14 +27801,14 @@ push $N2813d3b0
      xpos 426
      ypos -369
     }
-set N2817f3a0 [stack 0]
+set N542468d0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2817f3a0
-push $N2817f3a0
+push $N542468d0
+push $N542468d0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -27919,7 +27916,7 @@ push 0
     ypos 705
    }
 push 0
-push $N280fda50
+push $N53fb5220
 push 0
    Input {
     inputs 0
@@ -27972,7 +27969,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N282bb580 [stack 0]
+set N51d927d0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -27983,7 +27980,7 @@ set N282bb580 [stack 0]
      xpos 350
      ypos -365
     }
-push $N282bb580
+push $N51d927d0
     Dot {
      name Dot1
      xpos 572
@@ -28003,7 +28000,7 @@ push $N282bb580
      xpos 572
      ypos -490
     }
-push $N282bb580
+push $N51d927d0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -28033,14 +28030,14 @@ push $N282bb580
      xpos 426
      ypos -369
     }
-set N282fd560 [stack 0]
+set N51dd4710 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N282fd560
-push $N282fd560
+push $N51dd4710
+push $N51dd4710
     Viewer {
      inputs 2
      frame_range 1-100
@@ -28197,7 +28194,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N284397f0 [stack 0]
+set N4f430580 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -28208,7 +28205,7 @@ set N284397f0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N284397f0
+push $N4f430580
     Dot {
      name Dot1
      xpos 572
@@ -28228,7 +28225,7 @@ push $N284397f0
      xpos 572
      ypos -490
     }
-push $N284397f0
+push $N4f430580
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -28258,14 +28255,14 @@ push $N284397f0
      xpos 426
      ypos -369
     }
-set N2847b7d0 [stack 0]
+set N4f4724c0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2847b7d0
-push $N2847b7d0
+push $N4f4724c0
+push $N4f4724c0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -28423,7 +28420,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp13
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -28480,7 +28477,7 @@ push $N26f0c760
    xpos 1198
    ypos -615
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp14
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -28532,7 +28529,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp15
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -28701,7 +28698,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N286362d0 [stack 0]
+set N4d04cbf0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -28754,7 +28751,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N28675c20 [stack 0]
+set N4d08c450 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -28765,7 +28762,7 @@ set N28675c20 [stack 0]
      xpos 350
      ypos -365
     }
-push $N28675c20
+push $N4d08c450
     Dot {
      name Dot1
      xpos 572
@@ -28785,7 +28782,7 @@ push $N28675c20
      xpos 572
      ypos -490
     }
-push $N28675c20
+push $N4d08c450
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -28815,14 +28812,14 @@ push $N28675c20
      xpos 426
      ypos -369
     }
-set N286b7c00 [stack 0]
+set N4d0ce390 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N286b7c00
-push $N286b7c00
+push $N4d0ce390
+push $N4d0ce390
     Viewer {
      inputs 2
      frame_range 1-100
@@ -28930,7 +28927,7 @@ push 0
     ypos 705
    }
 push 0
-push $N286362d0
+push $N4d04cbf0
 push 0
    Input {
     inputs 0
@@ -28983,7 +28980,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N287f3dd0 [stack 0]
+set N4cb2a180 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -28994,7 +28991,7 @@ set N287f3dd0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N287f3dd0
+push $N4cb2a180
     Dot {
      name Dot1
      xpos 572
@@ -29014,7 +29011,7 @@ push $N287f3dd0
      xpos 572
      ypos -490
     }
-push $N287f3dd0
+push $N4cb2a180
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -29044,14 +29041,14 @@ push $N287f3dd0
      xpos 426
      ypos -369
     }
-set N28835db0 [stack 0]
+set N4cb6c0c0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N28835db0
-push $N28835db0
+push $N4cb6c0c0
+push $N4cb6c0c0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -29208,7 +29205,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N28972020 [stack 0]
+set N4e2b8030 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -29219,7 +29216,7 @@ set N28972020 [stack 0]
      xpos 350
      ypos -365
     }
-push $N28972020
+push $N4e2b8030
     Dot {
      name Dot1
      xpos 572
@@ -29239,7 +29236,7 @@ push $N28972020
      xpos 572
      ypos -490
     }
-push $N28972020
+push $N4e2b8030
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -29269,14 +29266,14 @@ push $N28972020
      xpos 426
      ypos -369
     }
-set N289b4010 [stack 0]
+set N50c09e80 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N289b4010
-push $N289b4010
+push $N50c09e80
+push $N50c09e80
     Viewer {
      inputs 2
      frame_range 1-100
@@ -29434,7 +29431,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp10
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -29491,7 +29488,7 @@ push $N26f0c760
    xpos 809
    ypos -612
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp11
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -29543,7 +29540,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp12
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -29712,7 +29709,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N28b74b80 [stack 0]
+set N4e7d4690 [stack 0]
 push 0
    Input {
     inputs 0
@@ -29765,7 +29762,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N28bb44f0 [stack 0]
+set N4df23dc0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -29776,7 +29773,7 @@ set N28bb44f0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N28bb44f0
+push $N4df23dc0
     Dot {
      name Dot1
      xpos 572
@@ -29796,7 +29793,7 @@ push $N28bb44f0
      xpos 572
      ypos -490
     }
-push $N28bb44f0
+push $N4df23dc0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -29826,14 +29823,14 @@ push $N28bb44f0
      xpos 426
      ypos -369
     }
-set N28bf64f0 [stack 0]
+set N4df65d00 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N28bf64f0
-push $N28bf64f0
+push $N4df65d00
+push $N4df65d00
     Viewer {
      inputs 2
      frame_range 1-100
@@ -29941,7 +29938,7 @@ push 0
     ypos 705
    }
 push 0
-push $N28b74b80
+push $N4e7d4690
 push 0
    Input {
     inputs 0
@@ -29994,7 +29991,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N28d326d0 [stack 0]
+set N4c0b1bf0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -30005,7 +30002,7 @@ set N28d326d0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N28d326d0
+push $N4c0b1bf0
     Dot {
      name Dot1
      xpos 572
@@ -30025,7 +30022,7 @@ push $N28d326d0
      xpos 572
      ypos -490
     }
-push $N28d326d0
+push $N4c0b1bf0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -30055,14 +30052,14 @@ push $N28d326d0
      xpos 426
      ypos -369
     }
-set N28d74690 [stack 0]
+set N4e803a40 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N28d74690
-push $N28d74690
+push $N4e803a40
+push $N4e803a40
     Viewer {
      inputs 2
      frame_range 1-100
@@ -30219,7 +30216,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N28eb0940 [stack 0]
+set N4a84f9b0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -30230,7 +30227,7 @@ set N28eb0940 [stack 0]
      xpos 350
      ypos -365
     }
-push $N28eb0940
+push $N4a84f9b0
     Dot {
      name Dot1
      xpos 572
@@ -30250,7 +30247,7 @@ push $N28eb0940
      xpos 572
      ypos -490
     }
-push $N28eb0940
+push $N4a84f9b0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -30280,14 +30277,14 @@ push $N28eb0940
      xpos 426
      ypos -369
     }
-set N28ef2910 [stack 0]
+set N4a8918f0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N28ef2910
-push $N28ef2910
+push $N4a8918f0
+push $N4a8918f0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -30445,7 +30442,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp19
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -30502,7 +30499,7 @@ push $N26f0c760
    xpos 1952
    ypos -622
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp20
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -30554,7 +30551,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp21
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -30723,7 +30720,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N290ad3e0 [stack 0]
+set N4c36c020 [stack 0]
 push 0
    Input {
     inputs 0
@@ -30776,7 +30773,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N290ecd30 [stack 0]
+set N4c3ab880 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -30787,7 +30784,7 @@ set N290ecd30 [stack 0]
      xpos 350
      ypos -365
     }
-push $N290ecd30
+push $N4c3ab880
     Dot {
      name Dot1
      xpos 572
@@ -30807,7 +30804,7 @@ push $N290ecd30
      xpos 572
      ypos -490
     }
-push $N290ecd30
+push $N4c3ab880
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -30837,14 +30834,14 @@ push $N290ecd30
      xpos 426
      ypos -369
     }
-set N2912ed10 [stack 0]
+set N4c3ed7c0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2912ed10
-push $N2912ed10
+push $N4c3ed7c0
+push $N4c3ed7c0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -30952,7 +30949,7 @@ push 0
     ypos 705
    }
 push 0
-push $N290ad3e0
+push $N4c36c020
 push 0
    Input {
     inputs 0
@@ -31005,7 +31002,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2926aed0 [stack 0]
+set N4c7495c0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -31016,7 +31013,7 @@ set N2926aed0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2926aed0
+push $N4c7495c0
     Dot {
      name Dot1
      xpos 572
@@ -31036,7 +31033,7 @@ push $N2926aed0
      xpos 572
      ypos -490
     }
-push $N2926aed0
+push $N4c7495c0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -31066,14 +31063,14 @@ push $N2926aed0
      xpos 426
      ypos -369
     }
-set N292aceb0 [stack 0]
+set N4c78b500 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N292aceb0
-push $N292aceb0
+push $N4c78b500
+push $N4c78b500
     Viewer {
      inputs 2
      frame_range 1-100
@@ -31230,7 +31227,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N293e9140 [stack 0]
+set N4c9d7460 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -31241,7 +31238,7 @@ set N293e9140 [stack 0]
      xpos 350
      ypos -365
     }
-push $N293e9140
+push $N4c9d7460
     Dot {
      name Dot1
      xpos 572
@@ -31261,7 +31258,7 @@ push $N293e9140
      xpos 572
      ypos -490
     }
-push $N293e9140
+push $N4c9d7460
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -31291,14 +31288,14 @@ push $N293e9140
      xpos 426
      ypos -369
     }
-set N2942b140 [stack 0]
+set N4cf292c0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2942b140
-push $N2942b140
+push $N4cf292c0
+push $N4cf292c0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -31456,7 +31453,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp22
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -31513,7 +31510,7 @@ push $N26f0c760
    xpos 2341
    ypos -625
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp23
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -31565,7 +31562,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp24
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -31734,7 +31731,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N295e5c00 [stack 0]
+set N4f0038e0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -31787,7 +31784,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N29625570 [stack 0]
+set N4f043200 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -31798,7 +31795,7 @@ set N29625570 [stack 0]
      xpos 350
      ypos -365
     }
-push $N29625570
+push $N4f043200
     Dot {
      name Dot1
      xpos 572
@@ -31818,7 +31815,7 @@ push $N29625570
      xpos 572
      ypos -490
     }
-push $N29625570
+push $N4f043200
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -31848,14 +31845,14 @@ push $N29625570
      xpos 426
      ypos -369
     }
-set N29667570 [stack 0]
+set N4f085140 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N29667570
-push $N29667570
+push $N4f085140
+push $N4f085140
     Viewer {
      inputs 2
      frame_range 1-100
@@ -31963,7 +31960,7 @@ push 0
     ypos 705
    }
 push 0
-push $N295e5c00
+push $N4f0038e0
 push 0
    Input {
     inputs 0
@@ -32016,7 +32013,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N297a3750 [stack 0]
+set N4f3d1020 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -32027,7 +32024,7 @@ set N297a3750 [stack 0]
      xpos 350
      ypos -365
     }
-push $N297a3750
+push $N4f3d1020
     Dot {
      name Dot1
      xpos 572
@@ -32047,7 +32044,7 @@ push $N297a3750
      xpos 572
      ypos -490
     }
-push $N297a3750
+push $N4f3d1020
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -32077,14 +32074,14 @@ push $N297a3750
      xpos 426
      ypos -369
     }
-set N297e5710 [stack 0]
+set N4ae22e70 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N297e5710
-push $N297e5710
+push $N4ae22e70
+push $N4ae22e70
     Viewer {
      inputs 2
      frame_range 1-100
@@ -32241,7 +32238,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N29921990 [stack 0]
+set N4a46edd0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -32252,7 +32249,7 @@ set N29921990 [stack 0]
      xpos 350
      ypos -365
     }
-push $N29921990
+push $N4a46edd0
     Dot {
      name Dot1
      xpos 572
@@ -32272,7 +32269,7 @@ push $N29921990
      xpos 572
      ypos -490
     }
-push $N29921990
+push $N4a46edd0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -32302,14 +32299,14 @@ push $N29921990
      xpos 426
      ypos -369
     }
-set N29963960 [stack 0]
+set N4a4b0d10 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N29963960
-push $N29963960
+push $N4a4b0d10
+push $N4a4b0d10
     Viewer {
      inputs 2
      frame_range 1-100
@@ -32467,7 +32464,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp16
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -32524,7 +32521,7 @@ push $N26f0c760
    xpos 1578
    ypos -619
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp17
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -32576,7 +32573,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp18
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -32745,7 +32742,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N29b1e460 [stack 0]
+set N4d88b410 [stack 0]
 push 0
    Input {
     inputs 0
@@ -32798,7 +32795,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N29b5ddb0 [stack 0]
+set N4d8cac70 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -32809,7 +32806,7 @@ set N29b5ddb0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N29b5ddb0
+push $N4d8cac70
     Dot {
      name Dot1
      xpos 572
@@ -32829,7 +32826,7 @@ push $N29b5ddb0
      xpos 572
      ypos -490
     }
-push $N29b5ddb0
+push $N4d8cac70
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -32859,14 +32856,14 @@ push $N29b5ddb0
      xpos 426
      ypos -369
     }
-set N29b9fda0 [stack 0]
+set N4ee1cad0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N29b9fda0
-push $N29b9fda0
+push $N4ee1cad0
+push $N4ee1cad0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -32974,7 +32971,7 @@ push 0
     ypos 705
    }
 push 0
-push $N29b1e460
+push $N4d88b410
 push 0
    Input {
     inputs 0
@@ -33027,7 +33024,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N29cdbf50 [stack 0]
+set N49f689d0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -33038,7 +33035,7 @@ set N29cdbf50 [stack 0]
      xpos 350
      ypos -365
     }
-push $N29cdbf50
+push $N49f689d0
     Dot {
      name Dot1
      xpos 572
@@ -33058,7 +33055,7 @@ push $N29cdbf50
      xpos 572
      ypos -490
     }
-push $N29cdbf50
+push $N49f689d0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -33088,14 +33085,14 @@ push $N29cdbf50
      xpos 426
      ypos -369
     }
-set N29d1df40 [stack 0]
+set N49faa910 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N29d1df40
-push $N29d1df40
+push $N49faa910
+push $N49faa910
     Viewer {
      inputs 2
      frame_range 1-100
@@ -33252,7 +33249,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N29e5a1d0 [stack 0]
+set N4d606790 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -33263,7 +33260,7 @@ set N29e5a1d0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N29e5a1d0
+push $N4d606790
     Dot {
      name Dot1
      xpos 572
@@ -33283,7 +33280,7 @@ push $N29e5a1d0
      xpos 572
      ypos -490
     }
-push $N29e5a1d0
+push $N4d606790
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -33313,14 +33310,14 @@ push $N29e5a1d0
      xpos 426
      ypos -369
     }
-set N29e9c1e0 [stack 0]
+set N4d6486d0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N29e9c1e0
-push $N29e9c1e0
+push $N4d6486d0
+push $N4d6486d0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -33478,7 +33475,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp31
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -33535,7 +33532,7 @@ push $N26f0c760
    xpos 3509
    ypos -636
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp32
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -33587,7 +33584,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp33
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -33756,7 +33753,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2a056ca0 [stack 0]
+set N53122e10 [stack 0]
 push 0
    Input {
     inputs 0
@@ -33809,7 +33806,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2a0965f0 [stack 0]
+set N53162670 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -33820,7 +33817,7 @@ set N2a0965f0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2a0965f0
+push $N53162670
     Dot {
      name Dot1
      xpos 572
@@ -33840,7 +33837,7 @@ push $N2a0965f0
      xpos 572
      ypos -490
     }
-push $N2a0965f0
+push $N53162670
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -33870,14 +33867,14 @@ push $N2a0965f0
      xpos 426
      ypos -369
     }
-set N2a0d85f0 [stack 0]
+set N531a45b0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2a0d85f0
-push $N2a0d85f0
+push $N531a45b0
+push $N531a45b0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -33985,7 +33982,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2a056ca0
+push $N53122e10
 push 0
    Input {
     inputs 0
@@ -34038,7 +34035,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2a214790 [stack 0]
+set N4d7003a0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -34049,7 +34046,7 @@ set N2a214790 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2a214790
+push $N4d7003a0
     Dot {
      name Dot1
      xpos 572
@@ -34069,7 +34066,7 @@ push $N2a214790
      xpos 572
      ypos -490
     }
-push $N2a214790
+push $N4d7003a0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -34099,14 +34096,14 @@ push $N2a214790
      xpos 426
      ypos -369
     }
-set N2a256760 [stack 0]
+set N4d7422e0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2a256760
-push $N2a256760
+push $N4d7422e0
+push $N4d7422e0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -34263,7 +34260,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2a3929d0 [stack 0]
+set N4d58e280 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -34274,7 +34271,7 @@ set N2a3929d0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2a3929d0
+push $N4d58e280
     Dot {
      name Dot1
      xpos 572
@@ -34294,7 +34291,7 @@ push $N2a3929d0
      xpos 572
      ypos -490
     }
-push $N2a3929d0
+push $N4d58e280
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -34324,14 +34321,14 @@ push $N2a3929d0
      xpos 426
      ypos -369
     }
-set N2a3d49b0 [stack 0]
+set N4d5d01c0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2a3d49b0
-push $N2a3d49b0
+push $N4d5d01c0
+push $N4d5d01c0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -34489,7 +34486,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp28
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -34546,7 +34543,7 @@ push $N26f0c760
    xpos 3120
    ypos -633
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp29
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -34598,7 +34595,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp30
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -34767,7 +34764,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2a58f480 [stack 0]
+set N537aa8c0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -34820,7 +34817,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2a5cedd0 [stack 0]
+set N537ea120 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -34831,7 +34828,7 @@ set N2a5cedd0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2a5cedd0
+push $N537ea120
     Dot {
      name Dot1
      xpos 572
@@ -34851,7 +34848,7 @@ push $N2a5cedd0
      xpos 572
      ypos -490
     }
-push $N2a5cedd0
+push $N537ea120
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -34881,14 +34878,14 @@ push $N2a5cedd0
      xpos 426
      ypos -369
     }
-set N2a610dc0 [stack 0]
+set N5093bf80 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2a610dc0
-push $N2a610dc0
+push $N5093bf80
+push $N5093bf80
     Viewer {
      inputs 2
      frame_range 1-100
@@ -34996,7 +34993,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2a58f480
+push $N537aa8c0
 push 0
    Input {
     inputs 0
@@ -35049,7 +35046,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2a74cf70 [stack 0]
+set N55787e60 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -35060,7 +35057,7 @@ set N2a74cf70 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2a74cf70
+push $N55787e60
     Dot {
      name Dot1
      xpos 572
@@ -35080,7 +35077,7 @@ push $N2a74cf70
      xpos 572
      ypos -490
     }
-push $N2a74cf70
+push $N55787e60
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -35110,14 +35107,14 @@ push $N2a74cf70
      xpos 426
      ypos -369
     }
-set N2a78ef60 [stack 0]
+set N557c9da0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2a78ef60
-push $N2a78ef60
+push $N557c9da0
+push $N557c9da0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -35274,7 +35271,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2a8cb1f0 [stack 0]
+set N53b25c10 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -35285,7 +35282,7 @@ set N2a8cb1f0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2a8cb1f0
+push $N53b25c10
     Dot {
      name Dot1
      xpos 572
@@ -35305,7 +35302,7 @@ push $N2a8cb1f0
      xpos 572
      ypos -490
     }
-push $N2a8cb1f0
+push $N53b25c10
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -35335,14 +35332,14 @@ push $N2a8cb1f0
      xpos 426
      ypos -369
     }
-set N2a90d200 [stack 0]
+set N53b67b50 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2a90d200
-push $N2a90d200
+push $N53b67b50
+push $N53b67b50
     Viewer {
      inputs 2
      frame_range 1-100
@@ -35500,7 +35497,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp25
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -35557,7 +35554,7 @@ push $N26f0c760
    xpos 2721
    ypos -629
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp26
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -35609,7 +35606,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp27
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -35778,7 +35775,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2aac8f80 [stack 0]
+set N5b043500 [stack 0]
 push 0
    Input {
     inputs 0
@@ -35831,7 +35828,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2ab088d0 [stack 0]
+set N5b082d60 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -35842,7 +35839,7 @@ set N2ab088d0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2ab088d0
+push $N5b082d60
     Dot {
      name Dot1
      xpos 572
@@ -35862,7 +35859,7 @@ push $N2ab088d0
      xpos 572
      ypos -490
     }
-push $N2ab088d0
+push $N5b082d60
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -35892,14 +35889,14 @@ push $N2ab088d0
      xpos 426
      ypos -369
     }
-set N2ab4a8c0 [stack 0]
+set N5b0c4ca0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2ab4a8c0
-push $N2ab4a8c0
+push $N5b0c4ca0
+push $N5b0c4ca0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -36007,7 +36004,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2aac8f80
+push $N5b043500
 push 0
    Input {
     inputs 0
@@ -36060,7 +36057,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2ac86aa0 [stack 0]
+set N3061aaa0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -36071,7 +36068,7 @@ set N2ac86aa0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2ac86aa0
+push $N3061aaa0
     Dot {
      name Dot1
      xpos 572
@@ -36091,7 +36088,7 @@ push $N2ac86aa0
      xpos 572
      ypos -490
     }
-push $N2ac86aa0
+push $N3061aaa0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -36121,14 +36118,14 @@ push $N2ac86aa0
      xpos 426
      ypos -369
     }
-set N2acd20b0 [stack 0]
+set N3065c9e0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2acd20b0
-push $N2acd20b0
+push $N3065c9e0
+push $N3065c9e0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -36285,7 +36282,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2ae0e330 [stack 0]
+set N5b7ae940 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -36296,7 +36293,7 @@ set N2ae0e330 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2ae0e330
+push $N5b7ae940
     Dot {
      name Dot1
      xpos 572
@@ -36316,7 +36313,7 @@ push $N2ae0e330
      xpos 572
      ypos -490
     }
-push $N2ae0e330
+push $N5b7ae940
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -36346,14 +36343,14 @@ push $N2ae0e330
      xpos 426
      ypos -369
     }
-set N2ae50310 [stack 0]
+set N5b6007d0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2ae50310
-push $N2ae50310
+push $N5b6007d0
+push $N5b6007d0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -36511,7 +36508,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp40
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -36568,7 +36565,7 @@ push $N26f0c760
    xpos 4652
    ypos -646
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp41
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -36620,7 +36617,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp42
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -36789,7 +36786,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2b00ae60 [stack 0]
+set N5b5cafc0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -36842,7 +36839,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2b04a7b0 [stack 0]
+set N5b41a720 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -36853,7 +36850,7 @@ set N2b04a7b0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2b04a7b0
+push $N5b41a720
     Dot {
      name Dot1
      xpos 572
@@ -36873,7 +36870,7 @@ push $N2b04a7b0
      xpos 572
      ypos -490
     }
-push $N2b04a7b0
+push $N5b41a720
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -36903,14 +36900,14 @@ push $N2b04a7b0
      xpos 426
      ypos -369
     }
-set N2b08c790 [stack 0]
+set N5b45c660 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2b08c790
-push $N2b08c790
+push $N5b45c660
+push $N5b45c660
     Viewer {
      inputs 2
      frame_range 1-100
@@ -37018,7 +37015,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2b00ae60
+push $N5b5cafc0
 push 0
    Input {
     inputs 0
@@ -37071,7 +37068,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2b1c89b0 [stack 0]
+set N5b2a8540 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -37082,7 +37079,7 @@ set N2b1c89b0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2b1c89b0
+push $N5b2a8540
     Dot {
      name Dot1
      xpos 572
@@ -37102,7 +37099,7 @@ push $N2b1c89b0
      xpos 572
      ypos -490
     }
-push $N2b1c89b0
+push $N5b2a8540
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -37132,14 +37129,14 @@ push $N2b1c89b0
      xpos 426
      ypos -369
     }
-set N2b20a990 [stack 0]
+set N5b2ea480 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2b20a990
-push $N2b20a990
+push $N5b2ea480
+push $N5b2ea480
     Viewer {
      inputs 2
      frame_range 1-100
@@ -37296,7 +37293,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2b346c20 [stack 0]
+set N5be46320 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -37307,7 +37304,7 @@ set N2b346c20 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2b346c20
+push $N5be46320
     Dot {
      name Dot1
      xpos 572
@@ -37327,7 +37324,7 @@ push $N2b346c20
      xpos 572
      ypos -490
     }
-push $N2b346c20
+push $N5be46320
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -37357,14 +37354,14 @@ push $N2b346c20
      xpos 426
      ypos -369
     }
-set N2b388c00 [stack 0]
+set N5be88260 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2b388c00
-push $N2b388c00
+push $N5be88260
+push $N5be88260
     Viewer {
      inputs 2
      frame_range 1-100
@@ -37522,7 +37519,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp34
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -37579,7 +37576,7 @@ push $N26f0c760
    xpos 3889
    ypos -640
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp35
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -37631,7 +37628,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp36
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -37800,7 +37797,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2b5436a0 [stack 0]
+set N324da990 [stack 0]
 push 0
    Input {
     inputs 0
@@ -37853,7 +37850,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2b582be0 [stack 0]
+set N3251a1f0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -37864,7 +37861,7 @@ set N2b582be0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2b582be0
+push $N3251a1f0
     Dot {
      name Dot1
      xpos 572
@@ -37884,7 +37881,7 @@ push $N2b582be0
      xpos 572
      ypos -490
     }
-push $N2b582be0
+push $N3251a1f0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -37914,14 +37911,14 @@ push $N2b582be0
      xpos 426
      ypos -369
     }
-set N2b5c4fe0 [stack 0]
+set N3255c130 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2b5c4fe0
-push $N2b5c4fe0
+push $N3255c130
+push $N3255c130
     Viewer {
      inputs 2
      frame_range 1-100
@@ -38029,7 +38026,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2b5436a0
+push $N324da990
 push 0
    Input {
     inputs 0
@@ -38082,7 +38079,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2b7011c0 [stack 0]
+set Nc8dfcf20 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -38093,7 +38090,7 @@ set N2b7011c0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2b7011c0
+push $Nc8dfcf20
     Dot {
      name Dot1
      xpos 572
@@ -38113,7 +38110,7 @@ push $N2b7011c0
      xpos 572
      ypos -490
     }
-push $N2b7011c0
+push $Nc8dfcf20
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -38143,14 +38140,14 @@ push $N2b7011c0
      xpos 426
      ypos -369
     }
-set N2b7431a0 [stack 0]
+set Nc8e3ee60 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2b7431a0
-push $N2b7431a0
+push $Nc8e3ee60
+push $Nc8e3ee60
     Viewer {
      inputs 2
      frame_range 1-100
@@ -38307,7 +38304,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2b87f440 [stack 0]
+set N4fbcdda0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -38318,7 +38315,7 @@ set N2b87f440 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2b87f440
+push $N4fbcdda0
     Dot {
      name Dot1
      xpos 572
@@ -38338,7 +38335,7 @@ push $N2b87f440
      xpos 572
      ypos -490
     }
-push $N2b87f440
+push $N4fbcdda0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -38368,14 +38365,14 @@ push $N2b87f440
      xpos 426
      ypos -369
     }
-set N2b8c1420 [stack 0]
+set N4d41fbd0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2b8c1420
-push $N2b8c1420
+push $N4d41fbd0
+push $N4d41fbd0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -38533,7 +38530,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp37
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -38590,7 +38587,7 @@ push $N26f0c760
    xpos 4263
    ypos -643
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp38
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -38642,7 +38639,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp39
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -38811,7 +38808,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2ba7bf30 [stack 0]
+set N571ea3b0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -38864,7 +38861,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2babb890 [stack 0]
+set N59839af0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -38875,7 +38872,7 @@ set N2babb890 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2babb890
+push $N59839af0
     Dot {
      name Dot1
      xpos 572
@@ -38895,7 +38892,7 @@ push $N2babb890
      xpos 572
      ypos -490
     }
-push $N2babb890
+push $N59839af0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -38925,14 +38922,14 @@ push $N2babb890
      xpos 426
      ypos -369
     }
-set N2bafd880 [stack 0]
+set N5987ba30 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2bafd880
-push $N2bafd880
+push $N5987ba30
+push $N5987ba30
     Viewer {
      inputs 2
      frame_range 1-100
@@ -39040,7 +39037,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2ba7bf30
+push $N571ea3b0
 push 0
    Input {
     inputs 0
@@ -39093,7 +39090,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2bc39a40 [stack 0]
+set N4b5c78c0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -39104,7 +39101,7 @@ set N2bc39a40 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2bc39a40
+push $N4b5c78c0
     Dot {
      name Dot1
      xpos 572
@@ -39124,7 +39121,7 @@ push $N2bc39a40
      xpos 572
      ypos -490
     }
-push $N2bc39a40
+push $N4b5c78c0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -39154,14 +39151,14 @@ push $N2bc39a40
      xpos 426
      ypos -369
     }
-set N2bc7ba20 [stack 0]
+set N49e196b0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2bc7ba20
-push $N2bc7ba20
+push $N49e196b0
+push $N49e196b0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -39318,7 +39315,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2bdb7ca0 [stack 0]
+set N549655c0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -39329,7 +39326,7 @@ set N2bdb7ca0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2bdb7ca0
+push $N549655c0
     Dot {
      name Dot1
      xpos 572
@@ -39349,7 +39346,7 @@ push $N2bdb7ca0
      xpos 572
      ypos -490
     }
-push $N2bdb7ca0
+push $N549655c0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -39379,14 +39376,14 @@ push $N2bdb7ca0
      xpos 426
      ypos -369
     }
-set N2bdf9c90 [stack 0]
+set N549a7500 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2bdf9c90
-push $N2bdf9c90
+push $N549a7500
+push $N549a7500
     Viewer {
      inputs 2
      frame_range 1-100
@@ -39544,7 +39541,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp49
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -39601,7 +39598,7 @@ push $N26f0c760
    xpos 5820
    ypos -657
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp50
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -39653,7 +39650,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp51
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -39822,7 +39819,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2bfb4700 [stack 0]
+set N5e887b90 [stack 0]
 push 0
    Input {
     inputs 0
@@ -39875,7 +39872,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2bff3c80 [stack 0]
+set N5e8c73f0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -39886,7 +39883,7 @@ set N2bff3c80 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2bff3c80
+push $N5e8c73f0
     Dot {
      name Dot1
      xpos 572
@@ -39906,7 +39903,7 @@ push $N2bff3c80
      xpos 572
      ypos -490
     }
-push $N2bff3c80
+push $N5e8c73f0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -39936,14 +39933,14 @@ push $N2bff3c80
      xpos 426
      ypos -369
     }
-set N2c035c80 [stack 0]
+set N55b191e0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2c035c80
-push $N2c035c80
+push $N55b191e0
+push $N55b191e0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -40051,7 +40048,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2bfb4700
+push $N5e887b90
 push 0
    Input {
     inputs 0
@@ -40104,7 +40101,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2c172230 [stack 0]
+set N5cf65060 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -40115,7 +40112,7 @@ set N2c172230 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2c172230
+push $N5cf65060
     Dot {
      name Dot1
      xpos 572
@@ -40135,7 +40132,7 @@ push $N2c172230
      xpos 572
      ypos -490
     }
-push $N2c172230
+push $N5cf65060
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -40165,14 +40162,14 @@ push $N2c172230
      xpos 426
      ypos -369
     }
-set N2c1b4210 [stack 0]
+set N5cfa6fa0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2c1b4210
-push $N2c1b4210
+push $N5cfa6fa0
+push $N5cfa6fa0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -40329,7 +40326,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2c2f0490 [stack 0]
+set N59702d40 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -40340,7 +40337,7 @@ set N2c2f0490 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2c2f0490
+push $N59702d40
     Dot {
      name Dot1
      xpos 572
@@ -40360,7 +40357,7 @@ push $N2c2f0490
      xpos 572
      ypos -490
     }
-push $N2c2f0490
+push $N59702d40
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -40390,14 +40387,14 @@ push $N2c2f0490
      xpos 426
      ypos -369
     }
-set N2c332470 [stack 0]
+set N59744c80 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2c332470
-push $N2c332470
+push $N59744c80
+push $N59744c80
     Viewer {
      inputs 2
      frame_range 1-100
@@ -40555,7 +40552,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp46
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -40612,7 +40609,7 @@ push $N26f0c760
    xpos 5431
    ypos -654
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp47
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -40664,7 +40661,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp48
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -40833,7 +40830,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2c4ecfe0 [stack 0]
+set N52d1f2f0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -40886,7 +40883,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2c52c940 [stack 0]
+set N52d5eb50 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -40897,7 +40894,7 @@ set N2c52c940 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2c52c940
+push $N52d5eb50
     Dot {
      name Dot1
      xpos 572
@@ -40917,7 +40914,7 @@ push $N2c52c940
      xpos 572
      ypos -490
     }
-push $N2c52c940
+push $N52d5eb50
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -40947,14 +40944,14 @@ push $N2c52c940
      xpos 426
      ypos -369
     }
-set N2c56e940 [stack 0]
+set N52da0a90 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2c56e940
-push $N2c56e940
+push $N52da0a90
+push $N52da0a90
     Viewer {
      inputs 2
      frame_range 1-100
@@ -41062,7 +41059,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2c4ecfe0
+push $N52d1f2f0
 push 0
    Input {
     inputs 0
@@ -41115,7 +41112,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2c6aaaf0 [stack 0]
+set N32a648f0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -41126,7 +41123,7 @@ set N2c6aaaf0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2c6aaaf0
+push $N32a648f0
     Dot {
      name Dot1
      xpos 572
@@ -41146,7 +41143,7 @@ push $N2c6aaaf0
      xpos 572
      ypos -490
     }
-push $N2c6aaaf0
+push $N32a648f0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -41176,14 +41173,14 @@ push $N2c6aaaf0
      xpos 426
      ypos -369
     }
-set N2c6ecad0 [stack 0]
+set N5ce3e690 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2c6ecad0
-push $N2c6ecad0
+push $N5ce3e690
+push $N5ce3e690
     Viewer {
      inputs 2
      frame_range 1-100
@@ -41340,7 +41337,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2c828d50 [stack 0]
+set Nc8d47530 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -41351,7 +41348,7 @@ set N2c828d50 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2c828d50
+push $Nc8d47530
     Dot {
      name Dot1
      xpos 572
@@ -41371,7 +41368,7 @@ push $N2c828d50
      xpos 572
      ypos -490
     }
-push $N2c828d50
+push $Nc8d47530
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -41401,14 +41398,14 @@ push $N2c828d50
      xpos 426
      ypos -369
     }
-set N2c86ad30 [stack 0]
+set Nc8d89470 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2c86ad30
-push $N2c86ad30
+push $Nc8d89470
+push $Nc8d89470
     Viewer {
      inputs 2
      frame_range 1-100
@@ -41566,7 +41563,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp43
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -41623,7 +41620,7 @@ push $N26f0c760
    xpos 5032
    ypos -650
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp44
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -41675,7 +41672,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp45
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -41844,7 +41841,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2ca257a0 [stack 0]
+set N590a69f0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -41897,7 +41894,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2ca64d20 [stack 0]
+set N590e6250 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -41908,7 +41905,7 @@ set N2ca64d20 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2ca64d20
+push $N590e6250
     Dot {
      name Dot1
      xpos 572
@@ -41928,7 +41925,7 @@ push $N2ca64d20
      xpos 572
      ypos -490
     }
-push $N2ca64d20
+push $N590e6250
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -41958,14 +41955,14 @@ push $N2ca64d20
      xpos 426
      ypos -369
     }
-set N2caa6d20 [stack 0]
+set N54c37fe0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2caa6d20
-push $N2caa6d20
+push $N54c37fe0
+push $N54c37fe0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -42073,7 +42070,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2ca257a0
+push $N590a69f0
 push 0
    Input {
     inputs 0
@@ -42126,7 +42123,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2cbe32e0 [stack 0]
+set N5e683e00 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -42137,7 +42134,7 @@ set N2cbe32e0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2cbe32e0
+push $N5e683e00
     Dot {
      name Dot1
      xpos 572
@@ -42157,7 +42154,7 @@ push $N2cbe32e0
      xpos 572
      ypos -490
     }
-push $N2cbe32e0
+push $N5e683e00
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -42187,14 +42184,14 @@ push $N2cbe32e0
      xpos 426
      ypos -369
     }
-set N2cc252d0 [stack 0]
+set N5e6c5d40 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2cc252d0
-push $N2cc252d0
+push $N5e6c5d40
+push $N5e6c5d40
     Viewer {
      inputs 2
      frame_range 1-100
@@ -42351,7 +42348,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2cd61540 [stack 0]
+set N58e219d0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -42362,7 +42359,7 @@ set N2cd61540 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2cd61540
+push $N58e219d0
     Dot {
      name Dot1
      xpos 572
@@ -42382,7 +42379,7 @@ push $N2cd61540
      xpos 572
      ypos -490
     }
-push $N2cd61540
+push $N58e219d0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -42412,14 +42409,14 @@ push $N2cd61540
      xpos 426
      ypos -369
     }
-set N2cda3520 [stack 0]
+set N58e63910 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2cda3520
-push $N2cda3520
+push $N58e63910
+push $N58e63910
     Viewer {
      inputs 2
      frame_range 1-100
@@ -42577,7 +42574,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp55
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -42634,7 +42631,7 @@ push $N26f0c760
    xpos 6567
    ypos -667
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp56
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -42686,7 +42683,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp57
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -42855,7 +42852,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2cf5e060 [stack 0]
+set N32db5e20 [stack 0]
 push 0
    Input {
     inputs 0
@@ -42908,7 +42905,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2cf9d9c0 [stack 0]
+set N32df5680 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -42919,7 +42916,7 @@ set N2cf9d9c0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2cf9d9c0
+push $N32df5680
     Dot {
      name Dot1
      xpos 572
@@ -42939,7 +42936,7 @@ push $N2cf9d9c0
      xpos 572
      ypos -490
     }
-push $N2cf9d9c0
+push $N32df5680
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -42969,14 +42966,14 @@ push $N2cf9d9c0
      xpos 426
      ypos -369
     }
-set N2cfdf9d0 [stack 0]
+set N32e375c0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2cfdf9d0
-push $N2cfdf9d0
+push $N32e375c0
+push $N32e375c0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -43084,7 +43081,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2cf5e060
+push $N32db5e20
 push 0
    Input {
     inputs 0
@@ -43137,7 +43134,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2d11bba0 [stack 0]
+set N5de1b160 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -43148,7 +43145,7 @@ set N2d11bba0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2d11bba0
+push $N5de1b160
     Dot {
      name Dot1
      xpos 572
@@ -43168,7 +43165,7 @@ push $N2d11bba0
      xpos 572
      ypos -490
     }
-push $N2d11bba0
+push $N5de1b160
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -43198,14 +43195,14 @@ push $N2d11bba0
      xpos 426
      ypos -369
     }
-set N2d15db80 [stack 0]
+set N5de5d0a0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2d15db80
-push $N2d15db80
+push $N5de5d0a0
+push $N5de5d0a0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -43362,7 +43359,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2d299e30 [stack 0]
+set N5eca8ed0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -43373,7 +43370,7 @@ set N2d299e30 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2d299e30
+push $N5eca8ed0
     Dot {
      name Dot1
      xpos 572
@@ -43393,7 +43390,7 @@ push $N2d299e30
      xpos 572
      ypos -490
     }
-push $N2d299e30
+push $N5eca8ed0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -43423,14 +43420,14 @@ push $N2d299e30
      xpos 426
      ypos -369
     }
-set N2d2dbe30 [stack 0]
+set N5eceae10 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2d2dbe30
-push $N2d2dbe30
+push $N5eceae10
+push $N5eceae10
     Viewer {
      inputs 2
      frame_range 1-100
@@ -43588,7 +43585,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp52
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -43645,7 +43642,7 @@ push $N26f0c760
    xpos 6200
    ypos -661
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp53
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -43697,7 +43694,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp54
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -43866,7 +43863,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2d4968e0 [stack 0]
+set N57ec5300 [stack 0]
 push 0
    Input {
     inputs 0
@@ -43919,7 +43916,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2d4d6280 [stack 0]
+set N5c914940 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -43930,7 +43927,7 @@ set N2d4d6280 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2d4d6280
+push $N5c914940
     Dot {
      name Dot1
      xpos 572
@@ -43950,7 +43947,7 @@ push $N2d4d6280
      xpos 572
      ypos -490
     }
-push $N2d4d6280
+push $N5c914940
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -43980,14 +43977,14 @@ push $N2d4d6280
      xpos 426
      ypos -369
     }
-set N2d518250 [stack 0]
+set N5c956880 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2d518250
-push $N2d518250
+push $N5c956880
+push $N5c956880
     Viewer {
      inputs 2
      frame_range 1-100
@@ -44095,7 +44092,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2d4968e0
+push $N57ec5300
 push 0
    Input {
     inputs 0
@@ -44148,7 +44145,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2d654460 [stack 0]
+set N593a2620 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -44159,7 +44156,7 @@ set N2d654460 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2d654460
+push $N593a2620
     Dot {
      name Dot1
      xpos 572
@@ -44179,7 +44176,7 @@ push $N2d654460
      xpos 572
      ypos -490
     }
-push $N2d654460
+push $N593a2620
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -44209,14 +44206,14 @@ push $N2d654460
      xpos 426
      ypos -369
     }
-set N2d696440 [stack 0]
+set N593e4560 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2d696440
-push $N2d696440
+push $N593e4560
+push $N593e4560
     Viewer {
      inputs 2
      frame_range 1-100
@@ -44373,7 +44370,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2d7d26d0 [stack 0]
+set N3360e0f0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -44384,7 +44381,7 @@ set N2d7d26d0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2d7d26d0
+push $N3360e0f0
     Dot {
      name Dot1
      xpos 572
@@ -44404,7 +44401,7 @@ push $N2d7d26d0
      xpos 572
      ypos -490
     }
-push $N2d7d26d0
+push $N3360e0f0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -44434,14 +44431,14 @@ push $N2d7d26d0
      xpos 426
      ypos -369
     }
-set N2d8146b0 [stack 0]
+set N33650030 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2d8146b0
-push $N2d8146b0
+push $N33650030
+push $N33650030
     Viewer {
      inputs 2
      frame_range 1-100
@@ -44599,7 +44596,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp61
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -44656,7 +44653,7 @@ push $N26f0c760
    xpos 7336
    ypos -674
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp62
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -44708,7 +44705,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp63
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -44877,7 +44874,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2d9cf190 [stack 0]
+set N323d4470 [stack 0]
 push 0
    Input {
     inputs 0
@@ -44930,7 +44927,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2da0eb00 [stack 0]
+set N32413cd0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -44941,7 +44938,7 @@ set N2da0eb00 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2da0eb00
+push $N32413cd0
     Dot {
      name Dot1
      xpos 572
@@ -44961,7 +44958,7 @@ push $N2da0eb00
      xpos 572
      ypos -490
     }
-push $N2da0eb00
+push $N32413cd0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -44991,14 +44988,14 @@ push $N2da0eb00
      xpos 426
      ypos -369
     }
-set N2da50b00 [stack 0]
+set N32455c10 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2da50b00
-push $N2da50b00
+push $N32455c10
+push $N32455c10
     Viewer {
      inputs 2
      frame_range 1-100
@@ -45106,7 +45103,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2d9cf190
+push $N323d4470
 push 0
    Input {
     inputs 0
@@ -45159,7 +45156,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2db8ccd0 [stack 0]
+set N5d339700 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -45170,7 +45167,7 @@ set N2db8ccd0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2db8ccd0
+push $N5d339700
     Dot {
      name Dot1
      xpos 572
@@ -45190,7 +45187,7 @@ push $N2db8ccd0
      xpos 572
      ypos -490
     }
-push $N2db8ccd0
+push $N5d339700
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -45220,14 +45217,14 @@ push $N2db8ccd0
      xpos 426
      ypos -369
     }
-set N2dbcecb0 [stack 0]
+set N5d37b640 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2dbcecb0
-push $N2dbcecb0
+push $N5d37b640
+push $N5d37b640
     Viewer {
      inputs 2
      frame_range 1-100
@@ -45384,7 +45381,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2dd0af40 [stack 0]
+set N4abc73f0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -45395,7 +45392,7 @@ set N2dd0af40 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2dd0af40
+push $N4abc73f0
     Dot {
      name Dot1
      xpos 572
@@ -45415,7 +45412,7 @@ push $N2dd0af40
      xpos 572
      ypos -490
     }
-push $N2dd0af40
+push $N4abc73f0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -45445,14 +45442,14 @@ push $N2dd0af40
      xpos 426
      ypos -369
     }
-set N2dd4cf30 [stack 0]
+set N5c319080 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2dd4cf30
-push $N2dd4cf30
+push $N5c319080
+push $N5c319080
     Viewer {
      inputs 2
      frame_range 1-100
@@ -45610,7 +45607,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp58
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -45667,7 +45664,7 @@ push $N26f0c760
    xpos 6956
    ypos -670
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp59
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -45719,7 +45716,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp60
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -45888,7 +45885,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2df08240 [stack 0]
+set N567e3f30 [stack 0]
 push 0
    Input {
     inputs 0
@@ -45941,7 +45938,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2df47be0 [stack 0]
+set N56d334d0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -45952,7 +45949,7 @@ set N2df47be0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2df47be0
+push $N56d334d0
     Dot {
      name Dot1
      xpos 572
@@ -45972,7 +45969,7 @@ push $N2df47be0
      xpos 572
      ypos -490
     }
-push $N2df47be0
+push $N56d334d0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -46002,14 +45999,14 @@ push $N2df47be0
      xpos 426
      ypos -369
     }
-set N2df89bc0 [stack 0]
+set N56d75410 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2df89bc0
-push $N2df89bc0
+push $N56d75410
+push $N56d75410
     Viewer {
      inputs 2
      frame_range 1-100
@@ -46117,7 +46114,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2df08240
+push $N567e3f30
 push 0
    Input {
     inputs 0
@@ -46170,7 +46167,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2e0c5dc0 [stack 0]
+set N573c1100 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -46181,7 +46178,7 @@ set N2e0c5dc0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2e0c5dc0
+push $N573c1100
     Dot {
      name Dot1
      xpos 572
@@ -46201,7 +46198,7 @@ push $N2e0c5dc0
      xpos 572
      ypos -490
     }
-push $N2e0c5dc0
+push $N573c1100
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -46231,14 +46228,14 @@ push $N2e0c5dc0
      xpos 426
      ypos -369
     }
-set N2e107dc0 [stack 0]
+set N5ad12d50 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2e107dc0
-push $N2e107dc0
+push $N5ad12d50
+push $N5ad12d50
     Viewer {
      inputs 2
      frame_range 1-100
@@ -46395,7 +46392,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2e244060 [stack 0]
+set N5435eaf0 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -46406,7 +46403,7 @@ set N2e244060 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2e244060
+push $N5435eaf0
     Dot {
      name Dot1
      xpos 572
@@ -46426,7 +46423,7 @@ push $N2e244060
      xpos 572
      ypos -490
     }
-push $N2e244060
+push $N5435eaf0
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -46456,14 +46453,14 @@ push $N2e244060
      xpos 426
      ypos -369
     }
-set N2e286040 [stack 0]
+set N543a0a30 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2e286040
-push $N2e286040
+push $N543a0a30
+push $N543a0a30
     Viewer {
      inputs 2
      frame_range 1-100
@@ -46621,7 +46618,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp70
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -46678,7 +46675,7 @@ push $N26f0c760
    xpos 8504
    ypos -685
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp71
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -46730,7 +46727,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp72
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -46899,7 +46896,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2e446b00 [stack 0]
+set N38a1bce0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -46952,7 +46949,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2e486490 [stack 0]
+set N38a5b540 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -46963,7 +46960,7 @@ set N2e486490 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2e486490
+push $N38a5b540
     Dot {
      name Dot1
      xpos 572
@@ -46983,7 +46980,7 @@ push $N2e486490
      xpos 572
      ypos -490
     }
-push $N2e486490
+push $N38a5b540
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -47013,14 +47010,14 @@ push $N2e486490
      xpos 426
      ypos -369
     }
-set N2e4c8470 [stack 0]
+set N55e0c160 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2e4c8470
-push $N2e4c8470
+push $N55e0c160
+push $N55e0c160
     Viewer {
      inputs 2
      frame_range 1-100
@@ -47128,7 +47125,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2e446b00
+push $N38a1bce0
 push 0
    Input {
     inputs 0
@@ -47181,7 +47178,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2e604620 [stack 0]
+set N5cd57e10 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -47192,7 +47189,7 @@ set N2e604620 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2e604620
+push $N5cd57e10
     Dot {
      name Dot1
      xpos 572
@@ -47212,7 +47209,7 @@ push $N2e604620
      xpos 572
      ypos -490
     }
-push $N2e604620
+push $N5cd57e10
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -47242,14 +47239,14 @@ push $N2e604620
      xpos 426
      ypos -369
     }
-set N2e646600 [stack 0]
+set N5cd99d50 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2e646600
-push $N2e646600
+push $N5cd99d50
+push $N5cd99d50
     Viewer {
      inputs 2
      frame_range 1-100
@@ -47406,7 +47403,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2e782880 [stack 0]
+set N4a6e5a60 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -47417,7 +47414,7 @@ set N2e782880 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2e782880
+push $N4a6e5a60
     Dot {
      name Dot1
      xpos 572
@@ -47437,7 +47434,7 @@ push $N2e782880
      xpos 572
      ypos -490
     }
-push $N2e782880
+push $N4a6e5a60
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -47467,14 +47464,14 @@ push $N2e782880
      xpos 426
      ypos -369
     }
-set N2e7c4860 [stack 0]
+set N53d37650 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2e7c4860
-push $N2e7c4860
+push $N53d37650
+push $N53d37650
     Viewer {
      inputs 2
      frame_range 1-100
@@ -47633,7 +47630,7 @@ push 0
    }
   end_group
 push 0
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp67
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -47690,7 +47687,7 @@ push $N26f0c760
    xpos 8124
    ypos -681
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp68
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -47742,7 +47739,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp69
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -47911,7 +47908,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2e97f360 [stack 0]
+set N565118f0 [stack 0]
 push 0
    Input {
     inputs 0
@@ -47964,7 +47961,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2e9befd0 [stack 0]
+set N56551150 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -47975,7 +47972,7 @@ set N2e9befd0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2e9befd0
+push $N56551150
     Dot {
      name Dot1
      xpos 572
@@ -47995,7 +47992,7 @@ push $N2e9befd0
      xpos 572
      ypos -490
     }
-push $N2e9befd0
+push $N56551150
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -48025,14 +48022,14 @@ push $N2e9befd0
      xpos 426
      ypos -369
     }
-set N2ea00fb0 [stack 0]
+set N56593090 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2ea00fb0
-push $N2ea00fb0
+push $N56593090
+push $N56593090
     Viewer {
      inputs 2
      frame_range 1-100
@@ -48140,7 +48137,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2e97f360
+push $N565118f0
 push 0
    Input {
     inputs 0
@@ -48193,7 +48190,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2eb3d180 [stack 0]
+set N4acded10 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -48204,7 +48201,7 @@ set N2eb3d180 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2eb3d180
+push $N4acded10
     Dot {
      name Dot1
      xpos 572
@@ -48224,7 +48221,7 @@ push $N2eb3d180
      xpos 572
      ypos -490
     }
-push $N2eb3d180
+push $N4acded10
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -48254,14 +48251,14 @@ push $N2eb3d180
      xpos 426
      ypos -369
     }
-set N2eb7f160 [stack 0]
+set N5c5308f0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2eb7f160
-push $N2eb7f160
+push $N5c5308f0
+push $N5c5308f0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -48418,7 +48415,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2ecbb3c0 [stack 0]
+set N5247c600 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -48429,7 +48426,7 @@ set N2ecbb3c0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2ecbb3c0
+push $N5247c600
     Dot {
      name Dot1
      xpos 572
@@ -48449,7 +48446,7 @@ push $N2ecbb3c0
      xpos 572
      ypos -490
     }
-push $N2ecbb3c0
+push $N5247c600
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -48479,14 +48476,14 @@ push $N2ecbb3c0
      xpos 426
      ypos -369
     }
-set N2ecfd3c0 [stack 0]
+set N524be540 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2ecfd3c0
-push $N2ecfd3c0
+push $N524be540
+push $N524be540
     Viewer {
      inputs 2
      frame_range 1-100
@@ -48644,7 +48641,7 @@ push 0
     ypos 193
    }
   end_group
-push $N26f0c760
+push $N586971d0
   PostageStamp {
    name Stamp64
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -48701,7 +48698,7 @@ push $N26f0c760
    xpos 7735
    ypos -678
   }
-push $N272a6cd0
+push $N58d70c10
   PostageStamp {
    name Stamp65
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -48753,7 +48750,7 @@ push $N272a6cd0
    addUserKnob {22 buttonHelp l Help -STARTLINE T stamps.showHelp()}
    addUserKnob {26 version l " " t "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021." -STARTLINE T "<a href=\"http://www.nukepedia.com/gizmos/other/stamps\" style=\"color:#666;text-decoration: none;\"><span style=\"color:#666\"> <big>Stamps v1.1</big></b></a>"}
   }
-push $N2763b520
+push $N56244930
   PostageStamp {
    name Stamp66
    help "Stamps by Adrian Pueyo and Alexey Kuchinski.\nUpdated May 18 2021"
@@ -48922,7 +48919,7 @@ push $N2763b520
     xpos -203
     ypos -90
    }
-set N2eeb7f30 [stack 0]
+set N56898720 [stack 0]
 push 0
    Input {
     inputs 0
@@ -48975,7 +48972,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2eef98b0 [stack 0]
+set N568d7f80 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -48986,7 +48983,7 @@ set N2eef98b0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2eef98b0
+push $N568d7f80
     Dot {
      name Dot1
      xpos 572
@@ -49006,7 +49003,7 @@ push $N2eef98b0
      xpos 572
      ypos -490
     }
-push $N2eef98b0
+push $N568d7f80
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -49036,14 +49033,14 @@ push $N2eef98b0
      xpos 426
      ypos -369
     }
-set N2ef3b890 [stack 0]
+set N31425b20 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2ef3b890
-push $N2ef3b890
+push $N31425b20
+push $N31425b20
     Viewer {
      inputs 2
      frame_range 1-100
@@ -49151,7 +49148,7 @@ push 0
     ypos 705
    }
 push 0
-push $N2eeb7f30
+push $N56898720
 push 0
    Input {
     inputs 0
@@ -49204,7 +49201,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2f077a60 [stack 0]
+set N51375760 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -49215,7 +49212,7 @@ set N2f077a60 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2f077a60
+push $N51375760
     Dot {
      name Dot1
      xpos 572
@@ -49235,7 +49232,7 @@ push $N2f077a60
      xpos 572
      ypos -490
     }
-push $N2f077a60
+push $N51375760
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -49265,14 +49262,14 @@ push $N2f077a60
      xpos 426
      ypos -369
     }
-set N2f0b9a40 [stack 0]
+set N513b76a0 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2f0b9a40
-push $N2f0b9a40
+push $N513b76a0
+push $N513b76a0
     Viewer {
      inputs 2
      frame_range 1-100
@@ -49429,7 +49426,7 @@ push 0
      xpos 460
      ypos -635
     }
-set N2f1f5cd0 [stack 0]
+set N59f12f30 [stack 0]
     Dot {
      name Dot5
      xpos 350
@@ -49440,7 +49437,7 @@ set N2f1f5cd0 [stack 0]
      xpos 350
      ypos -365
     }
-push $N2f1f5cd0
+push $N59f12f30
     Dot {
      name Dot1
      xpos 572
@@ -49460,7 +49457,7 @@ push $N2f1f5cd0
      xpos 572
      ypos -490
     }
-push $N2f1f5cd0
+push $N59f12f30
     TimeBlur {
      divisions 2
      shutter {{parent.decimal*2}}
@@ -49490,14 +49487,14 @@ push $N2f1f5cd0
      xpos 426
      ypos -369
     }
-set N2f237cb0 [stack 0]
+set N59f54e70 [stack 0]
     Output {
      name Output1
      xpos 426
      ypos -221
     }
-push $N2f237cb0
-push $N2f237cb0
+push $N59f54e70
+push $N59f54e70
     Viewer {
      inputs 2
      frame_range 1-100
@@ -49666,7 +49663,7 @@ push 0
    xpos -272
    ypos 322
   }
-push $N275eb910
+push $N560e4d50
 push 0
   Viewer {
    inputs 2
@@ -49747,10 +49744,10 @@ end_group
 Dot {
  name Dot2
  selected true
- xpos 1566
- ypos -1323
+ xpos 639
+ ypos -2024
 }
-set N2f6bd9d0 [stack 0]
+set N50a28570 [stack 0]
 Shuffle2 {
  fromInput1 {{0} B}
  in1 muzzleflash
@@ -49758,16 +49755,16 @@ Shuffle2 {
  mappings "4 muzzleflash.red 0 0 rgba.red 0 0 muzzleflash.green 0 1 rgba.green 0 1 muzzleflash.blue 0 2 rgba.blue 0 2 black -1 -1 rgba.alpha 0 3"
  name Shuffle3
  selected true
- xpos 1532
- ypos -1111
+ xpos 605
+ ypos -1812
 }
 Remove {
  operation keep
  channels rgb
  name Remove3
  selected true
- xpos 1532
- ypos -1085
+ xpos 605
+ ypos -1786
 }
 push 0
 Switch {
@@ -49775,21 +49772,21 @@ Switch {
  which {{parent.muzzleflash1.firing}}
  name Switch2
  selected true
- xpos 1532
- ypos -1022
+ xpos 605
+ ypos -1723
 }
 Dot {
  name Dot7
  selected true
- xpos 1566
- ypos -358
+ xpos 639
+ ypos -1059
 }
-push $N2f6bd9d0
+push $N50a28570
 Dot {
  name Dot8
  selected true
- xpos 2126
- ypos -1323
+ xpos 1199
+ ypos -2024
 }
 Shuffle2 {
  fromInput1 {{0} B}
@@ -49798,22 +49795,22 @@ Shuffle2 {
  mappings "4 smoke.red 0 0 rgba.red 0 0 smoke.green 0 1 rgba.green 0 1 smoke.blue 0 2 rgba.blue 0 2 smoke.alpha 0 3 rgba.alpha 0 3"
  name Shuffle4
  selected true
- xpos 2092
- ypos -1104
+ xpos 1165
+ ypos -1805
 }
 Remove {
  operation keep
  channels rgba
  name Remove4
  selected true
- xpos 2092
- ypos -1078
+ xpos 1165
+ ypos -1779
 }
 Dot {
  name Dot9
  selected true
- xpos 2126
- ypos -493
+ xpos 1199
+ ypos -1194
 }
 Dot {
  inputs 0
@@ -49821,15 +49818,15 @@ Dot {
  label PLATE
  note_font_size 61
  selected true
- xpos 2486
- ypos -1244
+ xpos 1559
+ ypos -1945
 }
 Merge2 {
  inputs 2
  name Merge1
  selected true
- xpos 2452
- ypos -497
+ xpos 1525
+ ypos -1198
 }
 Merge2 {
  inputs 2
@@ -49840,24 +49837,6 @@ Merge2 {
  output rgb
  name Merge4
  selected true
- xpos 2452
- ypos -362
-}
-push $cut_paste_input
-Transform {
- center {1024 778}
- shutteroffset centred
- name Transform3
- selected true
- xpos 1846
- ypos -1862
-}
-Transform {
- inputs 0
- center {1024 778}
- shutteroffset centred
- name Transform4
- selected true
- xpos 2113
- ypos -1841
+ xpos 1525
+ ypos -1063
 }
