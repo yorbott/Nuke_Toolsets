@@ -1,0 +1,92 @@
+Group {
+ name MultiGradient
+ knobChanged "\nk = nuke.thisKnob()\nif k.name().startswith('sample_'):\n    nuke.thisNode()\['color_%s' % k.name().split('_')\[-1]].setEnabled(not k.value())\n"
+ selected true
+ xpos -277
+ ypos 727
+ addUserKnob {20 UserTab l Gradient}
+ addUserKnob {12 point_1 l "Point 1"}
+ point_1 {200 400}
+ addUserKnob {6 sample_1 l "Source color" -STARTLINE}
+ addUserKnob {18 color_1 l "Color 1"}
+ color_1 {0.18 0.5 0.18}
+ addUserKnob {6 color_1_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 color_rgb_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {26 ""}
+ addUserKnob {12 point_2 l "Point 2"}
+ point_2 {400 400}
+ addUserKnob {6 sample_2 l "Source color" -STARTLINE}
+ addUserKnob {18 color_2 l "Color 2"}
+ color_2 {0.01096858457 0.03210552782 0.09802169353}
+ addUserKnob {6 color_2_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {26 ""}
+ addUserKnob {22 add_point l "<font color=\"#7df480\"><b>Add point</b></font>" T "import random\nexpression_nodes = \[]\nscript = \"\"\"n = nuke.thisNode()\nknobs = \{knob_list\}\nfor k in knobs:\n    n.removeKnob(n\[k])\nwith n:\n    nuke.delete(nuke.toNode('\{expr_node\}'))\"\"\"\n\ngroup = nuke.thisNode()\nwith group as groupnode:\n    for n in nuke.allNodes():\n        name = n.name()\n        if n.Class() == 'Expression' and name.startswith('COLOR_') and name.split('_')\[-1].isdigit():\n            expression_nodes.append(n)\n        n\['selected'].setValue(False)\n\n    expression_nodes.sort(key=lambda x: int(x.name().split('_')\[-1]))\n    new_number = int(expression_nodes\[-1].name().split('_')\[-1]) + 1\n\n    divider_name = \"divider_%d\" % new_number\n    color_name = 'color_%d' % new_number\n    point_name = 'point_%d' % new_number\n    cb_name = 'sample_%d' % new_number\n    btn_name = 'remove_%d' % new_number\n    expr_name = 'COLOR_%d' % new_number\n\n    knobs = \[\n        divider_name,\n        color_name,\n        point_name,\n        cb_name,\n        btn_name\n    ]\n\n    groupnode.addKnob(nuke.Text_Knob(divider_name,\"\",\"\"))\n\n    point_knob = nuke.XY_Knob(point_name, 'Point %d' % new_number)\n    point_knob.setValue((groupnode.width() / 2, groupnode.height() / 2))\n    groupnode.addKnob(point_knob)\n\n    cb_knob = nuke.Boolean_Knob(cb_name, 'Source color')\n    cb_knob.clearFlag(nuke.STARTLINE)\n    cb_knob.setValue(\n        all(knob.value() for name, knob in groupnode.knobs().items() if name.startswith('sample'))\n        )\n    groupnode.addKnob(cb_knob)\n\n\n\n\n    color_knob = nuke.Color_Knob(color_name, 'Color %d' % new_number)\n    color_knob.setValue(tuple(random.random() for _ in range(3)))\n    groupnode.addKnob(color_knob)\n\n    script_knob = nuke.PyScript_Knob(\n        btn_name, '<font color=\"#f47d7d\"><b>X</b></font>', script.format(knob_list=str(knobs), expr_node=expr_name)\n    )\n    groupnode.addKnob(script_knob)\n\n    expr = nuke.nodes.Expression(name=expr_name)\n    expr.setXYpos(\n        expression_nodes\[-1].xpos(), expression_nodes\[-1].ypos() + 30\n        )\n    expr.setInput(0, expression_nodes\[-1])\n    expr_values = \{\n        'temp_name0': 'px',\n        'temp_name1': 'py',\n        'temp_name2': 'smpl',\n        'temp_expr0': 'int(parent.point_%d.x)' % new_number,\n        'temp_expr1': 'int(parent.point_%d.y)' % new_number,\n        'temp_expr2': 'parent.sample_%s' % new_number,\n        'expr0': 'x == px && y == py ? (smpl ? sample_layer.r: parent.color_%s.r): r' % new_number,\n        'expr1': 'x == px && y == py ? (smpl ? sample_layer.g: parent.color_%s.g): g' % new_number,\n        'expr2': 'x == px && y == py ? (smpl ? sample_layer.b: parent.color_%s.b): b' % new_number,\n        'expr3': 'x == px && y == py ? 1 : a'\n    \}\n\n    for key, value in expr_values.items():\n        expr\[key].setValue(value)\n\n    nuke.toNode('EdgeExtend').setInput(0, expr)" +STARTLINE}
+}
+ Input {
+  inputs 0
+  name Source
+  xpos 359
+  ypos -33
+ }
+add_layer {sample_layer sample_layer.r sample_layer.g sample_layer.b}
+ Shuffle {
+  black black
+  white black
+  red2 black
+  green2 black
+  out sample_layer
+  out2 rgba
+  name Shuffle1
+  xpos 359
+  ypos 12
+ }
+ Expression {
+  temp_name0 px
+  temp_expr0 int(parent.point_1.x)
+  temp_name1 py
+  temp_expr1 int(parent.point_1.y)
+  temp_name2 smpl
+  temp_expr2 parent.sample_1
+  expr0 "x == px && y == py ? (smpl ? sample_layer.r: parent.color_1.r): r"
+  expr1 "x == px && y == py ? (smpl ? sample_layer.g: parent.color_1.g): g"
+  expr2 "x == px && y == py ? (smpl ? sample_layer.b: parent.color_1.b): b"
+  expr3 "x == px && y == py ? 1 : a"
+  name COLOR_1
+  xpos 359
+  ypos 52
+ }
+ Expression {
+  temp_name0 px
+  temp_expr0 int(parent.point_2.x)
+  temp_name1 py
+  temp_expr1 int(parent.point_2.y)
+  temp_name2 smpl
+  temp_expr2 parent.sample_2
+  expr0 "x == px && y == py ? (smpl ? sample_layer.r: parent.color_2.r): r"
+  expr1 "x == px && y == py ? (smpl ? sample_layer.g: parent.color_2.g): g"
+  expr2 "x == px && y == py ? (smpl ? sample_layer.b: parent.color_2.b): b"
+  expr3 "x == px && y == py ? 1 : a"
+  name COLOR_2
+  xpos 359
+  ypos 90
+ }
+ EdgeExtend {
+  sourceIsPremultiplied true
+  detailAmount 0
+  premultiply false
+  name EdgeExtend
+  xpos 529
+  ypos 90
+ }
+ Remove {
+  channels sample_layer
+  name Remove1
+  xpos 529
+  ypos 129
+ }
+ Output {
+  name Output1
+  xpos 529
+  ypos 201
+ }
+end_group
