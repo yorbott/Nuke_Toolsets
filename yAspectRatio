@@ -1,104 +1,106 @@
 Group {
-inputs 0
-name yAspectRatio
-tile_color 0x3f3f3fff
-selected true
-xpos -110
-ypos 3262
-addUserKnob {20 User}
-addUserKnob {26 _2 l "" +STARTLINE T "<h2>calculate correct aspect ratio "}
-addUserKnob {26 _3 l "" +STARTLINE T "<i>inside current project resolution"}
-addUserKnob {26 _4 l "" +STARTLINE T "\n"}
-addUserKnob {41 box_width_1 l integer T callback_engine.box_width}
-addUserKnob {41 box_height_1 l "" -STARTLINE T callback_engine.box_height}
-addUserKnob {41 box_pixel_aspect l "pixel aspect" +INVISIBLE T Reformat2.box_pixel_aspect}
-addUserKnob {20 _11 l "" +STARTLINE n 1}
-_11 0
-addUserKnob {41 aspect_ratio_1 l ratio T callback_engine.aspect_ratio}
-addUserKnob {41 lock_mode l "" -STARTLINE T callback_engine.lock_mode}
-addUserKnob {20 endGroup_1 l endGroup n -1}
-addUserKnob {26 _1 l "" +STARTLINE T "\n\n"}
-addUserKnob {41 menu l "resize type" T callback_engine.menu}
-addUserKnob {22 paste l "paste to node" t "use this button to paste this bbox data inside the \"to\" knobs of a selected cornerpin node.\nthis will automaticly create a expression link to this tool" -STARTLINE T "knob_changed_logic = \"\"\"\n# Get the node and the knob that was just changed\nnode = nuke.thisNode()\nknob = nuke.thisKnob()\n\n\n# --- GUARD ---\n# Only run the code if the 'invert' knob was the one that changed\nif knob.name() == 'invert':\n    \n    # Check the new value of the 'invert' knob\n    if knob.value() == True:\n        # If it's inverted, set the label to 'stabilized'\n        node\['label'].setValue('stabilized')\n    else:\n        # If it's not inverted, set the label to 'matchmove'\n        node\['label'].setValue('matchmove')\n\"\"\"\n\n\n#set currrent node\nmnode = nuke.thisNode()\n\n\n#set parent\nbbox = mnode\['bboxx'].getValue()\nname = mnode\['name'].value()\nmnode.end()\n\n\n\nsnode = nuke.selectedNode()\n\n\n\nif snode.Class() == 'CornerPin2D':\n\n\n    if not snode\['from1'].hasExpression():\n        snode.knob('from1').setExpression('\{\}.bboxx.x'.format(name), 0)\n        snode.knob('from1').setExpression('\{\}.bboxx.y'.format(name), 1)\n        \n        snode.knob('from2').setExpression('\{\}.bboxx.r'.format(name), 0)\n        snode.knob('from2').setExpression('\{\}.bboxx.y'.format(name), 1)\n        \n        snode.knob('from3').setExpression('\{\}.bboxx.r'.format(name), 0)\n        snode.knob('from3').setExpression('\{\}.bboxx.t'.format(name), 1)\n        \n        snode.knob('from4').setExpression('\{\}.bboxx.x'.format(name), 0)\n        snode.knob('from4').setExpression('\{\}.bboxx.t'.format(name), 1)\n\n\n        snode\['invert'].setValue(True)\n        snode\['label'].setValue('Stabilize')\n        snode\['tile_color'].setValue(2488506879)\n        snode.setSelected(False)\n\n\n\n        snode\['knobChanged'].setValue(knob_changed_logic)\n    else:\n        nuke.alert('make sure you bake your cornerpin node before using this node')\nelse:\n    nuke.alert('you need to select a CornerPin node to paste this data')\n\n\n\n\n\n"}
-addUserKnob {7 overscan l scale}
-overscan 0.8
-addUserKnob {20 _7 l "" +STARTLINE n 1}
-_7 0
-addUserKnob {41 bboxx l bbox T NoOp1.bbox}
-addUserKnob {20 endGroup n -1}
-addUserKnob {26 _6 l "" +STARTLINE T "\n\n\n"}
-addUserKnob {22 py_none l none +INVISIBLE T "#set currrent node\nmnode = nuke.thisNode()\n\n\nmnode.begin()\n\nreformat = nuke.toNode('Reformat_to_project')\nreformat\['resize'].setValue('none')\n\nmnode.end()" +STARTLINE}
-addUserKnob {22 py_fit l fit -STARTLINE +INVISIBLE T "#set currrent node\nmnode = nuke.thisNode()\n\n\nmnode.begin()\n\nreformat = nuke.toNode('Reformat_to_project')\nreformat\['resize'].setValue('fit')\n\nmnode.end()"}
-addUserKnob {26 _5 l "" +STARTLINE T "\n\n\n<i>made by Yorben Otto - v1.0"}
-addUserKnob {20 help_1 l help}
-addUserKnob {26 _8 l "" +STARTLINE T <h2>instructions:}
-addUserKnob {26 instructions l "" +STARTLINE T "- track your screen with 4 tracks on \nthe corners of the screen \n(if not possible, you can create a \nrough 2d track and hand animate \nyour cornerpin. I recommend to \ndo this inside of a tracker node, \notherwise this tool wont be as \nsimple to implement.)\n- create a BAKED cornerpin from this \ntracker node.\n- while having the properties open \nfrom this yAspectRatio node, select \nthe just made cornerpin node, and \npress the \"paste to node\"\n\nVoila! you can readjust the resolution \nof your screen, but it will stay relative\nin size of your current project resolution. "}
+ inputs 0
+ name yAspectRatio
+ tile_color 0x3f3f3fff
+ selected true
+ xpos 809
+ ypos 8197
+ addUserKnob {20 User}
+ addUserKnob {26 _2 l "" +STARTLINE T "<h2>Calculate correct aspect ratio "}
+ addUserKnob {26 _3 l "" +STARTLINE T "<i>inside current project resolution"}
+ addUserKnob {26 _4 l "" +STARTLINE T "\n"}
+ addUserKnob {41 resolution_presets l "Resolution Presets" T callback_engine.resolution_presets}
+ addUserKnob {41 box_width_1 l resolution T callback_engine.box_width}
+ addUserKnob {41 box_height_1 l "" -STARTLINE T callback_engine.box_height}
+ addUserKnob {41 box_pixel_aspect l "pixel aspect" +INVISIBLE T Reformat2.box_pixel_aspect}
+ addUserKnob {20 _11 l "" +STARTLINE n 1}
+ _11 0
+ addUserKnob {41 aspect_ratio_1 l ratio T callback_engine.aspect_ratio}
+ addUserKnob {41 lock_mode l "" -STARTLINE T callback_engine.lock_mode}
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+ addUserKnob {26 _1 l "" +STARTLINE T "\n\n"}
+ addUserKnob {41 menu l "resize type" T callback_engine.menu}
+ addUserKnob {22 paste l "paste to node" t "use this button to paste this bbox data inside the \"to\" knobs of a selected cornerpin node.\nthis will automaticly create a expression link to this tool" -STARTLINE T "knob_changed_logic = \"\"\"\n# Get the node and the knob that was just changed\nnode = nuke.thisNode()\nknob = nuke.thisKnob()\n\n\n# --- GUARD ---\n# Only run the code if the 'invert' knob was the one that changed\nif knob.name() == 'invert':\n    \n    # Check the new value of the 'invert' knob\n    if knob.value() == True:\n        # If it's inverted, set the label to 'stabilized'\n        node\['label'].setValue('stabilized')\n    else:\n        # If it's not inverted, set the label to 'matchmove'\n        node\['label'].setValue('matchmove')\n\"\"\"\n\n\nrotate_button_logic = \"\"\"\n# This script rotates the values/expressions of the 'from' knobs.\n\n\n# Get the node that this button is attached to\nnode = nuke.thisNode()\n\n\n# Define the names of the knobs we want to manipulate\nfrom_knobs = \['from1', 'from2', 'from3', 'from4']\n\n\n# Get the current value/expression from each knob using toScript().\n# toScript() correctly captures the knob's state, including expressions.\ncurrent_values = \[node\[k].toScript() for k in from_knobs]\n\n\n# Rotate the list of values.\n# This takes the last item from the list and places it at the beginning.\nrotated_values = \[current_values\[-1]] + current_values\[:-1]\n\n\n# Apply the newly ordered values/expressions back to the knobs using fromScript().\nfor i, knob_name in enumerate(from_knobs):\n    node\[knob_name].fromScript(rotated_values\[i])\n\"\"\"\n\n\n\n\n#set currrent node\nmnode = nuke.thisNode()\n\n\n#set parent\nbbox = mnode\['bboxx'].getValue()\nname = mnode\['name'].value()\nmnode.end()\n\n\n\nsnode = nuke.selectedNode()\n\n\n\nif snode.Class() == 'CornerPin2D':\n    # if not snode\['from1'].hasExpression():\n    snode.knob('from1').setExpression('\{\}.bboxx.x'.format(name), 0)\n    snode.knob('from1').setExpression('\{\}.bboxx.y'.format(name), 1)\n    \n    snode.knob('from2').setExpression('\{\}.bboxx.r'.format(name), 0)\n    snode.knob('from2').setExpression('\{\}.bboxx.y'.format(name), 1)\n    \n    snode.knob('from3').setExpression('\{\}.bboxx.r'.format(name), 0)\n    snode.knob('from3').setExpression('\{\}.bboxx.t'.format(name), 1)\n    \n    snode.knob('from4').setExpression('\{\}.bboxx.x'.format(name), 0)\n    snode.knob('from4').setExpression('\{\}.bboxx.t'.format(name), 1)\n\n\n    snode\['invert'].setValue(True)\n    snode\['label'].setValue('Stabilize')\n    snode\['tile_color'].setValue(2488506879)\n    snode.setSelected(False)\n    try:\n        tab_knob = nuke.Tab_Knob('customRotate', 'Rotate points')\n        py_button_knob = nuke.PyScript_Knob('runRotateLogic', 'Rotate points')\n        py_button_knob.setCommand(rotate_button_logic)\n        snode.addKnob(tab_knob)\n        snode.addKnob(py_button_knob)\n        \n    except:\n        print('niet gelukt')\n    snode\['knobChanged'].setValue(knob_changed_logic)\n\n\nelse:\n    nuke.alert('you need to select a CornerPin node to paste this data')\n\n\n\n\n\n\n\n "}
+ addUserKnob {7 overscan l scale}
+ overscan 0.8
+ addUserKnob {20 _7 l "" +STARTLINE n 1}
+ _7 0
+ addUserKnob {41 bboxx l bbox T NoOp1.bbox}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {26 _6 l "" +STARTLINE T "\n\n\n"}
+ addUserKnob {22 py_none l none +INVISIBLE T "#set currrent node\nmnode = nuke.thisNode()\n\n\nmnode.begin()\n\nreformat = nuke.toNode('Reformat_to_project')\nreformat\['resize'].setValue('none')\n\nmnode.end()" +STARTLINE}
+ addUserKnob {22 py_fit l fit -STARTLINE +INVISIBLE T "#set currrent node\nmnode = nuke.thisNode()\n\n\nmnode.begin()\n\nreformat = nuke.toNode('Reformat_to_project')\nreformat\['resize'].setValue('fit')\n\nmnode.end()"}
+ addUserKnob {26 _5 l "" +STARTLINE T "\n\n\n<i>made by Yorben Otto - v1.2"}
+ addUserKnob {20 help_1 l help}
+ addUserKnob {26 instructions l "" +STARTLINE T "<h2>Instructions:</h2>\n<hr>\n<p>\nThis tool calculates the correct aspect ratio<br>for an element (like a phone screen) and keeps<br>it scaled correctly within the project's resolution.\n</p>\n\n\n<h3>Workflow:</h3>\n<ul>\n    <li>Track the 4 corners of the screen. It is highly<br>recommended to do this inside a <b>Tracker node</b>.</li>\n    <li>With this yAspectRatio node's properties panel<br>open, select the CornerPin node.</li>\n    <li>Press the <b>\"paste to node\"</b> button in the<br>main tab of this tool.</li>\n</ul>\n\n\n<p>\n<i>Voila! This will link the CornerPin's 'from' knobs<br>to this tool and set it to Stabilize mode.<br>You can now adjust the screen resolution, and<br>the CornerPin will update automatically.</i>\n</p>\n<hr>"}
 }
-Constant {
-inputs 0
-channels rgb
-name Constant2
-xpos -276
-ypos 90
-}
-Reformat {
-type "to box"
-box_width {{parent.callback_engine.box_width}}
-box_height {{parent.callback_engine.box_height}}
-box_fixed true
-resize distort
-filter impulse
-name Reformat2
-xpos -276
-ypos 193
-}
-Grade {
-name Grade1
-xpos -276
-ypos 217
-}
-Reformat {
-resize fit
-pbb true
-name Reformat_to_project
-xpos -276
-ypos 246
-}
-NoOp {
-name NoOp1
-xpos -276
-ypos 274
-addUserKnob {20 User}
-addUserKnob {15 bbox}
-bbox {{(root.width/2)+((input.bbox.x-(root.width/2))*overscan)} {(root.height/2)+((input.bbox.y-(root.height/2))*overscan)} {(root.width/2)+((input.bbox.r-(root.width/2))*overscan)} {(root.height/2)+((input.bbox.t-(root.height/2))*overscan)}}
-}
-Crop {
-box {{parent.NoOp1.bbox} {parent.NoOp1.bbox} {parent.NoOp1.bbox} {parent.NoOp1.bbox}}
-name Crop1
-xpos -276
-ypos 308
-}
-Output {
-name Output1
-xpos -276
-ypos 393
-}
-NoOp {
-inputs 0
-name callback_engine
-knobChanged "\n\ndef my_knob_changed_callback():\n    # Haal de node en de knob die is veranderd op\n    n = nuke.thisNode()\n    k = nuke.thisKnob()\n    knob_name = k.name()\n\n    # Lijst met de knobs die we willen monitoren\n    target_knobs = \['box_width', 'box_height', 'aspect_ratio', 'lock_mode', 'menu']\n\n    if knob_name not in target_knobs:\n        return\n\n    # --- LOGICA ---\n    import math\n    # Functie om de afmetingen bij te werken op basis van de lock-modus\n    def update_dimensions():\n        try:\n            # Haal de waarden op\n            lock_mode = n\['lock_mode'].value()\n            ar_width = n\['aspect_ratio'].value(0)\n            ar_height = n\['aspect_ratio'].value(1)\n\n            if ar_height == 0: return # Voorkom delen door nul\n\n            new_ratio = ar_width / ar_height\n\n            if lock_mode == 'Lock Width':\n                width = n\['box_width'].value()\n                new_height = round(width / new_ratio)\n                n\['box_height'].setValue(new_height)\n            \n            elif lock_mode == 'Lock Height':\n                height = n\['box_height'].value()\n                new_width = round(height * new_ratio)\n                n\['box_width'].setValue(new_width)\n\n        except (ValueError, ZeroDivisionError):\n            # Negeer fouten als de waarden tijdelijk ongeldig zijn\n            pass\n\n    # 1. Als de BREEDTE of HOOGTE wordt aangepast:\n    #    Bereken de nieuwe aspect ratio.\n    if knob_name in \['box_width', 'box_height']:\n        width = int(n\['box_width'].value())\n        height = int(n\['box_height'].value())\n\n        if height == 0: return\n\n        gcd = math.gcd(width, height)\n        ar_w = width // gcd\n        ar_h = height // gcd\n        \n        ar_knob = n\['aspect_ratio']\n        ar_knob.setValue(ar_w, 0)\n        ar_knob.setValue(ar_h, 1)\n\n    # 2. Als de ASPECT RATIO of LOCK MODE wordt aangepast:\n    #    Pas de afmetingen aan op basis van de gekozen lock.\n    elif knob_name in \['aspect_ratio', 'lock_mode']:\n        update_dimensions()\n    \n    elif knob_name == 'menu':\n        if n\['menu'].getValue() == 0.0:\n            nuke.toNode('Reformat_to_project')\['resize'].setValue('0.0')\n        elif n\['menu'].getValue() == 1.0:\n            nuke.toNode('Reformat_to_project')\['resize'].setValue('3.0')\n\n\n# Voer de functie uit\nmy_knob_changed_callback()"
-xpos -85
-ypos 122
-hide_input true
-addUserKnob {20 User}
-addUserKnob {3 box_width l integer}
-box_width 640
-addUserKnob {3 box_height l "" -STARTLINE}
-box_height 480
-addUserKnob {12 aspect_ratio l ratio}
-aspect_ratio {4 3}
-addUserKnob {4 lock_mode l "" -STARTLINE M {"Lock Height" "Lock Width" ""}}
-addUserKnob {4 menu l "resize type" M {none fit ""}}
-menu fit
-}
+ Constant {
+  inputs 0
+  channels rgb
+  name Constant2
+  xpos -276
+  ypos -35
+ }
+ Reformat {
+  type "to box"
+  box_width {{parent.callback_engine.box_width}}
+  box_height {{parent.callback_engine.box_height}}
+  box_fixed true
+  resize distort
+  filter impulse
+  name Reformat2
+  xpos -276
+  ypos 152
+ }
+ Grade {
+  name Grade1
+  xpos -276
+  ypos 191
+ }
+ Reformat {
+  resize fit
+  pbb true
+  name Reformat_to_project
+  xpos -276
+  ypos 246
+ }
+ NoOp {
+  name NoOp1
+  xpos -276
+  ypos 274
+  addUserKnob {20 User}
+  addUserKnob {15 bbox}
+  bbox {{(root.width/2)+((input.bbox.x-(root.width/2))*overscan)} {(root.height/2)+((input.bbox.y-(root.height/2))*overscan)} {(root.width/2)+((input.bbox.r-(root.width/2))*overscan)} {(root.height/2)+((input.bbox.t-(root.height/2))*overscan)}}
+ }
+ Crop {
+  box {{parent.NoOp1.bbox} {parent.NoOp1.bbox} {parent.NoOp1.bbox} {parent.NoOp1.bbox}}
+  name Crop1
+  xpos -276
+  ypos 308
+ }
+ Output {
+  name Output1
+  xpos -276
+  ypos 393
+ }
+ NoOp {
+  inputs 0
+  name callback_engine
+  knobChanged "\nimport re\nimport math\n\ndef my_knob_changed_callback():\n    # Get the node and the knob that changed\n    n = nuke.thisNode()\n    k = nuke.thisKnob()\n    knob_name = k.name()\n\n    # List of knobs to monitor\n    target_knobs = \['box_width', 'box_height', 'aspect_ratio', 'lock_mode', 'menu', 'resolution_presets']\n\n    if knob_name not in target_knobs:\n        return\n\n    # --- HELPER FUNCTIONS ---\n    def sync_preset_menu(width, height):\n        \"\"\"Checks if the current resolution matches a preset and updates the menu.\"\"\"\n        if nuke.thisKnob().name() == 'resolution_presets':\n            return\n\n        presets_knob = n\['resolution_presets']\n        menu_items = presets_knob.values()\n        current_res_string = \"(\{\}x\{\})\".format(int(width), int(height))\n\n        for index, item in enumerate(menu_items):\n            if current_res_string in item:\n                presets_knob.setValue(index)\n                return\n        \n        presets_knob.setValue(0)\n\n    def update_aspect_ratio_from_res(width, height):\n        \"\"\"Calculates and sets the simplified aspect ratio from width and height.\"\"\"\n        if height == 0: return\n        common_divisor = math.gcd(int(width), int(height))\n        ar_w = int(width) // common_divisor\n        ar_h = int(height) // common_divisor\n        ar_knob = n\['aspect_ratio']\n        ar_knob.setValue(ar_w, 0)\n        ar_knob.setValue(ar_h, 1)\n\n    def update_dimensions_from_ratio():\n        \"\"\"Updates width or height based on the current ratio and lock mode.\"\"\"\n        try:\n            lock_mode = n\['lock_mode'].value()\n            ar_width = n\['aspect_ratio'].value(0)\n            ar_height = n\['aspect_ratio'].value(1)\n            if ar_height == 0: return\n            new_ratio = ar_width / ar_height\n            if lock_mode == 'Lock Width':\n                width = n\['box_width'].value()\n                n\['box_height'].setValue(round(width / new_ratio))\n            elif lock_mode == 'Lock Height':\n                height = n\['box_height'].value()\n                n\['box_width'].setValue(round(height * new_ratio))\n        except (ValueError, ZeroDivisionError): pass\n\n    # --- LOGIC BRANCHES ---\n\n    if knob_name == 'resolution_presets':\n        selected_item = k.value()\n        if selected_item == \"Custom\": return\n        match = re.search(r'\\((.*?)\\)', selected_item)\n        if match:\n            resolution_string = match.group(1)\n            if 'x' in resolution_string:\n                parts = resolution_string.split('x')\n                if len(parts) == 2:\n                    try:\n                        width, height = int(parts\[0]), int(parts\[1])\n                        n\['box_width'].setValue(width)\n                        n\['box_height'].setValue(height)\n                        update_aspect_ratio_from_res(width, height)\n                    except ValueError: pass\n\n    elif knob_name in \['box_width', 'box_height']:\n        width, height = n\['box_width'].value(), n\['box_height'].value()\n        update_aspect_ratio_from_res(width, height)\n        sync_preset_menu(width, height)\n\n    elif knob_name in \['aspect_ratio', 'lock_mode']:\n        update_dimensions_from_ratio()\n        width, height = n\['box_width'].value(), n\['box_height'].value()\n        sync_preset_menu(width, height)\n    \n    elif knob_name == 'menu':\n        if n\['menu'].getValue() == 0.0: nuke.toNode('Reformat_to_project')\['resize'].setValue('0.0')\n        elif n\['menu'].getValue() == 1.0: nuke.toNode('Reformat_to_project')\['resize'].setValue('3.0')\n\nmy_knob_changed_callback()\n"
+  xpos -85
+  ypos 122
+  hide_input true
+  addUserKnob {20 User}
+  addUserKnob {68 resolution_presets l "Resolution Presets" M {Custom "Phones/Apple/iPhone 15 Pro Max (1290x2796)" "Phones/Apple/iPhone 15 Pro (1179x2556)" "Phones/Apple/iPhone 15 Plus (1290x2796)" "Phones/Apple/iPhone 15 (1179x2556)" "Phones/Apple/iPhone SE (750x1334)" "Phones/Samsung/Galaxy S24 Ultra (1440x3120)" "Phones/Samsung/Galaxy S24+ (1080x2340)" "Phones/Samsung/Galaxy S24 (1080x2340)" "Phones/Google/Pixel 8 Pro (1344x2992)" "Phones/Google/Pixel 8 (1080x2400)" "Tablets/Apple/iPad Pro 12.9\" (2732x2048)" "Tablets/Apple/iPad Pro 11\" (2388x1668)" "Tablets/Apple/iPad Air (2360x1640)" "Tablets/Apple/iPad Mini (2266x1488)" "Tablets/Samsung/Galaxy Tab S9 Ultra (2960x1848)" "Tablets/Samsung/Galaxy Tab S9 (2560x1600)" "TV & Monitor Ratios/16:9 UHD 4K (3840x2160)" "TV & Monitor Ratios/16:9 FHD (1920x1080)" "TV & Monitor Ratios/16:9 HD (1280x720)" "TV & Monitor Ratios/21:9 Ultrawide QHD (3440x1440)" "TV & Monitor Ratios/21:9 Ultrawide FHD (2560x1080)" "TV & Monitor Ratios/16:10 WUXGA (1920x1200)" "TV & Monitor Ratios/4:3 Old Monitor (1024x768)" "TV & Monitor Ratios/4:3 PAL (768x576)" "TV & Monitor Ratios/4:3 NTSC (720x480)"}}
+  resolution_presets "TV & Monitor Ratios/4:3 Old Monitor (1024x768)"
+  addUserKnob {3 box_width l integer}
+  box_width 1024
+  addUserKnob {3 box_height l "" -STARTLINE}
+  box_height 768
+  addUserKnob {12 aspect_ratio l ratio}
+  aspect_ratio {4 3}
+  addUserKnob {4 lock_mode l "" -STARTLINE M {"Lock Height" "Lock Width" ""}}
+  addUserKnob {4 menu l "resize type" M {none fit ""}}
+  menu fit
+ }
 end_group
