@@ -3,11 +3,11 @@ version 15.1 v2
 push $cut_paste_input
 Group {
 name Transform_mimic
-knobChanged "import nuke\nn = nuke.thisNode()\nk = nuke.thisKnob()\n\nif k.name() in \['scan_limit', 'MBO', 'inputChange']:\n    try:\n        # --- 1. FAST CHECK (Immediate) ---\n        limit = int(n\['scan_limit'].value())\n        mbo = n\['MBO'].value()\n        targets = \[]\n        curr = n.input(1) # Check INPUT 1 Only\n        depth = 0\n        \n        while curr and len(targets) < limit and depth < 100:\n            if curr.Class() == \"Transform\" and not curr\['disable'].value():\n                targets.append(curr.name())\n            curr = curr.input(0)\n            depth += 1\n            \n        sig = str(mbo) + \"|\" + str(limit) + \"|\" + str(targets)\n        \n        # --- 2. COMPARE WITH CACHE ---\n        # If signature is the same, WE STOP HERE. No threading, no lag.\n        if n\['last_chain_state'].value() != sig:\n            n\['last_chain_state'].setValue(sig)\n            \n            # --- 3. SCHEDULE UPDATE ---\n            # Only now do we bother the main thread\n            code = n\['python_logic'].value()\n            nuke.executeInMainThread(lambda: exec(code, \{'nuke': nuke\}))\n            \n    except Exception as e:\n        pass"
+knobChanged "if nuke.thisKnob().name() in \['scan_limit', 'MBO', 'inputChange', 'auto_update']:\n    n = nuke.thisNode()\n    exec(n\['python_logic'].value())\n    run_smart_check(n)"
 tile_color 0xa57aaaff
 selected true
-xpos -1375
-ypos 4686
+xpos -692
+ypos 3212
 addUserKnob {20 User}
 addUserKnob {26 _3 l "" +STARTLINE T "<h1>TRANSFORM "}
 addUserKnob {26 _4 l "" -STARTLINE T "<h1><p style=\"color:#A57AAA;\">mimic</p></h1>"}
@@ -19,7 +19,8 @@ addUserKnob {20 group l "" +STARTLINE n 1}
 group 0
 addUserKnob {3 scan_limit l "Scan Limit" t "How many transforms to look for upstream."}
 scan_limit 4
-addUserKnob {22 refresh l "Refresh / Rebuild" t "Click this if the upstream chain changed and the tool hasn't updated." -STARTLINE T "n = nuke.thisNode()\nn\['last_chain_state'].setValue('')\ncode = n\['python_logic'].value()\nexec(code)"}
+addUserKnob {6 auto_update l "Auto Update" t "Uncheck this to disable the automatic callback (Performance Mode).\n\nWhen unchecked, the tool will not update when inputs change unless you click 'Refresh'." -STARTLINE}
+addUserKnob {22 refresh l "Refresh / Rebuild" t "Click this if the upstream chain changed and the tool hasn't updated." -STARTLINE T "n = nuke.thisNode()\nn\['last_chain_state'].setValue('')\ncode = n\['python_logic'].value()\nexec(code)\nforce_rebuild(n)"}
 addUserKnob {20 endGroup n -1}
 addUserKnob {26 _2 l "" +STARTLINE T "\n"}
 addUserKnob {26 ""}
@@ -29,13 +30,12 @@ addUserKnob {7 shutter}
 shutter 0.5
 addUserKnob {4 shutteroffset l "shutter offset" M {centred start end "" ""}}
 addUserKnob {6 MBO l "motion blur only" -STARTLINE}
-MBO true
 addUserKnob {26 _6 l "" +STARTLINE T "\n\n"}
-addUserKnob {26 _5 l "" +STARTLINE T "<i>made by Yorben - v1.0"}
+addUserKnob {26 _5 l "" +STARTLINE T "<i>made by Yorben - v1.1"}
 addUserKnob {1 python_logic l "Python Logic" +INVISIBLE}
-python_logic "import nuke\n\ndef build_mimic_chain():\n    # Use toNode because 'thisNode' can be lost in threads\n    try:\n        node = nuke.thisNode()\n    except:\n        return\n\n    # --- 1. CONFIGURATION ---\n    try:\n        limit = int(node\['scan_limit'].value())\n        mbo_mode = node\['MBO'].value()\n    except ValueError:\n        return\n\n    # --- 2. FAST SCAN ---\n    target_names = \[]\n    current = node.input(1)\n    depth_search = 0\n    while current and len(target_names) < limit and depth_search < 100:\n        if current.Class() == \"Transform\" and not current\['disable'].value():\n            target_names.append(current.name())\n        current = current.input(0)\n        depth_search += 1\n\n    # --- 3. BUILD ---\n    with node:\n        # Clean up old\n        for n in nuke.allNodes():\n            if n.name().startswith(\"Mimic_Gen\"):\n                nuke.delete(n)\n\n        # Start building\n        last_node = nuke.toNode(\"Dot2\")\n        if not last_node: return\n\n        for t_name in reversed(target_names):\n            t = nuke.createNode(\"Transform\", inpanel=False)\n            t.setName(\"Mimic_Gen_\" + t_name)\n            \n            time_off = \"frame + parent.time_offset\"\n            mbo_base = f\"rint(\{time_off\})\"\n            \n            if mbo_mode:\n                tx = f\"(\{t_name\}.translate.x(\{time_off\}) - \{t_name\}.translate.x(\{mbo_base\})) * parent.multiplier\"\n                ty = f\"(\{t_name\}.translate.y(\{time_off\}) - \{t_name\}.translate.y(\{mbo_base\})) * parent.multiplier\"\n                rot = f\"(\{t_name\}.rotate(\{time_off\}) - \{t_name\}.rotate(\{mbo_base\})) * parent.multiplier\"\n                sw = f\"1 + ((\{t_name\}.scale.w(\{time_off\}) - \{t_name\}.scale.w(\{mbo_base\})) * parent.multiplier)\"\n                sh = f\"1 + ((\{t_name\}.scale.h(\{time_off\}) - \{t_name\}.scale.h(\{mbo_base\})) * parent.multiplier)\"\n                skx = f\"(\{t_name\}.skewX(\{time_off\}) - \{t_name\}.skewX(\{mbo_base\})) * parent.multiplier\"\n                sky = f\"(\{t_name\}.skewY(\{time_off\}) - \{t_name\}.skewY(\{mbo_base\})) * parent.multiplier\"\n            else:\n                tx = f\"\{t_name\}.translate.x(\{time_off\}) * parent.multiplier\"\n                ty = f\"\{t_name\}.translate.y(\{time_off\}) * parent.multiplier\"\n                rot = f\"\{t_name\}.rotate(\{time_off\}) * parent.multiplier\"\n                sw = f\"1 + ((\{t_name\}.scale.w(\{time_off\}) - 1) * parent.multiplier)\"\n                sh = f\"1 + ((\{t_name\}.scale.h(\{time_off\}) - 1) * parent.multiplier)\"\n                skx = f\"\{t_name\}.skewX(\{time_off\}) * parent.multiplier\"\n                sky = f\"\{t_name\}.skewY(\{time_off\}) * parent.multiplier\"\n\n            cx = f\"\{t_name\}.center.x(\{time_off\})\"\n            cy = f\"\{t_name\}.center.y(\{time_off\})\"\n\n            t\['translate'].setExpression(tx, 0)\n            t\['translate'].setExpression(ty, 1)\n            t\['rotate'].setExpression(rot)\n            t\['scale'].setExpression(sw, 0)\n            t\['scale'].setExpression(sh, 1)\n            t\['skewX'].setExpression(skx)\n            t\['skewY'].setExpression(sky)\n            t\['center'].setExpression(cx, 0)\n            t\['center'].setExpression(cy, 1)\n            \n            t\['motionblur'].setExpression(\"parent.motionblur\")\n            t\['shutter'].setExpression(\"parent.shutter\")\n            \n            t.setInput(0, last_node)\n            last_node = t\n        \n        out_node = nuke.toNode(\"Output1\")\n        if out_node:\n            out_node.setInput(0, last_node)\n\nbuild_mimic_chain()"
+python_logic "import nuke\n\n# --- HELPER: BUILD CHAIN ---\ndef build_mimic_chain(node, target_names, mbo_mode):\n    with node:\n        # Clean up old\n        for n in nuke.allNodes():\n            if n.name().startswith(\"Mimic_Gen\"):\n                nuke.delete(n)\n\n        # Start building\n        last_node = nuke.toNode(\"Dot2\")\n        if not last_node: return\n\n        for t_name in reversed(target_names):\n            t = nuke.createNode(\"Transform\", inpanel=False)\n            t.setName(\"Mimic_Gen_\" + t_name)\n            \n            # --- VISUAL ALIGNMENT FIX ---\n            # Force X to 0 (center line)\n            # Force Y to be 50px below the previous node\n            t.setXYpos(0, last_node.ypos() + 50)\n            \n            time_off = \"frame + parent.time_offset\"\n            mbo_base = f\"rint(\{time_off\})\"\n            \n            if mbo_mode:\n                tx = f\"(\{t_name\}.translate.x(\{time_off\}) - \{t_name\}.translate.x(\{mbo_base\})) * parent.multiplier\"\n                ty = f\"(\{t_name\}.translate.y(\{time_off\}) - \{t_name\}.translate.y(\{mbo_base\})) * parent.multiplier\"\n                rot = f\"(\{t_name\}.rotate(\{time_off\}) - \{t_name\}.rotate(\{mbo_base\})) * parent.multiplier\"\n                sw = f\"1 + ((\{t_name\}.scale.w(\{time_off\}) - \{t_name\}.scale.w(\{mbo_base\})) * parent.multiplier)\"\n                sh = f\"1 + ((\{t_name\}.scale.h(\{time_off\}) - \{t_name\}.scale.h(\{mbo_base\})) * parent.multiplier)\"\n                skx = f\"(\{t_name\}.skewX(\{time_off\}) - \{t_name\}.skewX(\{mbo_base\})) * parent.multiplier\"\n                sky = f\"(\{t_name\}.skewY(\{time_off\}) - \{t_name\}.skewY(\{mbo_base\})) * parent.multiplier\"\n            else:\n                tx = f\"\{t_name\}.translate.x(\{time_off\}) * parent.multiplier\"\n                ty = f\"\{t_name\}.translate.y(\{time_off\}) * parent.multiplier\"\n                rot = f\"\{t_name\}.rotate(\{time_off\}) * parent.multiplier\"\n                sw = f\"1 + ((\{t_name\}.scale.w(\{time_off\}) - 1) * parent.multiplier)\"\n                sh = f\"1 + ((\{t_name\}.scale.h(\{time_off\}) - 1) * parent.multiplier)\"\n                skx = f\"\{t_name\}.skewX(\{time_off\}) * parent.multiplier\"\n                sky = f\"\{t_name\}.skewY(\{time_off\}) * parent.multiplier\"\n\n            cx = f\"\{t_name\}.center.x(\{time_off\})\"\n            cy = f\"\{t_name\}.center.y(\{time_off\})\"\n\n            t\['translate'].setExpression(tx, 0)\n            t\['translate'].setExpression(ty, 1)\n            t\['rotate'].setExpression(rot)\n            t\['scale'].setExpression(sw, 0)\n            t\['scale'].setExpression(sh, 1)\n            t\['skewX'].setExpression(skx)\n            t\['skewY'].setExpression(sky)\n            t\['center'].setExpression(cx, 0)\n            t\['center'].setExpression(cy, 1)\n            \n            t\['motionblur'].setExpression(\"parent.motionblur\")\n            t\['shutter'].setExpression(\"parent.shutter\")\n            \n            t.setInput(0, last_node)\n            last_node = t\n        \n        out_node = nuke.toNode(\"Output1\")\n        if out_node:\n            out_node.setInput(0, last_node)\n\n# --- MAIN CALLBACK ---\ndef run_smart_check(node):\n    try:\n        # 0. Check Auto Update\n        if not node\['auto_update'].value():\n            return\n\n        # 1. Fast Scan\n        limit = int(node\['scan_limit'].value())\n        mbo = node\['MBO'].value()\n        targets = \[]\n        curr = node.input(1)\n        depth = 0\n        \n        while curr and len(targets) < limit and depth < 100:\n            if curr.Class() == \"Transform\" and not curr\['disable'].value():\n                targets.append(curr.name())\n            curr = curr.input(0)\n            depth += 1\n            \n        sig = str(mbo) + \"|\" + str(limit) + \"|\" + str(targets)\n        \n        # 2. Compare Cache\n        if node\['last_chain_state'].value() != sig:\n            node\['last_chain_state'].setValue(sig)\n            # 3. Schedule Build (Pass data to avoid re-scan)\n            nuke.executeInMainThread(lambda: build_mimic_chain(node, targets, mbo))\n            \n    except Exception:\n        pass\n\n# --- MANUAL FORCE ---\ndef force_rebuild(node):\n    limit = int(node\['scan_limit'].value())\n    mbo = node\['MBO'].value()\n    targets = \[]\n    curr = node.input(1)\n    while curr and len(targets) < limit:\n        if curr.Class() == \"Transform\" and not curr\['disable'].value():\n            targets.append(curr.name())\n        curr = curr.input(0)\n    \n    sig = str(mbo) + \"|\" + str(limit) + \"|\" + str(targets)\n    node\['last_chain_state'].setValue(sig)\n    build_mimic_chain(node, targets, mbo)"
 addUserKnob {1 last_chain_state l "Chain State Cache" +INVISIBLE}
-last_chain_state "True|4|\[]"
+last_chain_state "True|4|\['Transform_MatchMove2', 'Transform_MatchMove1']"
 }
 Input {
 inputs 0
@@ -47,6 +47,34 @@ Dot {
 name Dot2
 xpos 34
 ypos -516
+}
+Transform {
+translate {{"(Transform_MatchMove1.translate.x(frame + parent.time_offset) - Transform_MatchMove1.translate.x(rint(frame + parent.time_offset))) * parent.multiplier"} {"(Transform_MatchMove1.translate.y(frame + parent.time_offset) - Transform_MatchMove1.translate.y(rint(frame + parent.time_offset))) * parent.multiplier"}}
+rotate {{"(Transform_MatchMove1.rotate(frame + parent.time_offset) - Transform_MatchMove1.rotate(rint(frame + parent.time_offset))) * parent.multiplier"}}
+scale {{"1 + ((Transform_MatchMove1.scale.w(frame + parent.time_offset) - Transform_MatchMove1.scale.w(rint(frame + parent.time_offset))) * parent.multiplier)"}}
+skewX {{"(Transform_MatchMove1.skewX(frame + parent.time_offset) - Transform_MatchMove1.skewX(rint(frame + parent.time_offset))) * parent.multiplier"}}
+skewY {{"(Transform_MatchMove1.skewY(frame + parent.time_offset) - Transform_MatchMove1.skewY(rint(frame + parent.time_offset))) * parent.multiplier"}}
+center {{"Transform_MatchMove1.center.x(frame + parent.time_offset)"} {"Transform_MatchMove1.center.y(frame + parent.time_offset)"}}
+motionblur {{parent.motionblur}}
+shutter {{parent.shutter}}
+shutteroffset centred
+name Mimic_Gen_Transform_MatchMove1
+xpos 0
+ypos -466
+}
+Transform {
+translate {{"(Transform_MatchMove2.translate.x(frame + parent.time_offset) - Transform_MatchMove2.translate.x(rint(frame + parent.time_offset))) * parent.multiplier"} {"(Transform_MatchMove2.translate.y(frame + parent.time_offset) - Transform_MatchMove2.translate.y(rint(frame + parent.time_offset))) * parent.multiplier"}}
+rotate {{"(Transform_MatchMove2.rotate(frame + parent.time_offset) - Transform_MatchMove2.rotate(rint(frame + parent.time_offset))) * parent.multiplier"}}
+scale {{"1 + ((Transform_MatchMove2.scale.w(frame + parent.time_offset) - Transform_MatchMove2.scale.w(rint(frame + parent.time_offset))) * parent.multiplier)"}}
+skewX {{"(Transform_MatchMove2.skewX(frame + parent.time_offset) - Transform_MatchMove2.skewX(rint(frame + parent.time_offset))) * parent.multiplier"}}
+skewY {{"(Transform_MatchMove2.skewY(frame + parent.time_offset) - Transform_MatchMove2.skewY(rint(frame + parent.time_offset))) * parent.multiplier"}}
+center {{"Transform_MatchMove2.center.x(frame + parent.time_offset)"} {"Transform_MatchMove2.center.y(frame + parent.time_offset)"}}
+motionblur {{parent.motionblur}}
+shutter {{parent.shutter}}
+shutteroffset centred
+name Mimic_Gen_Transform_MatchMove2
+xpos 0
+ypos -416
 }
 Output {
 name Output1
